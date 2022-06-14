@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    Ce site est en cours de programation
+    Ce site est en cours de programmation
 </body>
 </html>
