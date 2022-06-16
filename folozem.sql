@@ -73,6 +73,16 @@ CREATE TABLE IF NOT EXISTS `origine` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Structure de la table `origine`
+--
+
+DROP TABLE IF EXISTS `motDePasses`;
+CREATE TABLE IF NOT EXISTS `motDePasses` (
+  `cleacces` varchar(20) NOT NULL,
+  PRIMARY KEY (`cleacces`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
 -- Contraintes pour les tables déchargées
 --
 

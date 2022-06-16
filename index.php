@@ -9,10 +9,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php
+        require_once("Modele.php");
+        $pdo = connexion();
+        $res = $pdo->query("SELECT * from motDePasses");
+        $password = $res->fetchAll();
+        foreach($password as $pass) {
+            echo(json_encode($pass));
+        }
+
+    ?>
     <LogInFrame class="LogInFrame">
         Entrez la clé d'accés
         <br>
-        <input type="Text" class="LogInText"> 
+        <input type="Text" class="LogInText">
+        <input type="Button" id="Submit" value="Se Connecter">
     </LogInFrame>
 </body>
 </html>
