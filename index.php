@@ -6,8 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Folozem</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    Ce site est en cours de programmation.
+    <LogInFrame class="LogInFrame">
+        Entrez la clé d'accés
+        <br>
+        <input type="Text" class="LogInText"> 
+    </LogInFrame>
 </body>
 </html>
