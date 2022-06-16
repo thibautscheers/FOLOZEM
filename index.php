@@ -8,6 +8,6 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-    Ce site est en cours de programmation
+    Ce site est en cours de programmation.
 </body>
 </html>
