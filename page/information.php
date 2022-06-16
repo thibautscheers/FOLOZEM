@@ -17,6 +17,6 @@
     </ul>
 </div>
 <body>
-<h3>Information </h3>
+<h1>Information </h1>
 </body>
 </html>
