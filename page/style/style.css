@@ -3,7 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-	width: 100%;
+    width: 100%;
 }
 
 .LogInFrame {
@@ -18,3 +18,4 @@ body {
     width: 200px;
     height: 20px;
 }
+
