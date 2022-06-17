@@ -9,18 +9,20 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style/navbar.css">
 </head>
-<div>
-    <ul>
-        <li><a href="liste-eleve.php">Liste des Elève</a></li>
-        <li><a href="importation-eleve.php">Importation des Elèves</a></li>
-        <li><a href="#">Statistiques</a></li>
-        <li><a href="information.php">Information du site</a></li>
-        <li><a id="deco" onclick="deco()">Déconnection</a></li>
-    </ul>
-</div>
+
 
 <body>
-<h3>Statistiques </h3>
+    <div>
+        <ul>
+            <li><a href="liste-eleve.php">Liste des Elève</a></li>
+            <li><a href="importation-eleve.php">Importation des Elèves</a></li>
+            <li><a href="#">Statistiques</a></li>
+            <li><a href="information.php">Information du site</a></li>
+            <li><a id="deco" onclick="deco()">Déconnecxion</a></li>
+        </ul>
+    </div>
+    <h3>Statistiques </h3>
 </body>
 <script type="text/javascript" src="js/script.js"></script>
+
 </html>

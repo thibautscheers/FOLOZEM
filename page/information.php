@@ -11,22 +11,24 @@
 
 
 </head>
-<div>
-    <ul>
-        <li><a href="liste-eleve.php">Liste des Elève</a></li>
-        <li><a href="importation-eleve.php">Importation des Elèves</a></li>
-        <li><a href="statistiques.php">Statistiques</a></li>
-        <li><a href="#">Information du site</a></li>
-        <li><a id="deco" onclick="deco()">Déconnection</a></li>
-    </ul>
-</div>
+
 
 <body>
+    <div>
+        <ul>
+            <li><a href="liste-eleve.php">Liste des Elève</a></li>
+            <li><a href="importation-eleve.php">Importation des Elèves</a></li>
+            <li><a href="statistiques.php">Statistiques</a></li>
+            <li><a href="#">Information du site</a></li>
+            <li><a id="deco" onclick="deco()">Déconnexion</a></li>
+        </ul>
+    </div>
     <h1>Information </h1>
     <div id="créateur">
-        <p>Site créer leur du stage de 1er année des SIO de la promation 2021-2023 par Allan ESCOLANO & Thibaut SCHEERS.</p>
+        <p>Site créer leur du stage de 1er année des SIO de la promation 2021-2023 par Allan ESCOLANO & Thibaut SCHEERS.
+        </p>
     </div>
-    
+
 
 
 </body>

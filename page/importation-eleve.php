@@ -10,20 +10,22 @@
     <link rel="stylesheet" href="style/navbar.css">
 
 </head>
-<div>
+
+<body>
+    <div>
         <ul>
             <li><a href="liste-eleve.php">Liste des Elève</a></li>
             <li><a href="#">Importation des Elèves</a></li>
             <li><a href="statistiques.php">Statistiques</a></li>
             <li><a href="information.php">Information du site</a></li>
-            <li><a id="deco" onclick="deco()">Déconnection</a></li>
+            <li><a id="deco" onclick="deco()">Déconnecxion</a></li>
         </ul>
     </div>
-<body>
-<h3>Importation des élève </h3> 
+    <h3>Importation des élève </h3>
 
 
 
 </body>
 <script type="text/javascript" src="js/script.js"></script>
+
 </html>
