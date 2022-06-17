@@ -3,7 +3,7 @@
     function connexion() {
         return new PDO("mysql:host=localhost;dbname=folozem;charset=utf8","root","");
     }
-
+    
     function getPassword () {
         $pdo = connexion();
         $res = $pdo->query("SELECT * from motdepasses ORDER BY cleacces");
