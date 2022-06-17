@@ -1,7 +1,7 @@
 <?php
 
     function connexion() {
-        return new PDO("mysql:host=localhost;dbname=folozem;charset=utf8","root","");
+        return new PDO("mysql:host=db4free.net:3306;dbname=folozem;charset=utf8","folozemadmin","Folozem123!");
     }
     
     function getPassword () {
@@ -12,7 +12,7 @@
 
     function getEtudiants () {
         $pdo = connexion();
-        $res = $pdo->query("SELECT * from Etudiant ORDER BY nom");
+        $res = $pdo->query("SELECT * from etudiant ORDER BY nom");
         return $res->fetchAll();
     }
     
