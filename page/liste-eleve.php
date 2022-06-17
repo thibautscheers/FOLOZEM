@@ -8,6 +8,12 @@
         <title>Liste des Elèves</title>
         <link rel="icon" type="image/x-icon" href="favicon.ico">
         <link rel="stylesheet" href="style/navbar.css">
+
+        <style>
+            table, td, th {
+            border: 1px solid black;
+            }
+        </style>
     </head>
         <div>
             <ul>
@@ -15,18 +21,60 @@
                 <li><a href="importation-eleve.php">Importation des Elèves</a></li>
                 <li><a href="statistiques.php">Statistiques</a></li>
                 <li><a href="information.php">Information du site</a></li>
-                <li><a href="index.php">Déconcecter</a></li>
             </ul>
         </div>
     <body>
 
         <h3>Liste des élève </h3>
+
         <?php
 
             require_once("Modele.php");
             $Etudiants = getEtudiants();
             foreach ($Etudiants as $Etudiant) {
-                echo($Etudiant["nom"]);
+                $noEtudiant = $Etudiant['noEtudiant'];
+                $nom = $Etudiant['nom'];
+                $prenom = $Etudiant['prenom'];
+                $premiereAnnee = $Etudiant['premiereAnnee'];
+                $optionSLAM = $Etudiant['optionSLAM'];
+                $semAbandon = $Etudiant['semAbandon'];
+                $anneeArrivee = $Etudiant['anneeArrivee'];
+                $departement = $Etudiant['departement'];
+                $alternance = $Etudiant['alternance'];
+
+                echo(
+                    "<table>
+
+                        <tr>
+
+                            <td>Numéro étudiant</td>
+                            <td>Nom</td>
+                            <td>Prenom</td>
+                            <td>Année BTS</td>
+                            <td>Option BTS</td>
+                            <td>Semestre d'abandon</td>
+                            <td>Année d'arriver</td>
+                            <td>Département</td>
+                            <td>Alternance</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>".$noEtudiant."</td>
+                            <td>".$nom."</td>
+                            <td>".$prenom."</td>
+                            <td>".$premiereAnnee."</td>
+                            <td>".$optionSLAM."</td>
+                            <td>".$semAbandon."</td>
+                            <td>".$anneeArrivee."</td>
+                            <td>".$departement."</td>
+                            <td>".$alternance."</td>
+
+                        </tr>
+
+                    </table>"
+                );
             }
 
         ?>
