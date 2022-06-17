@@ -6,15 +6,29 @@
 
     function getPassword () {
         $pdo = connexion();
-        $res = $pdo->query("select * from motdepasses order by cleacces");
+        $res = $pdo->query("SELECT * from motdepasses ORDER BY cleacces");
         return $res->fetchAll ();
     }
 
     function getEtudiants () {
         $pdo = connexion();
-        $res = $pdo->query("select * from Etudiant");
+        $res = $pdo->query("SELECT * from Etudiant ORDER BY nom");
+        return $res->fetchAll();
+    }
+    
+    function getOptions($id_Option) {
+        $pdo = connexion();
+        $res = $pdo->prepare("SELECT * FROM options where idOption=:id_Option");
+        $res->bindParam(":id_Option",$id_Option,PDO::PARAM_INT);
+        $res->execute();
         return $res->fetchAll();
     }
 
-      
+    function getOrigines($id_Origine) {
+        $pdo = connexion();
+        $res = $pdo->prepare("SELECT * FROM origine where idOrigine=:id_Origine");
+        $res->bindParam(":id_Origine",$id_Origine,PDO::PARAM_INT);
+        $res->execute();
+        return $res->fetchAll();
+    }
 ?>

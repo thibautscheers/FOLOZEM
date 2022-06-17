@@ -27,7 +27,22 @@
     <body>
 
         <h3>Liste des élève </h3>
+        <table>
+            <tr>
 
+                <td><b>Numéro étudiant</td>
+                <td><b>Nom</td>
+                <td><b>Prenom</td>
+                <td><b>Année BTS</td>
+                <td><b>Option du BTS</td>
+                <td><b>Semestre d'abandon</td>
+                <td><b>Année d'arriver</td>
+                <td><b>Département</td>
+                <td><b>Alternance</td>
+                <td><b>Origine</td>
+                <td><b>Option d'origine</td>
+
+            </tr>
         <?php
 
             require_once("Modele.php");
@@ -36,31 +51,62 @@
                 $noEtudiant = $Etudiant['noEtudiant'];
                 $nom = $Etudiant['nom'];
                 $prenom = $Etudiant['prenom'];
-                $premiereAnnee = $Etudiant['premiereAnnee'];
-                $optionSLAM = $Etudiant['optionSLAM'];
-                $semAbandon = $Etudiant['semAbandon'];
+
+                if ($Etudiant['premiereAnnee'] === 1) { // Affiche dynamiquement l'année de l'étudiant
+                    $premiereAnnee = 'Première Année';
+                } elseif ($Etudiant['premiereAnnee'] === 0) {
+                    $premiereAnnee = 'Seconde Année';
+                } else {
+                    $premiereAnnee = 'Erreur // Non renseigné';
+                }
+                //$premiereAnnee = $Etudiant['premiereAnnee'];
+
+
+                if ($Etudiant['optionSLAM'] === 1) { // Affiche dynamiquement l'année de l'étudiant
+                    $optionSLAM = "Option SLAM";
+                } elseif ($Etudiant['optionSLAM'] === 0) {
+                    $optionSLAM = "Option SISR";
+                } else {
+                    $optionSLAM = "Erreur // Non renseigné";
+                }
+                //$optionSLAM = $Etudiant['optionSLAM'];
+
+
+                if (isset($Etudiant['semAbandon'])) { // Affiche dynamiquement l'abandon de l'étudiant
+                    $semAbandon = "Adanbdon de l'élève au semestre ".$Etudiant['semAbandon'];
+                } elseif (!isset($Etudiant['semAbandon'])) {
+                    $semAbandon = "Pas d'abandon de l'élève";
+                } else {
+                    $semAbandon = "Erreur // Non renseigné";
+                }
+                //$semAbandon = $Etudiant['semAbandon'];
+
                 $anneeArrivee = $Etudiant['anneeArrivee'];
                 $departement = $Etudiant['departement'];
-                $alternance = $Etudiant['alternance'];
+
+                if ($Etudiant['alternance'] === 1) { // Affiche dynamiquement l'alternance de l'étudiant
+                    $alternance = "Cette élève fait une alternance";
+                } elseif ($Etudiant['alternance'] === 0) {
+                    $alternance = "Cette élève ne fait pas d'alternance";
+                } else {
+                    $alternance = "Erreur // Non renseigné";
+                }
+                //$alternance = $Etudiant['alternance'];
+
+                $id_Option = $Etudiant['idOption#']; // L'id de l'option de l'origine de l'eleve
+                $OptionsBugged = getOptions($id_Option); //retourne un tableau bugger ??? (a fix)
+                $OptionsEncode = trim(json_encode($OptionsBugged), "[]"); //convertis sn string et enleve les "[]" de l'array (ce qui le fait bugger)
+                $OptionsDecode = json_decode($OptionsEncode, TRUE); //reconvertie la string en array
+                $Option = $OptionsDecode['nomOption']; // Recupere le nom de l'option
+
+                $id_Origine = $OptionsDecode['idOrigine#'];
+                $OriginesBugged = getOrigines($id_Origine);
+                $OriginesEncode = trim(json_encode($OriginesBugged), "[]");
+                $OriginesDecode = json_decode($OriginesEncode, TRUE);
+                $Origine = $OriginesDecode['nomOrigine'];
 
                 echo(
-                    "<table>
-
-                        <tr>
-
-                            <td>Numéro étudiant</td>
-                            <td>Nom</td>
-                            <td>Prenom</td>
-                            <td>Année BTS</td>
-                            <td>Option BTS</td>
-                            <td>Semestre d'abandon</td>
-                            <td>Année d'arriver</td>
-                            <td>Département</td>
-                            <td>Alternance</td>
-
-                        </tr>
-
-                        <tr>
+                        "<tr>
 
                             <td>".$noEtudiant."</td>
                             <td>".$nom."</td>
@@ -71,14 +117,15 @@
                             <td>".$anneeArrivee."</td>
                             <td>".$departement."</td>
                             <td>".$alternance."</td>
+                            <td>".$Origine."</td>
+                            <td>".$Option."</td>
 
-                        </tr>
-
-                    </table>"
-                );
+                        </tr>"
+                    );
             }
 
         ?>
+        </table>
     </body>
     <script type="text/javascript" src="js/script.js"></script>
 </html>
