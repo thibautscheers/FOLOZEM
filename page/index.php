@@ -25,5 +25,12 @@
         <input type="Text" class="LogInText">
         <input type="Button" id="Submit" value="Se Connecter">
     </LogInFrame>
+
+    <script>
+        function Redirect() {
+            window.location.replace("liste-eleve.php")
+        }
+        document.getElementById("Submit").addEventListener("click", Redirect)
+    </script>
 </body>
 </html>

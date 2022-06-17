@@ -10,7 +10,7 @@
 </head>
 <div>
     <ul>
-        <li><a href="liste-eleve">Liste des Elève</a></li>
+        <li><a href="liste-eleve.php">Liste des Elève</a></li>
         <li><a href="importation-eleve.php">Importation des Elèves</a></li>
         <li><a href="statistiques.php">Statistiques</a></li>
         <li><a href="#">Information du site</a></li>
