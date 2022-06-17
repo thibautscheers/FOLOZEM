@@ -8,7 +8,7 @@
     <title>Information</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style/navbar.css">
-    
+
 
 </head>
 <div>
@@ -24,13 +24,9 @@
 <body>
     <h1>Information </h1>
     <div id="créateur">
-        <p>Créateur du site </p>
-        <p> ESCOLANO Allan <br>
-            &
-            <br>SCHEERS Thibaut
-        </p>
+        <p>Site créer leur du stage de 1er année des SIO de la promation 2021-2023 par Allan ESCOLANO & Thibaut SCHEERS.</p>
     </div>
-
+    
 
 
 </body>
