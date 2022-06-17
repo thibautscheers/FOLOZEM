@@ -52,9 +52,9 @@
                 $nom = $Etudiant['nom'];
                 $prenom = $Etudiant['prenom'];
 
-                if ($Etudiant['premiereAnnee'] === "1") { // Affiche dynamiquement l'année de l'étudiant
+                if ($Etudiant['premiereAnnee'] === 1) { // Affiche dynamiquement l'année de l'étudiant
                     $premiereAnnee = 'Première Année';
-                } elseif ($Etudiant['premiereAnnee'] === "0") {
+                } elseif ($Etudiant['premiereAnnee'] === 0) {
                     $premiereAnnee = 'Seconde Année';
                 } else {
                     $premiereAnnee = 'Erreur // Non renseigné';
@@ -62,9 +62,9 @@
                 //$premiereAnnee = $Etudiant['premiereAnnee'];
 
 
-                if ($Etudiant['optionSLAM'] === "1") { // Affiche dynamiquement l'année de l'étudiant
+                if ($Etudiant['optionSLAM'] === 1) { // Affiche dynamiquement l'année de l'étudiant
                     $optionSLAM = "Option SLAM";
-                } elseif ($Etudiant['optionSLAM'] ==="0") {
+                } elseif ($Etudiant['optionSLAM'] === 0) {
                     $optionSLAM = "Option SISR";
                 } else {
                     $optionSLAM = "Erreur // Non renseigné";
@@ -84,9 +84,9 @@
                 $anneeArrivee = $Etudiant['anneeArrivee'];
                 $departement = $Etudiant['departement'];
 
-                if ($Etudiant['alternance'] === "1") { // Affiche dynamiquement l'alternance de l'étudiant
+                if ($Etudiant['alternance'] === 1) { // Affiche dynamiquement l'alternance de l'étudiant
                     $alternance = "Cette élève fait une alternance";
-                } elseif ($Etudiant['alternance'] === "0") {
+                } elseif ($Etudiant['alternance'] === 0) {
                     $alternance = "Cette élève ne fait pas d'alternance";
                 } else {
                     $alternance = "Erreur // Non renseigné";

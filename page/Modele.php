@@ -19,7 +19,7 @@
     function getOptions($id_Option) {
         $pdo = connexion();
         $res = $pdo->prepare("SELECT * FROM options where idOption=:id_Option");
-        $res->bindParam(":id_Option",$id_Option,PDO::PARAM_INT);
+        $res->bindParam(":id_Option",$id_Option,PDO::PARAM_STR);
         $res->execute();
         return $res->fetchAll();
     }
@@ -27,7 +27,7 @@
     function getOrigines($id_Origine) {
         $pdo = connexion();
         $res = $pdo->prepare("SELECT * FROM origine where idOrigine=:id_Origine");
-        $res->bindParam(":id_Origine",$id_Origine,PDO::PARAM_INT);
+        $res->bindParam(":id_Origine",$id_Origine,PDO::PARAM_STR);
         $res->execute();
         return $res->fetchAll();
     }
