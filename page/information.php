@@ -8,6 +8,8 @@
     <title>Information</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style/navbar.css">
+    
+
 </head>
 <div>
     <ul>
@@ -15,7 +17,7 @@
         <li><a href="importation-eleve.php">Importation des Elèves</a></li>
         <li><a href="statistiques.php">Statistiques</a></li>
         <li><a href="#">Information du site</a></li>
-        <li><a href="index.php">Déconcecter</a></li>
+        <li><a id="deco" onclick="deco()">Déconnection</a></li>
     </ul>
 </div>
 
@@ -24,12 +26,14 @@
     <div id="créateur">
         <p>Créateur du site </p>
         <p> ESCOLANO Allan <br>
-                   & 
-            <br>SCHEERS Thibaut </p>
+            &
+            <br>SCHEERS Thibaut
+        </p>
     </div>
 
 
 
 </body>
+<script type="text/javascript" src="js/script.js"></script>
 
 </html>
