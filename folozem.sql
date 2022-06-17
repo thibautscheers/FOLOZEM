@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
   `semAbandon` int(11) DEFAULT NULL,
   `anneeArrivee` int(11) NOT NULL,
   `departement` varchar(3) NOT NULL,
-  `alternace` tinyint(1) NOT NULL,
+  `alternance` tinyint(1) NOT NULL,
   `idOption#` int(11) NOT NULL,
   PRIMARY KEY (`noEtudiant`),
   KEY `options` (`idOption#`)
