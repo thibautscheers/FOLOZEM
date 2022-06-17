@@ -15,6 +15,8 @@
             }
         </style>
     </head>
+    <body>
+
         <div>
             <ul>
                 <li><a href="#">Liste des Elève</a></li>
@@ -24,7 +26,6 @@
                 <li><a id="deco" onclick="deco()">Déconnection</a></li>
             </ul>
         </div>
-    <body>
 
         <h3>Liste des élève </h3>
         <table>
@@ -52,9 +53,9 @@
                 $nom = $Etudiant['nom'];
                 $prenom = $Etudiant['prenom'];
 
-                if ($Etudiant['premiereAnnee'] === "1") { // Affiche dynamiquement l'année de l'étudiant
+                if ($Etudiant['premiereAnnee'] == 1) { // Affiche dynamiquement l'année de l'étudiant
                     $premiereAnnee = 'Première Année';
-                } elseif ($Etudiant['premiereAnnee'] === "0") {
+                } elseif ($Etudiant['premiereAnnee'] == 0) {
                     $premiereAnnee = 'Seconde Année';
                 } else {
                     $premiereAnnee = 'Erreur // Non renseigné';
@@ -62,9 +63,9 @@
                 //$premiereAnnee = $Etudiant['premiereAnnee'];
 
 
-                if ($Etudiant['optionSLAM'] === "1") { // Affiche dynamiquement l'année de l'étudiant
+                if ($Etudiant['optionSLAM'] == 1) { // Affiche dynamiquement l'année de l'étudiant
                     $optionSLAM = "Option SLAM";
-                } elseif ($Etudiant['optionSLAM'] ==="0") {
+                } elseif ($Etudiant['optionSLAM'] == 0) {
                     $optionSLAM = "Option SISR";
                 } else {
                     $optionSLAM = "Erreur // Non renseigné";
@@ -84,9 +85,9 @@
                 $anneeArrivee = $Etudiant['anneeArrivee'];
                 $departement = $Etudiant['departement'];
 
-                if ($Etudiant['alternance'] === "1") { // Affiche dynamiquement l'alternance de l'étudiant
+                if ($Etudiant['alternance'] == 1) { // Affiche dynamiquement l'alternance de l'étudiant
                     $alternance = "Cette élève fait une alternance";
-                } elseif ($Etudiant['alternance'] === "0") {
+                } elseif ($Etudiant['alternance'] == 0) {
                     $alternance = "Cette élève ne fait pas d'alternance";
                 } else {
                     $alternance = "Erreur // Non renseigné";
@@ -94,16 +95,12 @@
                 //$alternance = $Etudiant['alternance'];
 
                 $id_Option = $Etudiant['idOption#']; // L'id de l'option de l'origine de l'eleve
-                $OptionsBugged = getOptions($id_Option); //retourne un tableau bugger ??? (a fix)
-                $OptionsEncode = trim(json_encode($OptionsBugged), "[]"); //convertis sn string et enleve les "[]" de l'array (ce qui le fait bugger)
-                $OptionsDecode = json_decode($OptionsEncode, TRUE); //reconvertie la string en array
-                $Option = $OptionsDecode['nomOption']; // Recupere le nom de l'option
+                $Options = getOptions($id_Option); //retourne un tableau bugger ??? (a fix)
+                $Option = $Options['nomOption']; // Recupere le nom de l'option
 
-                $id_Origine = $OptionsDecode['idOrigine#'];
-                $OriginesBugged = getOrigines($id_Origine);
-                $OriginesEncode = trim(json_encode($OriginesBugged), "[]");
-                $OriginesDecode = json_decode($OriginesEncode, TRUE);
-                $Origine = $OriginesDecode['nomOrigine'];
+                $id_Origine = $Options['idOrigine#'];
+                $Origines = getOrigines($id_Origine);
+                $Origine = $Origines['nomOrigine'];
 
                 echo(
                         "<tr>
