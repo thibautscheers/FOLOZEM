@@ -17,10 +17,11 @@
     </head>
         <div>
             <ul>
-                <li><a href="#">Liste des Elève</a></li>
-                <li><a href="importation-eleve.php">Importation des Elèves</a></li>
+                <li><a href="liste-eleve.php">Liste des Elève</a></li>
+                <li><a href="#">Importation des Elèves</a></li>
                 <li><a href="statistiques.php">Statistiques</a></li>
                 <li><a href="information.php">Information du site</a></li>
+                <li><a id="deco" onclick="deco()">Déconnection</a></li>
             </ul>
         </div>
     <body>
@@ -79,5 +80,5 @@
 
         ?>
     </body>
-
+    <script type="text/javascript" src="js/script.js"></script>
 </html>
