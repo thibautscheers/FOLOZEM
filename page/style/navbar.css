@@ -4,6 +4,9 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: #333;
+  position: fixed;
+  top: 8px;
+  width: 100%;
 
 
 }
@@ -23,4 +26,7 @@ li a {
 /* Change the link color to #111 (black) on hover */
 li a:hover {
   background-color: rgb(207, 17, 17);
+}
+body{
+  margin-top: 75px;
 }
