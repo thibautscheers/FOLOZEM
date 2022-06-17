@@ -9,28 +9,21 @@
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-    <?php
-        require_once("Modele.php");
-        $pdo = connexion();
-        $res = $pdo->query("SELECT * from motDePasses");
-        $password = $res->fetchAll();
-        foreach($password as $pass) {
-            echo(json_encode($pass));
-        }
-
-    ?>
     <LogInFrame class="LogInFrame">
         Entrez la clé d'accés
         <br>
-        <input type="Text" class="LogInText">
-        <input type="Button" id="Submit" value="Se Connecter">
+        <form method="post" action="checkPassword.php">
+            <input type="password" name="LogInText" class="button">
+            <input type="submit" name="LogInBtn" class="button" value="Se Connecter">
+            <?php
+                session_start();
+                if(isset($_SESSION['WrongPass'])) { // Check si le cookie WrongPass est definie
+                    echo("<div> Le mot de passe entré n'est pas le bon </div>");
+                }
+                session_destroy(); // Permet de clear le cookie si on refresh la page
+            ?>
+        </form>
     </LogInFrame>
-
-    <script>
-        function Redirect() {
-            window.location.replace("liste-eleve.php")
-        }
-        document.getElementById("Submit").addEventListener("click", Redirect)
-    </script>
 </body>
+
 </html>
