@@ -20,6 +20,13 @@
 
 <body>
     <h1>Information </h1>
+    <div id="créateur">
+        <p>Créateur du site </p>
+        <p> ESCOLANO Allan <br>
+                   & 
+            <br>SCHEERS Thibaut </p>
+    </div>
+
 
 
 </body>
