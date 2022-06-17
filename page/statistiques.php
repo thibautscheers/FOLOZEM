@@ -15,6 +15,7 @@
         <li><a href="importation-eleve.php">Importation des Elèves</a></li>
         <li><a href="#">Statistiques</a></li>
         <li><a href="information.php">Information du site</a></li>
+        <li><a href="index.php">Déconcecter</a></li>
     </ul>
 </div>
 
