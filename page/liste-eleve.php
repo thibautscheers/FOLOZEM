@@ -42,6 +42,7 @@
                 <td><b>Alternance</td>
                 <td><b>Origine</td>
                 <td><b>Option d'origine</td>
+                <td><b>Supprimer élève</td>
 
             </tr>
         <?php
@@ -116,6 +117,12 @@
                             <td>".$alternance."</td>
                             <td>".$Origine."</td>
                             <td>".$Option."</td>
+                            <td>
+                                <form mehtod='get' action='Supprimer.php'>
+                                    <input type='submit' value='X'>
+                                    <input type='text' name='noEtudiant' value=".$noEtudiant." hidden>
+                                </form>
+                            </td>
 
                         </tr>"
                     );

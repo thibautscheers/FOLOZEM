@@ -23,6 +23,12 @@
     </div>
     <h3>Importation des élève </h3>
 
+    <h4>Importation d'un fichier csv<h4>   
+
+    <form action="Importer.php" method="post" enctype="multipart/form-data">
+       <input type="file" name="file" id="file" accept=".csv">
+       <input type="submit" value="Importer" name="submit">
+    </form>
 
 
 </body>
