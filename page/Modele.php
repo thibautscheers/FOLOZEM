@@ -72,7 +72,7 @@ function ajoutEleve($noEtudiant, $nom, $prenom, $premiereAnnee, $optionSLAM, $al
     $res->bindParam("optionbac", $idOptions);
     return $res->execute();
 }
-function lireOption() //function pour lire lesw option sans contrainte utilisé pour une liste déroulante
+function lireOption() //function pour lire les option sans contrainte utilisé pour une liste déroulante
 {
     $pdo = connexion();
     $res = $pdo->prepare("SELECT * FROM `options`");
@@ -80,26 +80,24 @@ function lireOption() //function pour lire lesw option sans contrainte utilisé 
     return $res;
 }
 
-function ajoutOrigine($nomOrigine)
+function ajoutOrigine($nomOrigine)//function pour ajouter des origine
 {
     $pdo = connexion();
     $res =  $pdo->prepare("INSERT INTO `origine`(`nomOrigine`) VALUES (:nomOrigine)");
     $res->bindParam("nomOrigine", $nomOrigine, PDO::PARAM_STR, 20);
     return $res->execute();
 }
-function lireOrigine() //function pour lire lesw option sans contrainte utilisé pour une liste déroulante
+function lireOrigine() //function pour lire les origine sans contrainte utilisé pour une liste déroulante
 {
     $pdo = connexion();
     $res = $pdo->prepare("SELECT * FROM `origine`");
     $res->execute();
     return $res;
 }
-function ajoutOption($nomOption, $idOrigine)
+function ajoutOption($nomOption, $idOrigine)//function pour ajouter des options
 {
     $pdo = connexion();
     $res =  $pdo->prepare("INSERT INTO `options`( `nomOption`, `idOrigine#`) VALUES ('$nomOption','$idOrigine')");
-    // $res->bindParam("nomOption", $nomOption, PDO::PARAM_STR, 20);
-    // $res->bindParam("idOrigine", $idOrigine, PDO::PARAM_INT);
     $res->execute();
     return $res;
 }
