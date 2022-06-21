@@ -18,6 +18,9 @@
         $Dossiers = [];
         $IdEtudiants = [];
 
+        $EtabOrigines = [];
+        $Departements = [];
+
     if(isset( $_FILES['file'])) {
         $csvFile = $_FILES['file'];
     }
@@ -44,6 +47,10 @@
                     $ColonneDossier = $v;
                 }
 
+                if(preg_match('(Etab|etab)',$csvAsArray[$i][$v]) ===1 ) {
+                    $ColonneEtabOrigines = $v;
+                }
+
                 if(isset($ColonnePrenomsNoms)) { //Si la colonne a été trouver
                     if($i > 0) { //Si la ligne n'est pas la premiere ligne (car la peremiere ligne est la legende)
                         if($v == $ColonnePrenomsNoms) { //Si l'incrément arrive sur la colonne des prenoms
@@ -64,6 +71,18 @@
                     if($i > 0) { //Si la ligne n'est pas la premiere ligne (car la peremiere ligne est la legende)
                         if($v == $ColonneDossier) { //Si l'incrément arrive sur la colonne des Dossiers
                             array_push($Dossiers, $csvAsArray[$i][$v]); //Rajouter le dossier dans le tableau
+                        }
+                    }
+                }
+
+                if(isset($ColonneEtabOrigines)) { //Si la colonne a été trouver
+                    if($i > 0) { //Si la ligne n'est pas la premiere ligne (car la peremiere ligne est la legende)
+                        if($v == $ColonneEtabOrigines) { //Si l'incrément arrive sur la colonne des Etablissement d'origine
+                            if($csvAsArray[$i][$v] != "") { //Si la case n'est pas vide
+                                array_push($EtabOrigines, $csvAsArray[$i][$v]); //Rajouter le dossier dans le tableau
+                            } else {
+                                array_push($EtabOrigines, "Aucune Origine");
+                            }
                         }
                     }
                 }
@@ -108,5 +127,32 @@
         array_push($IdEtudiants, $IdEtudiant);
         //print_r($IdEtudiant);
     }
+    //print_r($IdEtudiants);
+
+
+    for($i = 0; $i < count($EtabOrigines); $i++) { //Pour la longeur du tableau
+        $pos = strpos($EtabOrigines[$i], "("); // Recupere l'endroit ou se situe la parenthese (Aka juste avant le département)
+        if($pos) {
+            $EtabOrigine = $EtabOrigines[$i]; //Recupere chaque département d'origine
+            $Departement = $EtabOrigine[$pos+1]. $EtabOrigine[$pos+2]; //Recupere les 2 character apres la parenthese (exemple : Lycée VAUCANSON (38)) -> 38
+            array_push($Departements, $Departement); // Met le departement dans la table
+            //print_r($Departement);
+        } else {
+            array_push($Departements, "Aucune Origine"); //Si il n'y a pas de parenthese, alors mettre aucune origine
+        }
+    }
+    //print_r($EtabOrigines);
+    //print_r($Departements);
+
     print_r($IdEtudiants);
+    print_r($Noms);
+    print_r($Prenoms);
+     //Option Bts
+    //Semestre d'abandon
+    print_r($Annees);
+    print_r($Departements);
+    //Alternance
+    //Origine
+    //Option d'origine
+
 ?>
