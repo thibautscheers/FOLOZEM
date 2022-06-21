@@ -18,7 +18,7 @@
             <li><a href="importation-eleve.php">Importation des Elèves</a></li>
             <li><a href="#">Statistiques</a></li>
             <li><a href="information.php">Information du site</a></li>
-            <li><a id="deco" onclick="deco()">Déconnecxion</a></li>
+            <li><a id="deco" onclick="deco()">Déconnexion</a></li>
         </ul>
     </div>
     <h3>Statistiques </h3>
