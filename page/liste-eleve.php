@@ -34,7 +34,7 @@
     <table>
         <tr>
 
-            <td><b>Numéro étudiant</td>
+            <td><b>ID étudiant</td>
             <td><b>Nom</td>
             <td><b>Prenom</td>
             <td><b>Année BTS</td>
@@ -140,6 +140,7 @@
                             <option value='1'>SLAM</option>
                             <option value='0'>SISR</option>
                         </select>
+                        Semestre d'abandon : 
                         <input type="number" name="SemAbandon" value="Semestre">
                      <select name='alternance'>
                             <option value='1'>fait une alternance</option>

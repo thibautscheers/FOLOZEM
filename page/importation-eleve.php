@@ -65,7 +65,7 @@
 
 
     <form action="ajoutEleve.php" method="POST">
-        N°Etudiant : <input type="number" name="noEtudiant">
+        Id Etudiant : <input type="number" name="noEtudiant">
         Nom : <input type="text" name="nom">
         Prenom : <input type="text" name="prenom">
 
