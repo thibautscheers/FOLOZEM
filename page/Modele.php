@@ -65,7 +65,6 @@ function ajoutEleve($noEtudiant, $nom, $prenom, $premiereAnnee, $optionSLAM, $al
     $res->bindParam("nom", $nom, PDO::PARAM_STR, 20);
     $res->bindParam("prenom", $prenom, PDO::PARAM_STR, 20);
     $res->bindParam("premiereAnnee", $premiereAnnee, PDO::PARAM_BOOL);
-    // $res->bindParam("optionSLAM", $optionSLAM, );
     $res->bindParam("anneeArrivee", $anneeArrivee, PDO::PARAM_INT, 4);
     $res->bindParam("departement", $departement, PDO::PARAM_INT);
     $res->bindParam("alternance", $alternance, PDO::PARAM_BOOL);
