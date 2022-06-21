@@ -18,7 +18,7 @@
             <li><a href="#">Importation des Elèves</a></li>
             <li><a href="statistiques.php">Statistiques</a></li>
             <li><a href="information.php">Information du site</a></li>
-            <li><a id="deco" onclick="deco()">Déconnecxion</a></li>
+            <li><a id="deco" onclick="deco()">Déconnexion</a></li>
         </ul>
         <?php
         require_once("modele.php");
@@ -99,6 +99,29 @@
         <input type="submit" value="Ajouter">
     </form>
 
+
+    <h3>Ajout d'origine</h3>
+    <form action="ajoutOrigine.php" method="POST">
+        Nom de l'origine : <input type="text" name="nomOrigine">
+        <input type="submit" value="ajouter">
+    </form>
+
+    <h3>Ajout d'option</h3>
+    <form action="ajoutOption.php" method="POST">
+        Nom de l'option : <input type="text" name="nomOption">
+        <select name="idOrigine">
+            <?php
+
+            $origines = lireOrigine();
+
+            foreach ($origines as $origine) {
+                $idOrigine = $origine['idOrigine'];
+                $nomOrigine  = $origine['nomOrigine'];
+                echo ("<option value='$idOrigine'>$nomOrigine</option>");
+            }
+            ?>
+        <input type="submit" value="ajouter">
+    </form>
 
 </body>
 <script type="text/javascript" src="js/script.js"></script>
