@@ -56,7 +56,8 @@
 
     <div id="RGPD">
         <h3>RGPD</h3>
-        <p>Pour réspecté la loi sur la protection des données il faudrait gradé les données minimun pendant 3 ans maximun pandant 5 ans.</p>
+        <p>Pour réspecté la loi sur la protection des données il faudrait garder les données minimun pendant 3 ans maximun pandant 5 ans.</p>
+        <p>Si vous rencontrez un problème, veuillez nous contacter sur notre adresses électroniques : <a href='mailto: folozem@proton.me'>folozem@proton.me<a></p>
     </div>
 
 
