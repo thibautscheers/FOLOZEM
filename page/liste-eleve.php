@@ -1,54 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Liste des Elèves</title>
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="style/navbar.css">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Elèves</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="style/navbar.css">
 
-        <style>
-            table, td, th {
+    <style>
+        table,
+        td,
+        th {
             border: 1px solid black;
-            }
-        </style>
-    </head>
-    <body>
+        }
+    </style>
+</head>
 
-        <div>
-            <ul>
-                <li><a href="#">Liste des Elève</a></li>
-                <li><a href="importation-eleve.php">Importation des Elèves</a></li>
-                <li><a href="statistiques.php">Statistiques</a></li>
-                <li><a href="information.php">Information du site</a></li>
-                <li><a id="deco" onclick="deco()">Déconnecxion</a></li>
-            </ul>
-        </div>
+<body>
 
-        <h3>Liste des élève </h3>
-        <table>
-            <tr>
+    <div>
+        <ul>
+            <li><a href="#">Liste des Elève</a></li>
+            <li><a href="importation-eleve.php">Importation des Elèves</a></li>
+            <li><a href="statistiques.php">Statistiques</a></li>
+            <li><a href="information.php">Information du site</a></li>
+            <li><a id="deco" onclick="deco()">Déconnecxion</a></li>
+        </ul>
+    </div>
 
-                <td><b>Numéro étudiant</td>
-                <td><b>Nom</td>
-                <td><b>Prenom</td>
-                <td><b>Année BTS</td>
-                <td><b>Option du BTS</td>
-                <td><b>Semestre d'abandon</td>
-                <td><b>Année d'arriver</td>
-                <td><b>Département</td>
-                <td><b>Alternance</td>
-                <td><b>Origine</td>
-                <td><b>Option d'origine</td>
-                <td><b>Supprimer élève</td>
+    <h3>Liste des élève </h3>
+    <table>
+        <tr>
 
-            </tr>
+            <td><b>Numéro étudiant</td>
+            <td><b>Nom</td>
+            <td><b>Prenom</td>
+            <td><b>Année BTS</td>
+            <td><b>Option du BTS</td>
+            <td><b>Semestre d'abandon</td>
+            <td><b>Année d'arriver</td>
+            <td><b>Département</td>
+            <td><b>Alternance</td>
+            <td><b>Origine</td>
+            <td><b>Option d'origine</td>
+
+        </tr>
         <?php
 
-            require_once("Modele.php");
-            $Etudiants = getEtudiants();
+        require_once("modele.php");
+        session_start();
+
+        if (isset($_SESSION["error"]) && ($_SESSION["error"] != ""))
+            echo ("<br/><div style=\"background-color: #f44; padding: 6px;\">" . ($_SESSION["error"]) . "</div>");
+        $_SESSION["error"] = "";
+
+        if (isset($_SESSION["info"]) && ($_SESSION["info"] != ""))
+            echo ("<br/><div style=\"background-color: #4f4; padding: 6px;\">" . ($_SESSION["info"]) . "</div>");
+        $_SESSION["info"] = "";
+
+        session_destroy();
+        $Etudiants = getEtudiants();
             foreach ($Etudiants as $Etudiant) {
                 $noEtudiant = $Etudiant['noEtudiant'];
                 $nom = $Etudiant['nom'];
@@ -102,34 +115,55 @@
                 $id_Origine = $Options['idOrigine#'];
                 $Origines = getOrigines($id_Origine);
                 $Origine = $Origines['nomOrigine'];
+        ?>
 
-                echo(
-                        "<tr>
+            <form method='POST' action='modifEleves.php'>
+                <tr>
 
-                            <td>".$noEtudiant."</td>
-                            <td>".$nom."</td>
-                            <td>".$prenom."</td>
-                            <td>".$premiereAnnee."</td>
-                            <td>".$optionSLAM."</td>
-                            <td>".$semAbandon."</td>
-                            <td>".$anneeArrivee."</td>
-                            <td>".$departement."</td>
-                            <td>".$alternance."</td>
-                            <td>".$Origine."</td>
-                            <td>".$Option."</td>
-                            <td>
-                                <form mehtod='get' action='Supprimer.php'>
-                                    <input type='submit' value='X'>
-                                    <input type='text' name='noEtudiant' value=".$noEtudiant." hidden>
-                                </form>
-                            </td>
+                    <td><input type="hidden" name="noEtudiant" value="<?php echo ($noEtudiant) ?>"><?php echo ($noEtudiant) ?></td>
+                    <td><?php echo ($nom) ?></td>
+                    <td><?php echo ($prenom) ?></td>
+                    <td><?php echo ($premiereAnnee) ?></td>
+                    <td><?php echo ($optionSLAM) ?></td>
+                    <td><?php echo ($semAbandon) ?></td>
+                    <td><?php echo ($anneeArrivee) ?></td>
+                    <td><?php echo ($departement) ?></td>
+                    <td><?php echo ($alternance) ?></td>
+                    <td><?php echo ($Origine) ?></td>
+                    <td><?php echo ($Option) ?></td>
+                    <td> <select name='anneeSIO'>
+                            <option value='1'>SIO 1</option>
+                            <option value='0'>SIO 2</option>
+                        </select></td>
+                    <td> <select name='optionBTS'>
+                            <option value='1'>SLAM</option>
+                            <option value='0'>SISR</option>
+                        </select></td>
+                        <td><input type="number" name="SemAbandon"></td>
+                    <td> <select name='alternance'>
+                            <option value='1'>fait une alternance</option>
+                            <option value='0'>ne fait pas d'alternance</option>
+                        </select></td>
+                    <td> <input type='submit' value='Modifier'></td></form>
+                    <td> <form action="supprimerEleve.php" method="POST">
+                    <input type="hidden" name="noEtudiant" value="<?php echo ($noEtudiant) ?>">
+                    <input type="submit" value="Supprimer">
+                    </form>
+                </tr>
+            
 
-                        </tr>"
-                    );
-            }
+        <?php
+        }
 
         ?>
-        </table>
-    </body>
-    <script type="text/javascript" src="js/script.js"></script>
+
+    </table>
+
+
+
+
+
+</body>
+<script type="text/javascript" src="js/script.js"></script>
+
 </html>

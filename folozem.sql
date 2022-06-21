@@ -39,9 +39,9 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
   `anneeArrivee` int(11) NOT NULL,
   `departement` varchar(3) NOT NULL,
   `alternance` tinyint(1) NOT NULL,
-  `idOption#` int(11) NOT NULL,
+  `idOption` int(11) NOT NULL,
   PRIMARY KEY (`noEtudiant`),
-  KEY `options` (`idOption#`)
+  KEY `options` (`idOption`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -52,11 +52,11 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
 
 DROP TABLE IF EXISTS `options`;
 CREATE TABLE IF NOT EXISTS `options` (
-  `idOption` int(11) NOT NULL AUTO_INCREMENT,
+  `idOptions` int(11) NOT NULL AUTO_INCREMENT,
   `nomOption` varchar(30) NOT NULL,
-  `idOrigine#` int(11) NOT NULL,
-  PRIMARY KEY (`idOption`),
-  KEY `origine` (`idOrigine#`)
+  `idOrigine` int(11) NOT NULL,
+  PRIMARY KEY (`idOptions`),
+  KEY `origine` (`idOrigine`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -90,13 +90,13 @@ CREATE TABLE IF NOT EXISTS `motDePasses` (
 -- Contraintes pour la table `etudiant`
 --
 ALTER TABLE `etudiant`
-  ADD CONSTRAINT `options` FOREIGN KEY (`idOption#`) REFERENCES `options` (`idOption`);
+  ADD CONSTRAINT `options` FOREIGN KEY (`idOption`) REFERENCES `options` (`idOptions`);
 
 --
 -- Contraintes pour la table `options`
 --
 ALTER TABLE `options`
-  ADD CONSTRAINT `origine` FOREIGN KEY (`idOrigine#`) REFERENCES `origine` (`idOrigine`);
+  ADD CONSTRAINT `origine` FOREIGN KEY (`idOrigine`) REFERENCES `origine` (`idOrigine`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

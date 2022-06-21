@@ -20,14 +20,83 @@
             <li><a href="information.php">Information du site</a></li>
             <li><a id="deco" onclick="deco()">Déconnecxion</a></li>
         </ul>
+        <?php
+        require_once("modele.php");
+        session_start();
+
+        if (isset($_SESSION["error"]) && ($_SESSION["error"] != ""))
+            echo ("<br/><div style=\"background-color: #f44; padding: 6px;\">" . ($_SESSION["error"]) . "</div>");
+        $_SESSION["error"] = "";
+
+        if (isset($_SESSION["info"]) && ($_SESSION["info"] != ""))
+            echo ("<br/><div style=\"background-color: #4f4; padding: 6px;\">" . ($_SESSION["info"]) . "</div>");
+        $_SESSION["info"] = ""; ?>
     </div>
     <h3>Importation des élève </h3>
 
-    <h4>Importation d'un fichier csv<h4>   
+    <form action="importEleves.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file" accept=".csv">
+        <input type="submit" value="Importer" name="submit">
+    </form>
 
-    <form action="Importer.php" method="post" enctype="multipart/form-data">
-       <input type="file" name="file" id="file" accept=".csv">
-       <input type="submit" value="Importer" name="submit">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h3>Ajout Elèves</h3>
+
+
+    <form action="ajoutEleve.php" method="POST">
+        N°Etudiant : <input type="number" name="noEtudiant">
+        Nom : <input type="text" name="nom">
+        Prenom : <input type="text" name="prenom">
+
+        <select name='anneeSIO'>
+            <option value='1'>SIO 1</option>
+            <option value='0'>SIO 2</option>
+        </select>
+        <select name='optionBTS'>
+            <option value='1'>SLAM</option>
+            <option value='0'>SISR</option>
+        </select>
+        Année d'arrivé : <input type="number" name="anneeArrivee">
+        Département : <input type="number" name="departement">
+        <select name='alternance'>
+            <option value='1'>fait une alternance</option>
+            <option value='0'>ne fait pas d'alternance</option>
+        </select>
+        Option D'origine :
+        <select name="idOption">
+            <?php
+
+            $optionsB = lireOption();
+
+            foreach ($optionsB as $optionB) {
+                $idOption = $optionB['idOption'];
+                $nomOption  = $optionB['nomOption'];
+                echo ("<option value='$idOption'>$nomOption</option>");
+            }
+            ?>
+        </select>
+        <input type="submit" value="Ajouter">
     </form>
 
 
