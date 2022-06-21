@@ -74,6 +74,7 @@
             <option value='0'>SIO 2</option>
         </select>
         <select name='optionBTS'>
+            <option value="NULL"></option>
             <option value='1'>SLAM</option>
             <option value='0'>SISR</option>
         </select>

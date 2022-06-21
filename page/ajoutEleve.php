@@ -27,13 +27,8 @@ try {
     ajoutEleve($noEtudiant, $nom, $prenom, $premiereAnnee, $optionSLAM, $alternance, $anneeArrivee, $departement, $idOptions);
 
     $_SESSION["info"] = "Etudiant Ajouter";
-    header("location:importation-eleve.php");
+    // header("location:importation-eleve.php");
   }
-
-
-  // 
-
-
 
 
 } catch (Exception $e) {

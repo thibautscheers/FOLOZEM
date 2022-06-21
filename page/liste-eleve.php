@@ -63,59 +63,63 @@
 
         session_destroy();
         $Etudiants = getEtudiants();
-            foreach ($Etudiants as $Etudiant) {
-                $noEtudiant = $Etudiant['noEtudiant'];
-                $nom = $Etudiant['nom'];
-                $prenom = $Etudiant['prenom'];
+        foreach ($Etudiants as $Etudiant) {
+            $noEtudiant = $Etudiant['noEtudiant'];
+            $nom = $Etudiant['nom'];
+            $prenom = $Etudiant['prenom'];
 
-                if ($Etudiant['premiereAnnee'] == 1) { // Affiche dynamiquement l'année de l'étudiant
-                    $premiereAnnee = 'Première Année';
-                } elseif ($Etudiant['premiereAnnee'] == 0) {
-                    $premiereAnnee = 'Seconde Année';
-                } else {
-                    $premiereAnnee = 'Erreur // Non renseigné';
-                }
-                //$premiereAnnee = $Etudiant['premiereAnnee'];
-
-
-                if ($Etudiant['optionSLAM'] == 1) { // Affiche dynamiquement l'année de l'étudiant
-                    $optionSLAM = "Option SLAM";
-                } elseif ($Etudiant['optionSLAM'] == 0) {
-                    $optionSLAM = "Option SISR";
-                } else {
-                    $optionSLAM = "Erreur // Non renseigné";
-                }
-                //$optionSLAM = $Etudiant['optionSLAM'];
+            if ($Etudiant['premiereAnnee'] == 1) { // Affiche dynamiquement l'année de l'étudiant
+                $premiereAnnee = 'Première Année';
+            } elseif ($Etudiant['premiereAnnee'] == 0) {
+                $premiereAnnee = 'Seconde Année';
+            } else {
+                $premiereAnnee = 'Erreur // Non renseigné';
+            }
+            //$premiereAnnee = $Etudiant['premiereAnnee'];
 
 
-                if (isset($Etudiant['semAbandon'])) { // Affiche dynamiquement l'abandon de l'étudiant
-                    $semAbandon = "Adanbdon de l'élève au semestre ".$Etudiant['semAbandon'];
-                } elseif (!isset($Etudiant['semAbandon'])) {
-                    $semAbandon = "Pas d'abandon de l'élève";
-                } else {
-                    $semAbandon = "Erreur // Non renseigné";
-                }
-                //$semAbandon = $Etudiant['semAbandon'];
+            if (!isset ($Etudiant['optionSLAM'])) { // Affiche dynamiquement l'année de l'étudiant
+                $optionSLAM = "Pas d'option";
 
-                $anneeArrivee = $Etudiant['anneeArrivee'];
-                $departement = $Etudiant['departement'];
+            } elseif ($Etudiant['optionSLAM'] == 0) {
+                $optionSLAM = "Option SISR";
+            } elseif ($Etudiant['optionSLAM'] == 1) {
+                $optionSLAM = "Option SLAM";
+            }
+            else {
+                $optionSLAM = "Erreur // Non renseigné";
+            }
+            //$optionSLAM = $Etudiant['optionSLAM'];
 
-                if ($Etudiant['alternance'] == 1) { // Affiche dynamiquement l'alternance de l'étudiant
-                    $alternance = "Cette élève fait une alternance";
-                } elseif ($Etudiant['alternance'] == 0) {
-                    $alternance = "Cette élève ne fait pas d'alternance";
-                } else {
-                    $alternance = "Erreur // Non renseigné";
-                }
-                //$alternance = $Etudiant['alternance'];
 
-                $id_Option = $Etudiant['idOption#']; // L'id de l'option de l'origine de l'eleve
-                $Options = getOptions($id_Option); //retourne un tableau bugger ??? (a fix)
-                $Option = $Options['nomOption']; // Recupere le nom de l'option
+            if (isset($Etudiant['semAbandon'])) { // Affiche dynamiquement l'abandon de l'étudiant
+                $semAbandon = "Adanbdon de l'élève au semestre " . $Etudiant['semAbandon'];
+            } elseif (!isset($Etudiant['semAbandon'])) {
+                $semAbandon = "Pas d'abandon de l'élève";
+            } else {
+                $semAbandon = "Erreur // Non renseigné";
+            }
+            //$semAbandon = $Etudiant['semAbandon'];
 
-                $id_Origine = $Options['idOrigine#'];
-                $Origines = getOrigines($id_Origine);
-                $Origine = $Origines['nomOrigine'];
+            $anneeArrivee = $Etudiant['anneeArrivee'];
+            $departement = $Etudiant['departement'];
+
+            if ($Etudiant['alternance'] == 1) { // Affiche dynamiquement l'alternance de l'étudiant
+                $alternance = "Cette élève fait une alternance";
+            } elseif ($Etudiant['alternance'] == 0) {
+                $alternance = "Cette élève ne fait pas d'alternance";
+            } else {
+                $alternance = "Erreur // Non renseigné";
+            }
+            //$alternance = $Etudiant['alternance'];
+
+            $id_Option = $Etudiant['idOption#']; // L'id de l'option de l'origine de l'eleve
+            $Options = getOptions($id_Option); //retourne un tableau bugger ??? (a fix)
+            $Option = $Options['nomOption']; // Recupere le nom de l'option
+
+            $id_Origine = $Options['idOrigine#'];
+            $Origines = getOrigines($id_Origine);
+            $Origine = $Origines['nomOrigine'];
         ?>
 
             <form method='POST' action='modifEleves.php'>
@@ -136,28 +140,33 @@
                             <option value='1'>SIO 1</option>
                             <option value='0'>SIO 2</option>
                         </select>
-                     <select name='optionBTS'>
+                        <select name='optionBTS'>
+                            <option value="NULL"></option>
                             <option value='1'>SLAM</option>
                             <option value='0'>SISR</option>
                         </select>
-                        Semestre d'abandon : 
+                        Semestre d'abandon :
                         <input type="number" name="SemAbandon" value="Semestre">
-                     <select name='alternance'>
+                        <select name='alternance'>
                             <option value='1'>fait une alternance</option>
                             <option value='0'>ne fait pas d'alternance</option>
                         </select>
-                     <input type='submit' value='Modifier'></td></form>
-                    <td> <form action="supprimerEleve.php" method="POST">
+                        <input type='submit' value='Modifier'>
+                    </td>
+            </form>
+            <td>
+                <form action="supprimerEleve.php" method="POST">
                     <input type="hidden" name="noEtudiant" value="<?php echo ($noEtudiant) ?>">
                     <input type="submit" value="Supprimer">
-                    </form>
+                </form>
                 </tr>
-            
 
-        <?php
+
+            <?php
+            
         }
 
-        ?>
+            ?>
 
     </table>
 

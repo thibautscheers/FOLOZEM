@@ -47,7 +47,7 @@ function modifaccess($cleacces) // fonction pour modifier le MDP
 function modifEleve($noEtudiant, $anneeSIO, $alternance, $optionBTS, $semAbandon) //function pour modifier les information des élève
 {
     $pdo = connexion();
-    $res = $pdo->prepare("UPDATE `etudiant` SET `premiereAnnee`='$anneeSIO',`optionSLAM`='$optionBTS',`alternance`='$alternance',`semAbandon`=$semAbandon WHERE `noEtudiant`= '$noEtudiant'");
+    $res = $pdo->prepare("UPDATE `etudiant` SET `premiereAnnee`='$anneeSIO',`optionSLAM`=$optionBTS,`alternance`='$alternance',`semAbandon`=$semAbandon WHERE `noEtudiant`= '$noEtudiant'");
     $res->execute();
 }
 function supprimerEleve($noEtudiant) //function pour supprimer les élève
@@ -60,17 +60,17 @@ function supprimerEleve($noEtudiant) //function pour supprimer les élève
 function ajoutEleve($noEtudiant, $nom, $prenom, $premiereAnnee, $optionSLAM, $alternance, $anneeArrivee, $departement, $idOptions) //function pour ajouter des élève
 {
     $pdo = connexion();
-    $res =  $pdo->prepare("INSERT INTO  etudiant (`noEtudiant`, `nom`, `prenom`, `premiereAnnee`, `optionSLAM`,  `anneeArrivee`, `departement`, `alternance`,`idOption#`) VALUES (:noEtudiant,:nom,:prenom,:premiereAnnee,:optionSLAM,:anneeArrivee,:departement,:alternance,:optionbac)");
+    $res =  $pdo->prepare("INSERT INTO  etudiant (`noEtudiant`, `nom`, `prenom`, `premiereAnnee`, `optionSLAM`,  `anneeArrivee`, `departement`, `alternance`,`idOption#`) VALUES (:noEtudiant,:nom,:prenom,:premiereAnnee,$optionSLAM,:anneeArrivee,:departement,:alternance,:idOptions)");
     $res->bindParam("noEtudiant", $noEtudiant, PDO::PARAM_INT);
     $res->bindParam("nom", $nom, PDO::PARAM_STR, 20);
     $res->bindParam("prenom", $prenom, PDO::PARAM_STR, 20);
     $res->bindParam("premiereAnnee", $premiereAnnee, PDO::PARAM_BOOL);
-    $res->bindParam("optionSLAM", $optionSLAM, PDO::PARAM_BOOL);
+    // $res->bindParam("optionSLAM", $optionSLAM, );
     $res->bindParam("anneeArrivee", $anneeArrivee, PDO::PARAM_INT, 4);
     $res->bindParam("departement", $departement, PDO::PARAM_INT);
     $res->bindParam("alternance", $alternance, PDO::PARAM_BOOL);
-    $res->bindParam("optionbac", $idOptions);
-    return $res->execute();
+    $res->bindParam("idOptions", $idOptions);
+    $res->execute();
 }
 function lireOption() //function pour lire les option sans contrainte utilisé pour une liste déroulante
 {
