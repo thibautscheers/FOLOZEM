@@ -45,6 +45,7 @@
             <td><b>Alternance</td>
             <td><b>Origine</td>
             <td><b>Option d'origine</td>
+            <td><b>Modification</b></td>
 
         </tr>
         <?php
@@ -134,17 +135,17 @@
                     <td> <select name='anneeSIO'>
                             <option value='1'>SIO 1</option>
                             <option value='0'>SIO 2</option>
-                        </select></td>
-                    <td> <select name='optionBTS'>
+                        </select>
+                     <select name='optionBTS'>
                             <option value='1'>SLAM</option>
                             <option value='0'>SISR</option>
-                        </select></td>
-                        <td><input type="number" name="SemAbandon"></td>
-                    <td> <select name='alternance'>
+                        </select>
+                        <input type="number" name="SemAbandon" value="Semestre">
+                     <select name='alternance'>
                             <option value='1'>fait une alternance</option>
                             <option value='0'>ne fait pas d'alternance</option>
-                        </select></td>
-                    <td> <input type='submit' value='Modifier'></td></form>
+                        </select>
+                     <input type='submit' value='Modifier'></td></form>
                     <td> <form action="supprimerEleve.php" method="POST">
                     <input type="hidden" name="noEtudiant" value="<?php echo ($noEtudiant) ?>">
                     <input type="submit" value="Supprimer">
