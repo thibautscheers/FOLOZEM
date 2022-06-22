@@ -1,32 +1,4 @@
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-  position: fixed;
-  top: 8px;
-  width: 100%;
 
-
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: rgb(255, 255, 255);
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  background-color: rgb(207, 17, 17);
-}
 body{
   margin-top: 75px;
 }

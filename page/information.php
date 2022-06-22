@@ -7,20 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Information</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="style/navbar.css">
+    <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 
-
+    
 </head>
 
 <body>
+
     <div>
-        <ul>
-            <li><a href="liste-eleve.php">Liste des Elève</a></li>
-            <li><a href="importation-eleve.php">Importation des Elèves</a></li>
-            <li><a href="statistiques.php">Statistiques</a></li>
-            <li><a href="#">Information du site</a></li>
-            <li><a id="deco" onclick="deco()">Déconnexion</a></li>
-        </ul>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"><a class="nav-link"  href="liste-eleve.php">Liste des Elève</a></li>
+                <li class="nav-item active"><a class="nav-link" href="importation-eleve.php">Importation des Elèves</a></li>
+                <li class="nav-item active"><a class="nav-link" href="statistiques.php">Statistiques</a></li>
+                <li class="nav-item active"><a class="navbar-brand" href="#">Information du site</a></li>
+                <li class="nav-item active"><a class="nav-link" id="deco" onclick="deco()">Déconnexion</a></li>
+            </ul>
+        </nav>
     </div>
     <?php 
     require_once("modele.php");
