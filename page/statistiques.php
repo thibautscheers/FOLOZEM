@@ -73,6 +73,7 @@
         echo("
         <table class='table table-bordered table-sm'>
             <tr>
+            <thead class='table-dark'>
                 <td>Pourcentage de premiere année</td>
                 <td>Pourcentage de deuxième année</td>
                 <td>Pourcentage de SLAM</td>
@@ -80,6 +81,7 @@
                 <td>Pourcentage de sans option</td>
                 <td>Pourcentage d'abandons</td>
                 <td>Départements/Pourcentage</td>
+                </thead>
             </tr>
             <tr>
                 <td>".round(($nbrPremiereAnnee / $Rows) * 100, 2)."%</td>
