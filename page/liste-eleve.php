@@ -102,7 +102,11 @@
             //$semAbandon = $Etudiant['semAbandon'];
 
             $anneeArrivee = $Etudiant['anneeArrivee'];
+
             $departement = $Etudiant['departement'];
+            if ($departement== NULL ) {
+                $departement = "Non spécifié";
+            } 
 
             if ($Etudiant['alternance'] == 1) { // Affiche dynamiquement l'alternance de l'étudiant
                 $alternance = "Cette élève fait une alternance";
