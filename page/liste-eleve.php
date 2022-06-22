@@ -44,6 +44,7 @@
                     <td colspan="1"><b>Origine</td>
                     <td colspan="1"><b>Option d'origine</td>
                     <td colspan="1"><b>Modification</b></td>
+                    <td></td>
                 </thead>
             </tr>
             <?php
@@ -136,28 +137,35 @@
                         <td><?php echo ($alternance) ?></td>
                         <td><?php echo ($Origine) ?></td>
                         <td><?php echo ($Option) ?></td>
-                        <td> <select name='anneeSIO'>
+                        <td> <select name='anneeSIO' class="form-select-sm" >
                                 <option value='1'>SIO 1</option>
                                 <option value='0'>SIO 2</option>
                             </select>
-                            <select name='optionBTS'>
+                            <select name='optionBTS' class="form-select-sm">
                                 <option value="NULL"></option>
                                 <option value='1'>SLAM</option>
                                 <option value='0'>SISR</option>
                             </select>
                             Semestre d'abandon :
-                            <input type="number" name="SemAbandon" value="Semestre">
-                            <select name='alternance'>
+                            <select name="SemAbandon" class="form-select-sm">
+                                <option></option>
+                                <option value='1'>1er semestre</option>
+                                <option value='2'>2nd semestre</option>
+                                <option value="3">3eme semestre</option>
+                                <option value="4">4eme semestre</option>
+                            </select>
+
+                            <select name='alternance' class="form-select-sm">
                                 <option value='1'>fait une alternance</option>
                                 <option value='0'>ne fait pas d'alternance</option>
                             </select>
-                            <input type='submit' value='Modifier'>
+                            <input type='submit' class="btn btn-outline-primary btn-sm" value='Modifier'>
                         </td>
                 </form>
                 <td>
                     <form action="supprimerEleve.php" method="POST" class="form-inline">
                         <input type="hidden" name="noEtudiant" value="<?php echo ($noEtudiant) ?>">
-                        <input type="submit" value="Supprimer">
+                        <input type="submit" class="btn btn-outline-danger btn-sm" value="Supprimer">
                     </form>
                     </tr>
 

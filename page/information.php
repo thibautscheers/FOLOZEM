@@ -13,10 +13,9 @@
     
 </head>
 
-<body>
-
+<body style=" margin-top: 75px;">
     <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active"><a class="nav-link"  href="liste-eleve.php">Liste des Elève</a></li>
                 <li class="nav-item active"><a class="nav-link" href="importation-eleve.php">Importation des Elèves</a></li>
@@ -38,28 +37,26 @@
         echo ("<br/><div style=\"background-color: #4f4; padding: 6px;\">" . ($_SESSION["info"]) . "</div>");
     $_SESSION["info"] = "";
     ?>
-    <h1>Information </h1>
+    <h1 class="text-decoration-underline">Information  </h1>
     <div id="expoitCSV">
-        <h3>Exploitation des fichier CSV</h3>
+        <h3 class="text-decoration-underline">Exploitation des fichier CSV</h3>
     </div>
     <div id="créateur">
-        <p>Site créer leur du stage de 1er année des SIO de la promation 2021-2023 par Allan ESCOLANO & Thibaut SCHEERS.
+        <p >Site créer leur du stage de 1er année des SIO de la promation 2021-2023 par Allan ESCOLANO & Thibaut SCHEERS.
         </p>
 
     </div>
     <form  method="POST" action="modifacces.php">
         <div id="access">
-            <h3>
+            <h3 class="text-decoration-underline">
                 Modifier la clè d'accès
-
-                <input type="password" name="cleacces">
-                <input type="submit" value="Modifier">
-            </h3>
+            </h3> <input type="password" class="input-group-sm" name="cleacces">
+                <input type="submit" class="btn btn-outline-primary btn-sm" value="Modifier">
         </div>
     </form>
 
     <div id="RGPD">
-        <h3>RGPD</h3>
+        <h3 class="text-decoration-underline">RGPD</h3>
         <p>Pour réspecté la loi sur la protection des données il faudrait garder les données minimun pendant 3 ans maximun pandant 5 ans.</p>
         <p>Si vous rencontrez un problème, veuillez nous contacter sur notre adresses électroniques : <a href='mailto: folozem@proton.me'>folozem@proton.me<a></p>
     </div>

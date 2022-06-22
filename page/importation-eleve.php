@@ -10,15 +10,15 @@
     <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    
+
 </head>
 
-<body>
+<body style=" margin-top: 75px;">
 
     <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"><a class="nav-link"  href="liste-eleve.php">Liste des Elève</a></li>
+                <li class="nav-item active"><a class="nav-link" href="liste-eleve.php">Liste des Elève</a></li>
                 <li class="nav-item active"><a class="navbar-brand" href="#">Importation des Elèves</a></li>
                 <li class="nav-item active"><a class="nav-link" href="statistiques.php">Statistiques</a></li>
                 <li class="nav-item active"><a class="nav-link" href="information.php">Information du site</a></li>
@@ -26,110 +26,101 @@
             </ul>
         </nav>
     </div>
-        <?php
-        require_once("modele.php");
-        session_start();
+    <?php
+    require_once("modele.php");
+    session_start();
 
-        if (isset($_SESSION["error"]) && ($_SESSION["error"] != ""))
-            echo ("<br/><div style=\"background-color: #f44; padding: 6px;\">" . ($_SESSION["error"]) . "</div>");
-        $_SESSION["error"] = "";
+    if (isset($_SESSION["error"]) && ($_SESSION["error"] != ""))
+        echo ("<br/><div style=\"background-color: #f44; padding: 6px;\">" . ($_SESSION["error"]) . "</div>");
+    $_SESSION["error"] = "";
 
-        if (isset($_SESSION["info"]) && ($_SESSION["info"] != ""))
-            echo ("<br/><div style=\"background-color: #4f4; padding: 6px;\">" . ($_SESSION["info"]) . "</div>");
-        $_SESSION["info"] = ""; ?>
+    if (isset($_SESSION["info"]) && ($_SESSION["info"] != ""))
+        echo ("<br/><div style=\"background-color: #4f4; padding: 6px;\">" . ($_SESSION["info"]) . "</div>");
+    $_SESSION["info"] = ""; ?>
     </div>
     <h3>Importation des élève </h3>
-
-    <form action="importEleves.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" id="file" accept=".csv">
-        <input type="submit" value="Importer" name="submit">
-    </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <div class="col-auto">
+        <form action="importEleves.php" method="post" class="form-inline" enctype="multipart/form-data">
+            <input type="file" class="btn btn-outline-secondary btn-sm" name="file" id="file" accept=".csv">
+            <input type="submit" class="btn btn-outline-primary btn-sm" value="Importer" name="submit">
+        </form>
+    </div>
     <h3>Ajout Elèves</h3>
 
+    <div class="col-auto">
+        <form action="ajoutEleve.php" class="form-inline" method="POST">
+            Id Etudiant : <input type="number" class="input-group-sm" name="noEtudiant">
+            Nom : <input type="text" class="input-group-sm" name="nom">
+            Prenom : <input type="text" class="input-group-sm" name="prenom">
 
-    <form action="ajoutEleve.php" method="POST">
-        Id Etudiant : <input type="number" name="noEtudiant">
-        Nom : <input type="text" name="nom">
-        Prenom : <input type="text" name="prenom">
+            <select name='anneeSIO' class="form-select-sm">
+                <option value='1'>SIO 1</option>
+                <option value='0'>SIO 2</option>
+            </select>
+            <select name='optionBTS' class="form-select-sm">
+                <option value="NULL"></option>
+                <option value='1'>SLAM</option>
+                <option value='0'>SISR</option>
+            </select>
+            Année d'arrivé : <input type="number" class="input-group-sm" name="anneeArrivee">
+            Département : <input type="number" class="input-group-sm" name="departement">
+            <select name='alternance' class="form-select-sm">
+                <option value='1'>fait une alternance</option>
+                <option value='0'>ne fait pas d'alternance</option>
+            </select>
+            Option D'origine :
+            <select name="idOption" class="form-select-sm">
+                <?php
 
-        <select name='anneeSIO'>
-            <option value='1'>SIO 1</option>
-            <option value='0'>SIO 2</option>
-        </select>
-        <select name='optionBTS'>
-            <option value="NULL"></option>
-            <option value='1'>SLAM</option>
-            <option value='0'>SISR</option>
-        </select>
-        Année d'arrivé : <input type="number" name="anneeArrivee">
-        Département : <input type="number" name="departement">
-        <select name='alternance'>
-            <option value='1'>fait une alternance</option>
-            <option value='0'>ne fait pas d'alternance</option>
-        </select>
-        Option D'origine :
-        <select name="idOption">
-            <?php
+                $optionsB = lireOption();
 
-            $optionsB = lireOption();
+                foreach ($optionsB as $optionB) {
+                    $idOption = $optionB['idOption'];
+                    $nomOption  = $optionB['nomOption'];
+                    echo ("<option value='$idOption'>$nomOption</option>");
+                }
+                ?>
+            </select>
+            <input type="submit" class="btn btn-outline-primary btn-sm" value="Ajouter">
+        </form>
+    </div>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    <div class="col-auto">
+        <h3>Ajout d'origine</h3>
+        <form action="ajoutOrigine.php" class="form-inline" method="POST">
+            Nom de l'origine : <input type="text" name="nomOrigine">
+            <input type="submit" class="btn btn-outline-primary btn-sm" value="ajouter">
+        </form>
+    </div>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    <div class="col-auto">
+        <h3>Ajout d'option</h3>
+        <form action="ajoutOption.php" class="form-inline" method="POST">
+            Nom de l'option : <input type="text" name="nomOption">
+            <select name="idOrigine" class="form-select-sm">
+                <?php
 
-            foreach ($optionsB as $optionB) {
-                $idOption = $optionB['idOption'];
-                $nomOption  = $optionB['nomOption'];
-                echo ("<option value='$idOption'>$nomOption</option>");
-            }
-            ?>
-        </select>
-        <input type="submit" value="Ajouter">
-    </form>
+                $origines = lireOrigine();
 
-
-    <h3>Ajout d'origine</h3>
-    <form action="ajoutOrigine.php" method="POST">
-        Nom de l'origine : <input type="text" name="nomOrigine">
-        <input type="submit" value="ajouter">
-    </form>
-
-    <h3>Ajout d'option</h3>
-    <form action="ajoutOption.php" method="POST">
-        Nom de l'option : <input type="text" name="nomOption">
-        <select name="idOrigine">
-            <?php
-
-            $origines = lireOrigine();
-
-            foreach ($origines as $origine) {
-                $idOrigine = $origine['idOrigine'];
-                $nomOrigine  = $origine['nomOrigine'];
-                echo ("<option value='$idOrigine'>$nomOrigine</option>");
-            }
-            ?>
-        <input type="submit" value="ajouter">
-    </form>
-
+                foreach ($origines as $origine) {
+                    $idOrigine = $origine['idOrigine'];
+                    $nomOrigine  = $origine['nomOrigine'];
+                    echo ("<option value='$idOrigine'>$nomOrigine</option>");
+                }
+                ?>
+                <input type="submit" class="btn btn-outline-primary btn-sm" value="ajouter">
+        </form>
+    </div>
 </body>
 <script type="text/javascript" src="js/script.js"></script>
 
