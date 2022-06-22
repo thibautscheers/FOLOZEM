@@ -123,7 +123,7 @@
     //print_r($Dossiers);
 
     for($i = 0; $i < count($Dossiers); $i++) { //Pour la longeur du tableau
-        $IdEtudiant = $Dossiers[$i]. $Annees[$i];
+        $IdEtudiant = $Dossiers[$i]; //. $Annees[$i]; A voir si modification possible
         array_push($IdEtudiants, $IdEtudiant);
         //print_r($IdEtudiant);
     }
@@ -138,21 +138,52 @@
             array_push($Departements, $Departement); // Met le departement dans la table
             //print_r($Departement);
         } else {
-            array_push($Departements, "Aucune Origine"); //Si il n'y a pas de parenthese, alors mettre aucune origine
+            array_push($Departements, NULL); //Si il n'y a pas de parenthese, alors mettre aucune origine
         }
     }
     //print_r($EtabOrigines);
     //print_r($Departements);
 
-    print_r($IdEtudiants);
-    print_r($Noms);
-    print_r($Prenoms);
-     //Option Bts
+    //print_r($IdEtudiants);
+    //print_r($Noms);
+    //print_r($Prenoms);
+    //Option Bts
     //Semestre d'abandon
-    print_r($Annees);
-    print_r($Departements);
+    //print_r($Annees);
+    //print_r($Departements);
     //Alternance
     //Origine
     //Option d'origine
+
+    require_once("Modele.php");
+
+    $pdo = connexion();
+
+    for($i=0; $i<count($IdEtudiants);$i++) {
+        $IdEtudiant = $IdEtudiants[$i];
+        $Nom = $Noms[$i];
+        $Prenom = $Prenoms[$i];
+        $premiereAnne = 1;
+        $optionSLAM = NULL;
+        $semAbandon = NULL;
+        $Annee = $Annees[$i];
+        $Departement = $Departements[$i];
+        $alternance = 0;
+        $idOption = 4; 
+
+        $res =  $pdo->prepare("INSERT INTO  etudiant (`noEtudiant`, `nom`, `prenom`, `premiereAnnee`, `optionSLAM`,  `anneeArrivee`, `departement`, `alternance`,`idOption#`) VALUES (:noEtudiant,:nom,:prenom,:premiereAnnee,:optionSLAM,:anneeArrivee,:departement,:alternance,:idOptions)");
+        $res->bindParam("noEtudiant", $IdEtudiant, PDO::PARAM_INT);
+        $res->bindParam("nom", $Nom, PDO::PARAM_STR, 20);
+        $res->bindParam("prenom", $Prenom, PDO::PARAM_STR, 20);
+        $res->bindParam("premiereAnnee", $premiereAnne, PDO::PARAM_BOOL);
+        $res->bindParam("optionSLAM", $optionSLAM, PDO::PARAM_BOOL);
+        $res->bindParam("anneeArrivee", $Annee, PDO::PARAM_INT, 4);
+        $res->bindParam("departement", $Departement, PDO::PARAM_INT);
+        $res->bindParam("alternance", $alternance, PDO::PARAM_BOOL);
+        $res->bindParam("idOptions", $idOption, PDO::PARAM_INT);
+        $res->execute();
+    }
+
+    header("location:importation-eleve.php");
 
 ?>
