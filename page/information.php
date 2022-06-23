@@ -14,6 +14,15 @@
 </head>
 
 <body style=" margin-top: 75px;">
+<style>
+    body {
+      margin: 10px;
+      background-image: url(fond.jpg);
+      background-position: center;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+  </style>
     <div>
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <ul class="navbar-nav mr-auto">

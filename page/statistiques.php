@@ -11,10 +11,19 @@
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 
-<body>
+<body style=" margin-top: 75px;">
+<style>
+    body {
+      margin: 10px;
+      background-image: url(fond.jpg);
+      background-position: center;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+  </style>
 
     <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active"><a class="nav-link"  href="liste-eleve.php">Liste des Elève</a></li>
                 <li class="nav-item active"><a class="nav-link" href="importation-eleve.php">Importation des Elèves</a></li>
@@ -24,6 +33,7 @@
             </ul>
         </nav>
     </div>
+    
     <h3>Statistiques </h3>
 
     <?php

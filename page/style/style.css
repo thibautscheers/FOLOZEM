@@ -4,6 +4,7 @@ body {
     align-items: center;
     min-height: 100vh;
     width: 100%;
+    overflow: hidden;
     
 }
 
@@ -13,10 +14,10 @@ body {
     padding: 50px;
     border-radius: 20px;
     width: 300px;
+
 }
 
 .LogInText {
     width: 200px;
     height: 20px;
 }
-

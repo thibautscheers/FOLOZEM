@@ -7,14 +7,25 @@
     <title>Folozem</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style/style.css">
+    <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <LogInFrame class="LogInFrame">
-        Entrez la clé d'accés
+<style>
+    body {
+      margin: 10px;
+      background-image: url(fond.jpg);
+      background-position: center;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+  </style>
+    <LogInFrame class="LogInFrame ">
+        <p class="fs-5 fw-bold  "> Entrez la clé d'accés </p>
         <br>
         <form method="post" action="checkPassword.php">
-            <input type="password" name="LogInText" class="button">
-            <input type="submit" name="LogInBtn" class="button" value="Se Connecter">
+            <input type="password" name="LogInText" class="form-inline">
+            <input type="submit" name="LogInBtn" class="button btn btn-success" value="Se Connecter">
             <?php
                 session_start();
                 if(isset($_SESSION['WrongPass'])) { // Check si le cookie WrongPass est definie
