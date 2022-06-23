@@ -91,6 +91,7 @@
                 <td>Pourcentage de sans option</td>
                 <td>Pourcentage d'abandons</td>
                 <td>Départements/Pourcentage</td>
+                <td>Pourcentage d'alternance</td>
                 </thead>
             </tr>
             <tr>
@@ -114,6 +115,7 @@
                 print_r("Non spécifié / ".round(($pasDepartement / $Rows) * 100, 2) .'%');
         echo(
                 "</td>
+                <td>".round(($nbrAlternance / $Rows) * 100, 2)."%</td>
             </tr>
         </table>
         ");

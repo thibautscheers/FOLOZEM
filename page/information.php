@@ -48,7 +48,8 @@
     ?>
     <h1 class="text-decoration-underline">Information  </h1>
     <div id="expoitCSV">
-        <h3 class="text-decoration-underline">Exploitation des fichier CSV</h3>
+        <h3 class="text-decoration-underline">Importation des fichier CSV</h3>
+        <p> Pour importé un fichier CSV, il faut d'abord le prendre de parcoursup puis l'importer sur le site a partir de la page Importation, puis le site fait le reste pour vous </p>
     </div>
     <div id="créateur">
         <p >Site créer leur du stage de 1er année des SIO de la promation 2021-2023 par Allan ESCOLANO & Thibaut SCHEERS.
