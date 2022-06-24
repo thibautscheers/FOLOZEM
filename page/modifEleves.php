@@ -10,9 +10,10 @@ try {
     $alternance=($_POST ["alternance"]);
     $semAbandon = ($_POST["SemAbandon"]);
     $reusiteBTS = ($_POST["reusiteBTS"]);
+    $sexe = ($_POST["sexe"]);
   
     echo($noEtudiant."".$anneeSIO."".$alternance."".$optionBTS."".$semAbandon);
-    modifEleve ($noEtudiant,$anneeSIO,$alternance,$optionBTS,$semAbandon,$reusiteBTS);
+    modifEleve ($noEtudiant,$anneeSIO,$alternance,$optionBTS,$semAbandon,$reusiteBTS,$sexe);
     $_SESSION ["info"]="Etudiant modifier";
     
     header("location:liste-eleve.php");

@@ -44,10 +44,10 @@ function modifaccess($cleacces) // fonction pour modifier le MDP
     $res->execute();
 }
 
-function modifEleve($noEtudiant, $anneeSIO, $alternance, $optionBTS, $semAbandon,$reussiteBTS) //function pour modifier les information des élève
+function modifEleve($noEtudiant, $anneeSIO, $alternance, $optionBTS, $semAbandon,$reussiteBTS,$sexe) //function pour modifier les information des élève
 {
     $pdo = connexion();
-    $res = $pdo->prepare("UPDATE `etudiant` SET `premiereAnnee`='$anneeSIO',`optionSLAM`=$optionBTS,`alternance`='$alternance',`semAbandon`=$semAbandon, `reussiteBTS`=$reussiteBTS  WHERE `noEtudiant`= '$noEtudiant'");
+    $res = $pdo->prepare("UPDATE `etudiant` SET `premiereAnnee`='$anneeSIO',`optionSLAM`=$optionBTS,`alternance`='$alternance',`semAbandon`=$semAbandon, `reussiteBTS`=$reussiteBTS, `sexe`=$sexe  WHERE `noEtudiant`= '$noEtudiant'");
     $res->execute();
 }
 function supprimerEleve($noEtudiant) //function pour supprimer les élève

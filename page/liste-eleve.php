@@ -80,8 +80,9 @@
 
                 if ($Etudiant['sexe'] == 1) { // Affiche dynamiquement l'année de l'étudiant
                     $sexe = 'Homme';
-                } else{
-                    $sexe = 'Femme';}
+                } else {
+                    $sexe = 'Femme';
+                }
 
                 if ($Etudiant['premiereAnnee'] == 1) { // Affiche dynamiquement l'année de l'étudiant
                     $premiereAnnee = 'SIO 1';
@@ -155,7 +156,7 @@
                         <td><input type="hidden" name="noEtudiant" value="<?php echo ($noEtudiant) ?>"><?php echo ($noEtudiant) ?></td>
                         <td><?php echo ($nom) ?></td>
                         <td><?php echo ($prenom) ?></td>
-                        <td><?php echo ($sexe)?></td>
+                        <td><?php echo ($sexe) ?></td>
                         <td><?php echo ($premiereAnnee) ?></td>
                         <td><?php echo ($optionSLAM) ?></td>
                         <td><?php echo ($semAbandon) ?></td>
@@ -165,7 +166,11 @@
                         <td> <?php echo ($reussiteBTS) ?>
                         <td><?php echo ($Origine) ?></td>
                         <td><?php echo ($Option) ?></td>
-                        <td> <select name='anneeSIO' class="form-select-sm">
+                        <td> <select name="sexe" class="form-select-sm">
+                                <option value="1">Masculin</option>
+                                <option value="0">Féminin</option>
+                            </select>
+                            <select name='anneeSIO' class="form-select-sm">
                                 <option value='1'>SIO 1</option>
                                 <option value='0'>SIO 2</option>
                             </select>
