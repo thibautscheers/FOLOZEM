@@ -183,6 +183,9 @@
         $res->execute();
     }
 
+    session_start();
+    $_SESSION["info"] = "Importation reussi";
+
     header("location:importation-eleve.php");
 
 ?>
