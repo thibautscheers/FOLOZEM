@@ -45,6 +45,7 @@
         <p> Pour importer un fichier CSV, il faut d'abord le prendre de parcoursup puis l'importer sur le site à partir de la page Importation, puis le site fait le reste pour vous.</p>
     </div>
     <div id="créateur">
+    <h3 class="text-decoration-underline">Créateur du site</h3>
         <p >Site créer leur du stage de 1er année des SIO de la promation 2021-2023 par Allan ESCOLANO & Thibaut SCHEERS.
         </p>
 
