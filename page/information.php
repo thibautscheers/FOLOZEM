@@ -7,22 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Information</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="style/navbar.css" type="text/css" rel="stylesheet" />
     <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 
     
 </head>
 
-<body style=" margin-top: 75px;">
-<style>
-    body {
-      margin: 10px;
-      background-image: url(fond.jpg);
-      background-position: center;
-      background-attachment: fixed;
-      background-size: cover;
-    }
-  </style>
+<body>
+
     <div>
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <ul class="navbar-nav mr-auto">
@@ -49,7 +42,7 @@
     <h1 class="text-decoration-underline">Information  </h1>
     <div id="expoitCSV">
         <h3 class="text-decoration-underline">Importation des fichier CSV</h3>
-        <p> Pour importé un fichier CSV, il faut d'abord le prendre de parcoursup puis l'importer sur le site a partir de la page Importation, puis le site fait le reste pour vous </p>
+        <p> Pour importer un fichier CSV, il faut d'abord le prendre de parcoursup puis l'importer sur le site à partir de la page Importation, puis le site fait le reste pour vous.</p>
     </div>
     <div id="créateur">
         <p >Site créer leur du stage de 1er année des SIO de la promation 2021-2023 par Allan ESCOLANO & Thibaut SCHEERS.

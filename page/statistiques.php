@@ -7,20 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statistiques</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="style/navbar.css" type="text/css" rel="stylesheet" />
     <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 
-<body style=" margin-top: 75px;">
-<style>
-    body {
-      margin: 10px;
-      background-image: url(fond.jpg);
-      background-position: center;
-      background-attachment: fixed;
-      background-size: cover;
-    }
-  </style>
+<body >
 
     <div>
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
