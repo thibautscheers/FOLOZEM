@@ -84,8 +84,8 @@
         <table class='table table-bordered table-sm'>
             <tr>
             <thead class='table-dark'>
-                <td>Pourcentage de premiere année</td>
-                <td>Pourcentage de deuxième année</td>
+                <td>Pourcentage de SIO 1</td>
+                <td>Pourcentage de SIO 2</td>
                 <td>Pourcentage de SLAM</td>
                 <td>Pourcentage de SISR</td>
                 <td>Pourcentage de sans option</td>
