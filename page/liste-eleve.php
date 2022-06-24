@@ -14,15 +14,15 @@
 </head>
 
 <body style=" margin-top: 75px;">
-<style>
-    body {
-      margin: 10px;
-      background-image: url(fond.jpg);
-      background-position: center;
-      background-attachment: fixed;
-      background-size: cover;
-    }
-  </style>
+    <style>
+        body {
+            margin: 10px;
+            background-image: url(fond.jpg);
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
 
     <div>
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
@@ -44,12 +44,14 @@
                     <td colspan="1"><b>ID étudiant</td>
                     <td colspan="1"><b>Nom</td>
                     <td colspan="1"><b>Prenom</td>
+                    <td colspan="1"><b>Sexe</td>
                     <td colspan="1"><b>Année BTS</td>
                     <td colspan="1"><b>Option du BTS</td>
                     <td colspan="1"><b>Semestre d'abandon</td>
                     <td colspan="1"><b>Année d'arriver</td>
                     <td colspan="1"><b>Département</td>
                     <td colspan="1"><b>Alternance</td>
+                    <td colspan="1"><b>Réussite BTS</td>
                     <td colspan="1"><b>Origine</td>
                     <td colspan="1"><b>Option d'origine</td>
                     <td colspan="1"><b>Modification</b></td>
@@ -75,6 +77,11 @@
                 $noEtudiant = $Etudiant['noEtudiant'];
                 $nom = $Etudiant['nom'];
                 $prenom = $Etudiant['prenom'];
+
+                if ($Etudiant['sexe'] == 1) { // Affiche dynamiquement l'année de l'étudiant
+                    $sexe = 'Homme';
+                } else{
+                    $sexe = 'Femme';}
 
                 if ($Etudiant['premiereAnnee'] == 1) { // Affiche dynamiquement l'année de l'étudiant
                     $premiereAnnee = 'SIO 1';
@@ -114,6 +121,16 @@
                     $departement = "Non spécifié";
                 }
 
+                if (!isset($Etudiant['reussiteBTS'])) { // Affiche dynamiquement l'année de l'étudiant
+                    $reussiteBTS = "Non passé";
+                } elseif ($Etudiant['reussiteBTS'] == 0) {
+                    $reussiteBTS = "Non Réussit";
+                } elseif ($Etudiant['reussiteBTS'] == 1) {
+                    $reussiteBTS = "Réussit";
+                } else {
+                    $reussiteBTS = "Erreur // Non renseigné";
+                }
+
                 if ($Etudiant['alternance'] == 1) { // Affiche dynamiquement l'alternance de l'étudiant
                     $alternance = "Cette élève fait une alternance";
                 } elseif ($Etudiant['alternance'] == 0) {
@@ -138,15 +155,17 @@
                         <td><input type="hidden" name="noEtudiant" value="<?php echo ($noEtudiant) ?>"><?php echo ($noEtudiant) ?></td>
                         <td><?php echo ($nom) ?></td>
                         <td><?php echo ($prenom) ?></td>
+                        <td><?php echo ($sexe)?></td>
                         <td><?php echo ($premiereAnnee) ?></td>
                         <td><?php echo ($optionSLAM) ?></td>
                         <td><?php echo ($semAbandon) ?></td>
                         <td><?php echo ($anneeArrivee) ?></td>
                         <td><?php echo ($departement) ?></td>
                         <td><?php echo ($alternance) ?></td>
+                        <td> <?php echo ($reussiteBTS) ?>
                         <td><?php echo ($Origine) ?></td>
                         <td><?php echo ($Option) ?></td>
-                        <td> <select name='anneeSIO' class="form-select-sm" >
+                        <td> <select name='anneeSIO' class="form-select-sm">
                                 <option value='1'>SIO 1</option>
                                 <option value='0'>SIO 2</option>
                             </select>
@@ -157,7 +176,7 @@
                             </select>
                             Semestre d'abandon :
                             <select name="SemAbandon" class="form-select-sm">
-                                <option></option>
+                                <option value="NULL"></option>
                                 <option value='1'>1er semestre</option>
                                 <option value='2'>2nd semestre</option>
                                 <option value="3">3eme semestre</option>
@@ -167,6 +186,11 @@
                             <select name='alternance' class="form-select-sm">
                                 <option value='1'>fait une alternance</option>
                                 <option value='0'>ne fait pas d'alternance</option>
+                            </select>
+                            <select name='reusiteBTS' class="form-select-sm">
+                                <option value="NULL">Non passé BTS</option>
+                                <option value='1'>Réussite du BTS</option>
+                                <option value='0'>Non Réussite du BTS</option>
                             </select>
                             <input type='submit' class="btn btn-outline-primary btn-sm" value='Modifier'>
                         </td>

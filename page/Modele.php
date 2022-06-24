@@ -44,10 +44,10 @@ function modifaccess($cleacces) // fonction pour modifier le MDP
     $res->execute();
 }
 
-function modifEleve($noEtudiant, $anneeSIO, $alternance, $optionBTS, $semAbandon) //function pour modifier les information des élève
+function modifEleve($noEtudiant, $anneeSIO, $alternance, $optionBTS, $semAbandon,$reussiteBTS) //function pour modifier les information des élève
 {
     $pdo = connexion();
-    $res = $pdo->prepare("UPDATE `etudiant` SET `premiereAnnee`='$anneeSIO',`optionSLAM`=$optionBTS,`alternance`='$alternance',`semAbandon`=$semAbandon WHERE `noEtudiant`= '$noEtudiant'");
+    $res = $pdo->prepare("UPDATE `etudiant` SET `premiereAnnee`='$anneeSIO',`optionSLAM`=$optionBTS,`alternance`='$alternance',`semAbandon`=$semAbandon, `reussiteBTS`=$reussiteBTS  WHERE `noEtudiant`= '$noEtudiant'");
     $res->execute();
 }
 function supprimerEleve($noEtudiant) //function pour supprimer les élève
@@ -57,10 +57,10 @@ function supprimerEleve($noEtudiant) //function pour supprimer les élève
     $res->execute();
 }
 
-function ajoutEleve($noEtudiant, $nom, $prenom, $premiereAnnee, $optionSLAM, $alternance, $anneeArrivee, $departement, $idOptions) //function pour ajouter des élève
+function ajoutEleve($noEtudiant, $nom, $prenom, $premiereAnnee, $optionSLAM, $anneeArrivee, $departement, $alternance,$sexe, $idOptions) //function pour ajouter des élève
 {
     $pdo = connexion();
-    $res =  $pdo->prepare("INSERT INTO  etudiant (`noEtudiant`, `nom`, `prenom`, `premiereAnnee`, `optionSLAM`,  `anneeArrivee`, `departement`, `alternance`,`idOption#`) VALUES (:noEtudiant,:nom,:prenom,:premiereAnnee,$optionSLAM,:anneeArrivee,:departement,:alternance,:idOptions)");
+    $res =  $pdo->prepare("INSERT INTO `etudiant`(`noEtudiant`, `nom`, `prenom`, `premiereAnnee`, `optionSLAM`, `anneeArrivee`, `departement`, `alternance`, `sexe`, `idOption#`) VALUES (:noEtudiant,:nom,:prenom,:premiereAnnee,$optionSLAM,:anneeArrivee,:departement,:alternance,$sexe,:idOptions)");
     $res->bindParam("noEtudiant", $noEtudiant, PDO::PARAM_INT);
     $res->bindParam("nom", $nom, PDO::PARAM_STR, 20);
     $res->bindParam("prenom", $prenom, PDO::PARAM_STR, 20);
