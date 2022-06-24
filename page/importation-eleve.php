@@ -54,7 +54,7 @@
             <input type="submit" class="btn btn-outline-primary btn-sm" value="Importer" name="submit">
         </form>
         <form method="get" action="Modele_CSV.csv">
-            <button type="submit">Télécharger un modèle de fichier CSV</button>
+            <button type="submit" class="btn btn-success btn-sm">Télécharger un modèle de fichier CSV</button>
         </form>
     </div>
     <h3>Ajout Elèves</h3>
