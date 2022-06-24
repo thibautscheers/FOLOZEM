@@ -133,9 +133,9 @@
                 }
 
                 if ($Etudiant['alternance'] == 1) { // Affiche dynamiquement l'alternance de l'étudiant
-                    $alternance = "Cette élève fait une alternance";
+                    $alternance = "Cet élève fait une alternance";
                 } elseif ($Etudiant['alternance'] == 0) {
-                    $alternance = "Cette élève ne fait pas d'alternance";
+                    $alternance = "Cet élève ne fait pas d'alternance";
                 } else {
                     $alternance = "Erreur // Non renseigné";
                 }

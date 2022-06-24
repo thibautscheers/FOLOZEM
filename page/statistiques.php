@@ -34,7 +34,7 @@
         </nav>
     </div>
     
-    <h3>Statistiques Général</h3>
+    <h3>Statistiques Générales</h3>
 
     <?php
     

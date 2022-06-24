@@ -57,7 +57,7 @@
             <button type="submit" class="btn btn-success btn-sm">Télécharger un modèle de fichier CSV</button>
         </form>
     </div>
-    <h3>Ajout Elèves</h3>
+    <h3>Ajout élèves</h3>
 
     <div class="col-auto">
         <form action="ajoutEleve.php" class="form-inline" method="POST">
