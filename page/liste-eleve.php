@@ -77,9 +77,9 @@
                 $prenom = $Etudiant['prenom'];
 
                 if ($Etudiant['premiereAnnee'] == 1) { // Affiche dynamiquement l'année de l'étudiant
-                    $premiereAnnee = 'Première Année';
+                    $premiereAnnee = 'SIO 1';
                 } elseif ($Etudiant['premiereAnnee'] == 0) {
-                    $premiereAnnee = 'Seconde Année';
+                    $premiereAnnee = 'SIO 2';
                 } else {
                     $premiereAnnee = 'Erreur // Non renseigné';
                 }
@@ -89,9 +89,9 @@
                 if (!isset($Etudiant['optionSLAM'])) { // Affiche dynamiquement l'année de l'étudiant
                     $optionSLAM = "Pas d'option";
                 } elseif ($Etudiant['optionSLAM'] == 0) {
-                    $optionSLAM = "Option SISR";
+                    $optionSLAM = "SISR";
                 } elseif ($Etudiant['optionSLAM'] == 1) {
-                    $optionSLAM = "Option SLAM";
+                    $optionSLAM = "SLAM";
                 } else {
                     $optionSLAM = "Erreur // Non renseigné";
                 }
