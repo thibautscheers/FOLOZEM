@@ -61,6 +61,10 @@
             Id Etudiant : <input type="number" class="input-group-sm" name="noEtudiant">
             Nom : <input type="text" class="input-group-sm" name="nom">
             Prenom : <input type="text" class="input-group-sm" name="prenom">
+            <select name="sexe" class="form-select-sm">
+                <option value="1">Masculin</option>
+                <option value="0">Féminin</option>
+            </select>
 
             <select name='anneeSIO' class="form-select-sm">
                 <option value='1'>SIO 1</option>

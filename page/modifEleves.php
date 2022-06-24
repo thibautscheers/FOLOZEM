@@ -9,14 +9,10 @@ try {
     $optionBTS=($_POST ["optionBTS"]);
     $alternance=($_POST ["alternance"]);
     $semAbandon = ($_POST["SemAbandon"]);
-  if($semAbandon == ""){
-    $semAbandon = 'NULL';
-  }
-
-
-
+    $reusiteBTS = ($_POST["reusiteBTS"]);
+  
     echo($noEtudiant."".$anneeSIO."".$alternance."".$optionBTS."".$semAbandon);
-    modifEleve ($noEtudiant,$anneeSIO,$alternance,$optionBTS,$semAbandon);
+    modifEleve ($noEtudiant,$anneeSIO,$alternance,$optionBTS,$semAbandon,$reusiteBTS);
     $_SESSION ["info"]="Etudiant modifier";
     
     header("location:liste-eleve.php");

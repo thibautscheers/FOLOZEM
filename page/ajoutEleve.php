@@ -13,6 +13,7 @@ try {
     $noEtudiant = ($_POST["noEtudiant"]);
     $nom = ($_POST["nom"]);
     $prenom = ($_POST["prenom"]);
+    $sexe = ($_POST["sexe"]);
     $premiereAnnee = ($_POST["anneeSIO"]);
     $optionSLAM = ($_POST["optionBTS"]);
     $anneeArrivee = ($_POST["anneeArrivee"]);
@@ -24,14 +25,16 @@ try {
     $_SESSION["error"] = "nom, prenom, N°Etudiant,département non renseigné";
     header("location:importation-eleve.php");
   } else {
-    ajoutEleve($noEtudiant, $nom, $prenom, $premiereAnnee, $optionSLAM, $alternance, $anneeArrivee, $departement, $idOptions);
-
+    ajoutEleve($noEtudiant, $nom, $prenom, $premiereAnnee, $optionSLAM, $anneeArrivee, $departement, $alternance,$sexe, $idOptions);
+    echo($noEtudiant." ". $nom." ". $prenom." ".$sexe." ". $premiereAnnee." ". $optionSLAM." ". $alternance." ".  $anneeArrivee." ". $departement." ". $idOptions);
     $_SESSION["info"] = "Etudiant Ajouter";
-    // header("location:importation-eleve.php");
+    header("location:importation-eleve.php");
   }
 
 
 } catch (Exception $e) {
   $_SESSION["error"] = "Houston, on a un problème : " . $e->getMessage();
+  echo($noEtudiant." ". $nom." ". $prenom." ".$sexe." ". $premiereAnnee." ". $optionSLAM." ". $alternance." ".  $anneeArrivee." ". $departement." ". $idOptions);
+    $_SESSION["info"] = "Etudiant Ajouter";
   header("location:importation-eleve.php");
 }
