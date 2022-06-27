@@ -46,6 +46,9 @@
         $reussiteBTS = 0;
         $nbrDeFille = 0;
         $nbdrDeGarcon = 0;
+        $nbrRedoublant1Annee = 0;
+        $nbrRedoublant2Annee = 0;
+        $nbrNonRedoublant = 0;
         foreach($Etudiants as $Etudiant) {
             $Rows = $Rows + 1;
             if($Etudiant['premiereAnnee'] == 1) {
@@ -90,6 +93,14 @@
                 $nbdrDeGarcon = $nbdrDeGarcon + 1;
             }
 
+            if($Etudiant['redoublantPremAnnee'] === 1) {
+                $nbrRedoublant1Annee = $nbrRedoublant1Annee + 1;
+            } elseif($Etudiant['redoublantPremAnnee'] === 0) {
+                $nbrRedoublant2Annee = $nbrRedoublant2Annee + 1;
+            } else {
+                $nbrNonRedoublant = $nbrNonRedoublant + 1;
+            }
+
         }
         if($Rows == 0) {
             $Rows = 1;
@@ -109,6 +120,7 @@
                 <td>Taux de réussite au BTS</td>
                 <td>Taux de garçons</td>
                 <td>Taux de filles</td>
+                <td>Redoublants</td>
                 </thead>
             </tr>
             <tr>
@@ -143,6 +155,12 @@
                 "</td>
                 <td>".round(($nbdrDeGarcon / $Rows) * 100, 2)."%</td>
                 <td>".round(($nbrDeFille / $Rows) * 100, 2)."%</td>
+                <td>");
+                print_r("1ère année : ". round(($nbrRedoublant1Annee / $Rows) * 100, 2). "%");
+                print_r("<br>2ême année : ". round(($nbrRedoublant2Annee / $Rows) * 100, 2). "%");
+                print_r("<br>Pas redoublé: ". round(($nbrNonRedoublant / $Rows) * 100, 2). "%");
+        echo(
+                "</td>
             </tr>
         </table>
         ");
@@ -171,6 +189,9 @@
         $reussiteBTS = 0;
         $nbrDeFille = 0;
         $nbdrDeGarcon = 0;
+        $nbrRedoublant1Annee = 0;
+        $nbrRedoublant2Annee = 0;
+        $nbrNonRedoublant = 0;
         foreach($Etudiants as $Etudiant) {
             $Rows = $Rows + 1;
             if($Etudiant['premiereAnnee'] == 1) {
@@ -215,6 +236,14 @@
                 $nbdrDeGarcon = $nbdrDeGarcon + 1;
             }
 
+            if($Etudiant['redoublantPremAnnee'] === 1) {
+                $nbrRedoublant1Annee = $nbrRedoublant1Annee + 1;
+            } elseif($Etudiant['redoublantPremAnnee'] === 0) {
+                $nbrRedoublant2Annee = $nbrRedoublant2Annee + 1;
+            } else {
+                $nbrNonRedoublant = $nbrNonRedoublant + 1;
+            }
+
         }
         if($Rows == 0) {
             $Rows = 1;
@@ -232,6 +261,7 @@
                 <td>Taux de réussite au BTS</td>
                 <td>Taux de garçons</td>
                 <td>Taux de filles</td>
+                <td>Redoublants</td>
                 </thead>
             </tr>
             <tr>
@@ -264,6 +294,12 @@
                 "</td>
                 <td>".round(($nbdrDeGarcon / $Rows) * 100, 2)."%</td>
                 <td>".round(($nbrDeFille / $Rows) * 100, 2)."%</td>
+                <td>");
+                print_r("1ère année : ". round(($nbrRedoublant1Annee / $Rows) * 100, 2). "%");
+                print_r("<br>2ême année : ". round(($nbrRedoublant2Annee / $Rows) * 100, 2). "%");
+                print_r("<br>Pas redoublé: ". round(($nbrNonRedoublant / $Rows) * 100, 2). "%");
+        echo(
+                "</td>
             </tr>
         </table>
         ");
@@ -290,6 +326,9 @@
         $reussiteBTS = 0;
         $nbrDeFille = 0;
         $nbdrDeGarcon = 0;
+        $nbrRedoublant1Annee = 0;
+        $nbrRedoublant2Annee = 0;
+        $nbrNonRedoublant = 0;
         foreach($Etudiants as $Etudiant) {
             $Rows = $Rows + 1;
             if($Etudiant['premiereAnnee'] == 1) {
@@ -334,6 +373,14 @@
                 $nbdrDeGarcon = $nbdrDeGarcon + 1;
             }
 
+            if($Etudiant['redoublantPremAnnee'] === 1) {
+                $nbrRedoublant1Annee = $nbrRedoublant1Annee + 1;
+            } elseif($Etudiant['redoublantPremAnnee'] === 0) {
+                $nbrRedoublant2Annee = $nbrRedoublant2Annee + 1;
+            } else {
+                $nbrNonRedoublant = $nbrNonRedoublant + 1;
+            }
+
         }
         if($Rows == 0) {
             $Rows = 1;
@@ -348,6 +395,7 @@
                 <td>Taux de réussite au BTS</td>
                 <td>Taux de garçons</td>
                 <td>Taux de filles</td>
+                <td>Redoublants</td>
                 </thead>
             </tr>
             <tr>
@@ -377,6 +425,12 @@
                 "</td>
                 <td>".round(($nbdrDeGarcon / $Rows) * 100, 2)."%</td>
                 <td>".round(($nbrDeFille / $Rows) * 100, 2)."%</td>
+                <td>");
+                print_r("1ère année : ". round(($nbrRedoublant1Annee / $Rows) * 100, 2). "%");
+                print_r("<br>2ême année : ". round(($nbrRedoublant2Annee / $Rows) * 100, 2). "%");
+                print_r("<br>Pas redoublé: ". round(($nbrNonRedoublant / $Rows) * 100, 2). "%");
+        echo(
+                "</td>
             </tr>
         </table>
         ");
@@ -403,6 +457,9 @@
         $reussiteBTS = 0;
         $nbrDeFille = 0;
         $nbdrDeGarcon = 0;
+        $nbrRedoublant1Annee = 0;
+        $nbrRedoublant2Annee = 0;
+        $nbrNonRedoublant = 0;
         foreach($Etudiants as $Etudiant) {
             $Rows = $Rows + 1;
             if($Etudiant['premiereAnnee'] == 1) {
@@ -447,6 +504,14 @@
                 $nbdrDeGarcon = $nbdrDeGarcon + 1;
             }
 
+            if($Etudiant['redoublantPremAnnee'] === 1) {
+                $nbrRedoublant1Annee = $nbrRedoublant1Annee + 1;
+            } elseif($Etudiant['redoublantPremAnnee'] === 0) {
+                $nbrRedoublant2Annee = $nbrRedoublant2Annee + 1;
+            } else {
+                $nbrNonRedoublant = $nbrNonRedoublant + 1;
+            }
+
         }
         if($Rows == 0) {
             $Rows = 1;
@@ -461,6 +526,7 @@
                 <td>Taux de réussite au BTS</td>
                 <td>Taux de garçons</td>
                 <td>Taux de filles</td>
+                <td>Redoublants</td>
                 </thead>
             </tr>
             <tr>
@@ -490,6 +556,12 @@
                 "</td>
                 <td>".round(($nbdrDeGarcon / $Rows) * 100, 2)."%</td>
                 <td>".round(($nbrDeFille / $Rows) * 100, 2)."%</td>
+                <td>");
+                print_r("1ère année : ". round(($nbrRedoublant1Annee / $Rows) * 100, 2). "%");
+                print_r("<br>2ême année : ". round(($nbrRedoublant2Annee / $Rows) * 100, 2). "%");
+                print_r("<br>Pas redoublé: ". round(($nbrNonRedoublant / $Rows) * 100, 2). "%");
+        echo(
+                "</td>
             </tr>
         </table>
         ");
@@ -518,6 +590,9 @@
         $reussiteBTS = 0;
         $nbrDeFille = 0;
         $nbdrDeGarcon = 0;
+        $nbrRedoublant1Annee = 0;
+        $nbrRedoublant2Annee = 0;
+        $nbrNonRedoublant = 0;
         foreach($Etudiants as $Etudiant) {
             $Rows = $Rows + 1;
             if($Etudiant['premiereAnnee'] == 1) {
@@ -562,6 +637,14 @@
                 $nbdrDeGarcon = $nbdrDeGarcon + 1;
             }
 
+            if($Etudiant['redoublantPremAnnee'] === 1) {
+                $nbrRedoublant1Annee = $nbrRedoublant1Annee + 1;
+            } elseif($Etudiant['redoublantPremAnnee'] === 0) {
+                $nbrRedoublant2Annee = $nbrRedoublant2Annee + 1;
+            } else {
+                $nbrNonRedoublant = $nbrNonRedoublant + 1;
+            }
+
         }
         if($Rows == 0) {
             $Rows = 1;
@@ -579,6 +662,7 @@
                 <td>Taux de réussite au BTS</td>
                 <td>Taux de garçons</td>
                 <td>Taux de filles</td>
+                <td>Redoublants</td>
                 </thead>
             </tr>
             <tr>
@@ -611,6 +695,12 @@
                 "</td>
                 <td>".round(($nbdrDeGarcon / $Rows) * 100, 2)."%</td>
                 <td>".round(($nbrDeFille / $Rows) * 100, 2)."%</td>
+                <td>");
+                print_r("1ère année : ". round(($nbrRedoublant1Annee / $Rows) * 100, 2). "%");
+                print_r("<br>2ême année : ". round(($nbrRedoublant2Annee / $Rows) * 100, 2). "%");
+                print_r("<br>Pas redoublé: ". round(($nbrNonRedoublant / $Rows) * 100, 2). "%");
+        echo(
+                "</td>
             </tr>
         </table>
         ");
@@ -637,6 +727,9 @@
         $reussiteBTS = 0;
         $nbrDeFille = 0;
         $nbdrDeGarcon = 0;
+        $nbrRedoublant1Annee = 0;
+        $nbrRedoublant2Annee = 0;
+        $nbrNonRedoublant = 0;
         foreach($Etudiants as $Etudiant) {
             $Rows = $Rows + 1;
             if($Etudiant['premiereAnnee'] == 1) {
@@ -681,6 +774,14 @@
                 $nbdrDeGarcon = $nbdrDeGarcon + 1;
             }
 
+            if($Etudiant['redoublantPremAnnee'] === 1) {
+                $nbrRedoublant1Annee = $nbrRedoublant1Annee + 1;
+            } elseif($Etudiant['redoublantPremAnnee'] === 0) {
+                $nbrRedoublant2Annee = $nbrRedoublant2Annee + 1;
+            } else {
+                $nbrNonRedoublant = $nbrNonRedoublant + 1;
+            }
+
         }
         if($Rows == 0) {
             $Rows = 1;
@@ -695,6 +796,7 @@
                 <td>Taux de réussite au BTS</td>
                 <td>Taux de garçons</td>
                 <td>Taux de filles</td>
+                <td>Redoublants</td>
                 </thead>
             </tr>
             <tr>
@@ -724,6 +826,12 @@
                 "</td>
                 <td>".round(($nbdrDeGarcon / $Rows) * 100, 2)."%</td>
                 <td>".round(($nbrDeFille / $Rows) * 100, 2)."%</td>
+                <td>");
+                print_r("1ère année : ". round(($nbrRedoublant1Annee / $Rows) * 100, 2). "%");
+                print_r("<br>2ême année : ". round(($nbrRedoublant2Annee / $Rows) * 100, 2). "%");
+                print_r("<br>Pas redoublé: ". round(($nbrNonRedoublant / $Rows) * 100, 2). "%");
+        echo(
+                "</td>
             </tr>
         </table>
         ");
@@ -750,6 +858,9 @@
         $reussiteBTS = 0;
         $nbrDeFille = 0;
         $nbdrDeGarcon = 0;
+        $nbrRedoublant1Annee = 0;
+        $nbrRedoublant2Annee = 0;
+        $nbrNonRedoublant = 0;
         foreach($Etudiants as $Etudiant) {
             $Rows = $Rows + 1;
             if($Etudiant['premiereAnnee'] == 1) {
@@ -794,6 +905,14 @@
                 $nbdrDeGarcon = $nbdrDeGarcon + 1;
             }
 
+            if($Etudiant['redoublantPremAnnee'] === 1) {
+                $nbrRedoublant1Annee = $nbrRedoublant1Annee + 1;
+            } elseif($Etudiant['redoublantPremAnnee'] === 0) {
+                $nbrRedoublant2Annee = $nbrRedoublant2Annee + 1;
+            } else {
+                $nbrNonRedoublant = $nbrNonRedoublant + 1;
+            }
+
         }
         if($Rows == 0) {
             $Rows = 1;
@@ -808,6 +927,7 @@
                 <td>Taux de réussite au BTS</td>
                 <td>Taux de garçons</td>
                 <td>Taux de filles</td>
+                <td>Redoublants</td>
                 </thead>
             </tr>
             <tr>
@@ -837,6 +957,12 @@
                 "</td>
                 <td>".round(($nbdrDeGarcon / $Rows) * 100, 2)."%</td>
                 <td>".round(($nbrDeFille / $Rows) * 100, 2)."%</td>
+                <td>");
+                print_r("1ère année : ". round(($nbrRedoublant1Annee / $Rows) * 100, 2). "%");
+                print_r("<br>2ême année : ". round(($nbrRedoublant2Annee / $Rows) * 100, 2). "%");
+                print_r("<br>Pas redoublé: ". round(($nbrNonRedoublant / $Rows) * 100, 2). "%");
+        echo(
+                "</td>
             </tr>
         </table>
         ");

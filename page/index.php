@@ -25,6 +25,7 @@
         <br>
         <form method="post" action="checkPassword.php">
             <input type="password" name="LogInText" class="form-inline">
+            <br> </br>
             <input type="submit" name="LogInBtn" class="button btn btn-success" value="Se Connecter">
             <?php
                 session_start();
