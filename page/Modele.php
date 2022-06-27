@@ -40,7 +40,7 @@ function getOrigines($id_Origine) //funtion pour lire les origine
 function modifaccess($cleacces) // fonction pour modifier le MDP
 {
     $pdo = connexion();
-    $res = $pdo->prepare("UPDATE `motdepasses` SET `cleacces`='$cleacces' WHERE 1");
+    $res = $pdo->prepare("UPDATE `motDePasses` SET `cleacces`='$cleacces' WHERE 1");
     $res->execute();
 }
 
