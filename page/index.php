@@ -14,7 +14,7 @@
 <style>
     body {
       margin: 10px;
-      background-image: url(fond.jpg);
+      background-image: url(style/fond.jpg);
       background-position: center;
       background-attachment: fixed;
       background-size: cover;
