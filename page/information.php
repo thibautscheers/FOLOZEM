@@ -37,7 +37,7 @@
         echo ("<br/><div style=\"background-color: #4f4; padding: 6px;\">" . ($_SESSION["info"]) . "</div>");
     $_SESSION["info"] = "";
     ?>
-    <h1 class="text-decoration-underline">Information  </h1>
+    <h1 class="text-decoration-underline" style='text-align: center'>Information </h1>
     <div id="expoitCSV">
         <h3 class="text-decoration-underline">Importation des fichier CSV</h3>
         <p> Pour importer un fichier CSV, il faut d'abord le prendre de parcoursup puis l'importer sur le site à partir de la page Importation, puis le site fait le reste pour vous.</p>
