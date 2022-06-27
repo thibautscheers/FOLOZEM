@@ -14,8 +14,7 @@
 
 </head>
 
-<body style="margin-top: 75px;">
-
+<body style="margin-top: 60px; background-color: beige;">
     <div>
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <ul class="navbar-nav mr-auto">
