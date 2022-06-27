@@ -38,6 +38,7 @@
                     <td colspan="1"><b>Prenom</td>
                     <td colspan="1"><b>Sexe</td>
                     <td colspan="1"><b>Année BTS</td>
+                    <td colspan="1"><b>Redoublement</b></td>
                     <td colspan="1"><b>Option du BTS</td>
                     <td colspan="1"><b>Semestre d'abandon</td>
                     <td colspan="1"><b>Année d'arriver</td>
@@ -97,6 +98,15 @@
                 }
                 //$optionSLAM = $Etudiant['optionSLAM'];
 
+                if (!isset($Etudiant['redoublantPremAnnee'])) { // Affiche dynamiquement l'année de l'étudiant
+                    $redoublantPremAnnee = "Non redoublé";
+                } elseif ($Etudiant['redoublantPremAnnee'] == 1) {
+                    $redoublantPremAnnee = "Redoublant SIO 1";
+                } elseif ($Etudiant['redoublantPremAnnee'] == 0) {
+                    $redoublantPremAnnee = "Redoublant SIO 2";
+                } else {
+                    $redoublantPremAnnee = "Erreur // Non renseigné";
+                }
 
                 if (isset($Etudiant['semAbandon'])) { // Affiche dynamiquement l'abandon de l'étudiant
                     $semAbandon = "Adanbdon de l'élève au semestre " . $Etudiant['semAbandon'];
@@ -150,6 +160,7 @@
                         <td><?php echo ($prenom) ?></td>
                         <td><?php echo ($sexe) ?></td>
                         <td><?php echo ($premiereAnnee) ?></td>
+                        <td><?php echo($redoublantPremAnnee)?></td>
                         <td><?php echo ($optionSLAM) ?></td>
                         <td><?php echo ($semAbandon) ?></td>
                         <td><?php echo ($anneeArrivee) ?></td>
@@ -165,6 +176,11 @@
                             <select name='anneeSIO' class="form-select-sm">
                                 <option value='1'>SIO 1</option>
                                 <option value='0'>SIO 2</option>
+                            </select>
+                            <select name='redoublantPremAnnee' class="form-select-sm">
+                                <option value="NULL">Non redoublé</option>
+                                <option value='1'>Redoublant SIO 1</option>
+                                <option value='0'>Redoublant SIO 2</option>
                             </select>
                             <select name='optionBTS' class="form-select-sm">
                                 <option value="NULL"></option>
@@ -184,7 +200,7 @@
                                 <option value='1'>fait une alternance</option>
                                 <option value='0'>ne fait pas d'alternance</option>
                             </select>
-                            <select name='reusiteBTS' class="form-select-sm">
+                            <select name='reussiteBTS' class="form-select-sm">
                                 <option value="NULL">Non passé BTS</option>
                                 <option value='1'>Réussite du BTS</option>
                                 <option value='0'>Non Réussite du BTS</option>
