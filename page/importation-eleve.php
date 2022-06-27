@@ -45,10 +45,12 @@
             <input type="file" class="btn btn-outline-secondary btn-sm" name="file" id="file" accept=".csv">
             <input type="submit" class="btn btn-outline-primary btn-sm" value="Importer" name="submit">
         </form>
+        <br>
         <form method="get" action="Modele_CSV.csv">
             <button type="submit" class="btn btn-success btn-sm">Télécharger un modèle de fichier CSV</button>
         </form>
     </div>
+    <br> </br>
     <h3>Ajout élèves</h3>
 
     <div class="col-auto">
@@ -98,6 +100,7 @@
     &nbsp;
     &nbsp;
     &nbsp;
+    <br> </br>
     <div class="col-auto">
         <h3>Ajout d'origine</h3>
         <form action="ajoutOrigine.php" class="form-inline" method="POST">
@@ -111,6 +114,7 @@
     &nbsp;
     &nbsp;
     &nbsp;
+    <br> </br>
     <div class="col-auto">
         <h3>Ajout d'option</h3>
         <form action="ajoutOption.php" class="form-inline" method="POST">

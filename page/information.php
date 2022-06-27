@@ -10,8 +10,6 @@
     <link href="style/navbar.css" type="text/css" rel="stylesheet" />
     <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    
 </head>
 
 <body style="margin-top: 60px;">
@@ -46,7 +44,7 @@
     </div>
     <div id="créateur">
     <h3 class="text-decoration-underline">Créateur du site</h3>
-        <p >Site créer leur du stage de 1er année des SIO de la promation 2021-2023 par Allan ESCOLANO & Thibaut SCHEERS.
+        <p >Site créer pendant stage de 1ère année de SIO de la promotion 2021-2023 par Allan ESCOLANO & Thibaut SCHEERS.
         </p>
 
     </div>
