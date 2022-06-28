@@ -100,3 +100,10 @@ function ajoutOption($nomOption, $idOrigine)//function pour ajouter des options
     $res->execute();
     return $res;
 }
+
+function getElevePerYear($filtreAnnee) {
+    $pdo = connexion();
+    $res = $pdo->prepare("SELECT * FROM etudiant WHERE anneeArrivee=$filtreAnnee");
+    $res->execute();
+    return $res;
+}

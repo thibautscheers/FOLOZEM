@@ -38,13 +38,11 @@
         $pdo = connexion();
         if(isset($_GET['filtreAnnee']) and $_GET['filtreAnnee'] != "") {
             $filtreAnnee = $_GET['filtreAnnee'];
-            //$res = $pdo->prepare('SELECT * FROM etudiant WHERE anneeArrivee=:filtreAnnee');
-            //$res->bindParam(":filtreAnnee", $filtreAnnee, PDO::PARAM_INT);
+            $Etudiants = getElevePerYear($filtreAnnee);
         } else {
-            //$res = $pdo->query('SELECT * FROM etudiant');
+            $res = $pdo->query('SELECT * FROM etudiant');
+            $Etudiants = $res->fetchAll();
         }
-        $res = $pdo->query('SELECT * FROM etudiant');
-        $Etudiants = $res->fetchAll();
         $Rows = 0;
         $nbrPremiereAnnee = 0;
         $SLAM = 0;
@@ -66,12 +64,6 @@
             if($Etudiant['premiereAnnee'] == 1) {
                 $nbrPremiereAnnee = $nbrPremiereAnnee + 1;
             }
-
-            print_r($filtreAnnee);
-
-            print_r($Etudiant['anneeArrivee']);
-
-            print_r("    ")
 
             if($Etudiant['optionSLAM'] === 1) {
                 $SLAM = $SLAM + 1;
@@ -101,7 +93,7 @@
                 $nbrDeBtsPassee = $nbrDeBtsPassee + 1;
             }
 
-            if($Etudiant['reussiteBTS'] === 1 ) {
+            if($Etudiant['reussiteBTS'] !== NULL and $Etudiant['reussiteBTS'] !== 0) {
                 $reussiteBTS = $reussiteBTS + 1;
             }
 
@@ -157,6 +149,8 @@
                         $nbrDeUnDepartement = $vals[$UnDepartement]; //Trouver le nbrDeunDepartement
                         print_r(" / ".round(($nbrDeUnDepartement / $Rows) * 100, 2) .'%'); //Afficher les pourcentage
                         print_r("<br>");
+                        unset($vals[$UnDepartement]);
+                        $i = 0;
                     }
                 };
                 print_r("Non spécifié / ".round(($pasDepartement / $Rows) * 100, 2) .'%');
@@ -240,8 +234,8 @@
                 $pasDepartement = $pasDepartement + 1;
             }
 
-            if($Etudiant['reussiteBTS'] !== NULL) {
-                $nbrDeBtsPassee = $nbrDeBtsPassee + 1;
+            if($Etudiant['reussiteBTS'] !== NULL and $Etudiant['reussiteBTS'] !== 0) {
+                $reussiteBTS = $reussiteBTS + 1;
             }
 
             if($Etudiant['reussiteBTS'] === 1 ) {
@@ -296,6 +290,8 @@
                         $nbrDeUnDepartement = $vals[$UnDepartement]; //Trouver le nbrDeunDepartement
                         print_r(" / ".round(($nbrDeUnDepartement / $Rows) * 100, 2) .'%'); //Afficher les pourcentage
                         print_r("<br>");
+                        unset($vals[$UnDepartement]);
+                        $i = 0;
                     }
                 };
                 print_r("Non spécifié / ".round(($pasDepartement / $Rows) * 100, 2) .'%');
@@ -381,7 +377,7 @@
                 $nbrDeBtsPassee = $nbrDeBtsPassee + 1;
             }
 
-            if($Etudiant['reussiteBTS'] === 1 ) {
+            if($Etudiant['reussiteBTS'] !== NULL and $Etudiant['reussiteBTS'] !== 0) {
                 $reussiteBTS = $reussiteBTS + 1;
             }
 
@@ -512,7 +508,7 @@
                 $nbrDeBtsPassee = $nbrDeBtsPassee + 1;
             }
 
-            if($Etudiant['reussiteBTS'] === 1 ) {
+            if($Etudiant['reussiteBTS'] !== NULL and $Etudiant['reussiteBTS'] !== 0) {
                 $reussiteBTS = $reussiteBTS + 1;
             }
 
@@ -558,6 +554,8 @@
                         $nbrDeUnDepartement = $vals[$UnDepartement]; //Trouver le nbrDeunDepartement
                         print_r(" / ".round(($nbrDeUnDepartement / $Rows) * 100, 2) .'%'); //Afficher les pourcentage
                         print_r("<br>");
+                        unset($vals[$UnDepartement]);
+                        $i = 0;
                     }
                 };
                 print_r("Non spécifié / ".round(($pasDepartement / $Rows) * 100, 2) .'%');
@@ -645,7 +643,7 @@
                 $nbrDeBtsPassee = $nbrDeBtsPassee + 1;
             }
 
-            if($Etudiant['reussiteBTS'] === 1 ) {
+            if($Etudiant['reussiteBTS'] !== NULL and $Etudiant['reussiteBTS'] !== 0) {
                 $reussiteBTS = $reussiteBTS + 1;
             }
 
@@ -697,6 +695,8 @@
                         $nbrDeUnDepartement = $vals[$UnDepartement]; //Trouver le nbrDeunDepartement
                         print_r(" / ".round(($nbrDeUnDepartement / $Rows) * 100, 2) .'%'); //Afficher les pourcentage
                         print_r("<br>");
+                        unset($vals[$UnDepartement]);
+                        $i = 0;
                     }
                 };
                 print_r("Non spécifié / ".round(($pasDepartement / $Rows) * 100, 2) .'%');
@@ -782,7 +782,7 @@
                 $nbrDeBtsPassee = $nbrDeBtsPassee + 1;
             }
 
-            if($Etudiant['reussiteBTS'] === 1 ) {
+            if($Etudiant['reussiteBTS'] !== NULL and $Etudiant['reussiteBTS'] !== 0) {
                 $reussiteBTS = $reussiteBTS + 1;
             }
 
@@ -828,6 +828,8 @@
                         $nbrDeUnDepartement = $vals[$UnDepartement]; //Trouver le nbrDeunDepartement
                         print_r(" / ".round(($nbrDeUnDepartement / $Rows) * 100, 2) .'%'); //Afficher les pourcentage
                         print_r("<br>");
+                        unset($vals[$UnDepartement]);
+                        $i = 0;
                     }
                 };
                 print_r("Non spécifié / ".round(($pasDepartement / $Rows) * 100, 2) .'%');
@@ -913,7 +915,7 @@
                 $nbrDeBtsPassee = $nbrDeBtsPassee + 1;
             }
 
-            if($Etudiant['reussiteBTS'] === 1 ) {
+            if($Etudiant['reussiteBTS'] !== NULL and $Etudiant['reussiteBTS'] !== 0) {
                 $reussiteBTS = $reussiteBTS + 1;
             }
 
@@ -959,6 +961,8 @@
                         $nbrDeUnDepartement = $vals[$UnDepartement]; //Trouver le nbrDeunDepartement
                         print_r(" / ".round(($nbrDeUnDepartement / $Rows) * 100, 2) .'%'); //Afficher les pourcentage
                         print_r("<br>");
+                        unset($vals[$UnDepartement]);
+                        $i = 0;
                     }
                 };
                 print_r("Non spécifié / ".round(($pasDepartement / $Rows) * 100, 2) .'%');
