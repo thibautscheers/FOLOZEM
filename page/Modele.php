@@ -125,9 +125,31 @@ function ajoutOption($nomOption, $idOrigine) //function pour ajouter des options
     return $res;
 }
 
-function getElevePerYear($filtreAnnee) {
+function getEtudiantAnneeOption($filtreAnnee, $premiereAnnee, $optionSLAM) {
     $pdo = connexion();
-    $res = $pdo->prepare("SELECT * FROM etudiant WHERE anneeArrivee=$filtreAnnee");
+
+
+    //Pour stats general en fonction d'une annee
+    if(isset($filtreAnnee) and $optionSLAM === NULL and $premiereAnnee === NULL) {
+        $res = $pdo->prepare("SELECT * FROM etudiant WHERE anneeArrivee=$filtreAnnee");
+    }
+
+    //Pour stats en fonction d'une annee et de l'annee du bts des eleves
+    if(isset($filtreAnnee) and $optionSLAM === NULL and isset($premiereAnnee)) {
+        $res = $pdo->prepare("SELECT * FROM etudiant WHERE anneeArrivee=$filtreAnnee and premiereAnnee=$premiereAnnee");
+    }
+    if($filtreAnnee === NULL and $optionSLAM === NULL and isset($premiereAnnee)) {
+        $res = $pdo->prepare("SELECT * FROM etudiant WHERE premiereAnnee=$premiereAnnee");
+    }
+
+    //Pareil mais avec l'option
+    if(isset($filtreAnnee) and isset($optionSLAM) and isset($premiereAnnee)) {
+        $res = $pdo->prepare("SELECT * FROM etudiant WHERE anneeArrivee=$filtreAnnee and premiereAnnee=$premiereAnnee and optionSLAM=$optionSLAM");
+    }
+    if($filtreAnnee === NULL and isset($optionSLAM) and isset($premiereAnnee)) {
+        $res = $pdo->prepare("SELECT * FROM etudiant WHERE premiereAnnee=$premiereAnnee and optionSLAM=$optionSLAM");
+    }
+
     $res->execute();
     return $res;
 }

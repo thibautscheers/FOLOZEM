@@ -38,10 +38,9 @@
         $pdo = connexion();
         if(isset($_GET['filtreAnnee']) and $_GET['filtreAnnee'] != "") {
             $filtreAnnee = $_GET['filtreAnnee'];
-            $Etudiants = getElevePerYear($filtreAnnee);
+            $Etudiants = getEtudiantAnneeOption($filtreAnnee, NULL, NULL);
         } else {
-            $res = $pdo->query('SELECT * FROM etudiant');
-            $Etudiants = $res->fetchAll();
+            $Etudiants = getEtudiants();
         }
         $Rows = 0;
         $nbrPremiereAnnee = 0;
@@ -186,8 +185,12 @@
 
         require_once('Modele.php');
         $pdo = connexion();
-        $res = $pdo->query('SELECT * FROM etudiant WHERE premiereAnnee=1');
-        $Etudiants = $res->fetchAll();
+        if(isset($_GET['filtreAnnee']) and $_GET['filtreAnnee'] != "") {
+            $filtreAnnee = $_GET['filtreAnnee'];
+            $Etudiants = getEtudiantAnneeOption($filtreAnnee, NULL, NULL);
+        } else {
+            $Etudiants = getEtudiantAnneeOption(NULL, 1, NULL);
+        }
         $Rows = 0;
         $nbrPremiereAnnee = 0;
         $SLAM = 0;
@@ -325,8 +328,12 @@
 
         require_once('Modele.php');
         $pdo = connexion();
-        $res = $pdo->query('SELECT * FROM etudiant WHERE premiereAnnee=1 AND optionSLAM=1');
-        $Etudiants = $res->fetchAll();
+        if(isset($_GET['filtreAnnee']) and $_GET['filtreAnnee'] != "") {
+            $filtreAnnee = $_GET['filtreAnnee'];
+            $Etudiants = getEtudiantAnneeOption($filtreAnnee, 1, 1);
+        } else {
+            $Etudiants = getEtudiantAnneeOption(NULL, 1, 1);
+        }
         $Rows = 0;
         $nbrPremiereAnnee = 0;
         $SLAM = 0;
@@ -456,8 +463,12 @@
 
         require_once('Modele.php');
         $pdo = connexion();
-        $res = $pdo->query('SELECT * FROM etudiant WHERE premiereAnnee=1 AND optionSLAM=0');
-        $Etudiants = $res->fetchAll();
+        if(isset($_GET['filtreAnnee']) and $_GET['filtreAnnee'] != "") {
+            $filtreAnnee = $_GET['filtreAnnee'];
+            $Etudiants = getEtudiantAnneeOption($filtreAnnee, 1, 0);
+        } else {
+            $Etudiants = getEtudiantAnneeOption(NULL, 1, 0);
+        }
         $Rows = 0;
         $nbrPremiereAnnee = 0;
         $SLAM = 0;
@@ -591,8 +602,12 @@
 
         require_once('Modele.php');
         $pdo = connexion();
-        $res = $pdo->query('SELECT * FROM etudiant WHERE premiereAnnee=0');
-        $Etudiants = $res->fetchAll();
+        if(isset($_GET['filtreAnnee']) and $_GET['filtreAnnee'] != "") {
+            $filtreAnnee = $_GET['filtreAnnee'];
+            $Etudiants = getEtudiantAnneeOption($filtreAnnee, 0, NULL);
+        } else {
+            $Etudiants = getEtudiantAnneeOption(NULL, 0, NULL);
+        }
         $Rows = 0;
         $nbrPremiereAnnee = 0;
         $SLAM = 0;
@@ -730,8 +745,12 @@
 
         require_once('Modele.php');
         $pdo = connexion();
-        $res = $pdo->query('SELECT * FROM etudiant WHERE premiereAnnee=0 AND optionSLAM=1');
-        $Etudiants = $res->fetchAll();
+        if(isset($_GET['filtreAnnee']) and $_GET['filtreAnnee'] != "") {
+            $filtreAnnee = $_GET['filtreAnnee'];
+            $Etudiants = getEtudiantAnneeOption($filtreAnnee, 0, 1);
+        } else {
+            $Etudiants = getEtudiantAnneeOption(NULL, 0, 1);
+        }
         $Rows = 0;
         $nbrPremiereAnnee = 0;
         $SLAM = 0;
@@ -863,8 +882,12 @@
 
         require_once('Modele.php');
         $pdo = connexion();
-        $res = $pdo->query('SELECT * FROM etudiant WHERE premiereAnnee=0 AND optionSLAM=0');
-        $Etudiants = $res->fetchAll();
+        if(isset($_GET['filtreAnnee']) and $_GET['filtreAnnee'] != "") {
+            $filtreAnnee = $_GET['filtreAnnee'];
+            $Etudiants = getEtudiantAnneeOption($filtreAnnee, 0, 0);
+        } else {
+            $Etudiants = getEtudiantAnneeOption(NULL, 0, 0);
+        }
         $Rows = 0;
         $nbrPremiereAnnee = 0;
         $SLAM = 0;
