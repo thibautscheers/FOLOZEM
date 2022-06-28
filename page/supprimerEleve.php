@@ -13,7 +13,8 @@ try {
   }
 catch (Exception $e) {
   $_SESSION ["error"]="Houston, on a un problème : " . $e->getMessage ();
-
+  echo ($e);
+  header("location:liste-eleve.php");
 }
    
 ?> 

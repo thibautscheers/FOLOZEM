@@ -10,11 +10,10 @@
     <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
-<body>
+<body style="margin-top: 60px; background-color: beige;">
 <style>
     body {
       margin: 10px;
-      background-image: url(style/fond.jpg);
       background-position: center;
       background-attachment: fixed;
       background-size: cover;
