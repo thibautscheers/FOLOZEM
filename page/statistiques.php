@@ -28,11 +28,24 @@
     
     <h3>Statistiques Générales</h3>
 
+    <form action="" method="get">
+        <input name="filtreAnnee" type='number' placeholder='Indiquez un promotion'>
+        <input type='submit' value="recharger">
+    </form>
+
     <?php
     
         require_once('Modele.php');
         $pdo = connexion();
-        $Etudiants = getEtudiants();
+        if(isset($_GET['filtreAnnee']) and $_GET['filtreAnnee'] != "") {
+            $filtreAnnee = $_GET['filtreAnnee'];
+            //$res = $pdo->prepare('SELECT * FROM etudiant WHERE anneeArrivee=:filtreAnnee');
+            //$res->bindParam(":filtreAnnee", $filtreAnnee, PDO::PARAM_INT);
+        } else {
+            //$res = $pdo->query('SELECT * FROM etudiant');
+        }
+        $res = $pdo->query('SELECT * FROM etudiant');
+        $Etudiants = $res->fetchAll();
         $Rows = 0;
         $nbrPremiereAnnee = 0;
         $SLAM = 0;
@@ -54,6 +67,12 @@
             if($Etudiant['premiereAnnee'] == 1) {
                 $nbrPremiereAnnee = $nbrPremiereAnnee + 1;
             }
+
+            print_r($filtreAnnee);
+
+            print_r($Etudiant['anneeArrivee']);
+
+            print_r("    ")
 
             if($Etudiant['optionSLAM'] === 1) {
                 $SLAM = $SLAM + 1;
