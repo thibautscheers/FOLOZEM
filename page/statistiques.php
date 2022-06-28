@@ -25,12 +25,20 @@
         </nav>
     </div>
     
-    <h3>Statistiques Générales</h3>
-
-    <form action="" method="get">
-        <input name="filtreAnnee" type='number' placeholder='Indiquez un promotion'>
-        <input type='submit' value="recharger">
+    <form action="" method="get" style='position:fixed; bottom:1%; right:1%; z-index:10;'>
+        Filtre : 
+        <input name="filtreAnnee" type='number' placeholder='<?php
+         if(isset($_GET['filtreAnnee']) and $_GET['filtreAnnee'] != "") {
+            echo("Promotion ".$_GET['filtreAnnee']."-".$_GET['filtreAnnee'] + 2);
+        } else {
+            echo("Indiquez une promotion");
+        }
+        ?>
+        '>
+        <input type='submit' value="Appliquez filtre">
     </form>
+
+    <h3>Statistiques Générales</h3>
 
     <?php
     
@@ -1013,6 +1021,8 @@
         ");
     ?>
 
+
+    <br> </br>
 </body>
 <script type="text/javascript" src="js/script.js"></script>
 
