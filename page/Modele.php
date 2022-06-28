@@ -44,30 +44,54 @@ function modifaccess($cleacces) // fonction pour modifier le MDP
     $res->execute();
 }
 
-function modifEleve($noEtudiant, $anneeSIO, $optionBTS,$semAbandon,$alternance,$reussiteBTS,$sexe, $redoublantPremAnnee) //function pour modifier les information des élève
+function modifEleve($noEtudiant, $anneeSIO, $optionBTS, $semAbandon, $alternance, $reussiteBTS, $sexe, $redoublantPremAnnee) //function pour modifier les information des élève
 {
     $pdo = connexion();
-    $res = $pdo->prepare("UPDATE `etudiant` SET `premiereAnnee`='$anneeSIO',`optionSLAM`=$optionBTS,`semAbandon`=$semAbandon,`alternance`='$alternance',`reussiteBTS`=$reussiteBTS,`sexe`='$sexe',`redoublantPremAnnee`=$redoublantPremAnnee  WHERE `noEtudiant`= '$noEtudiant'");
+    $res = $pdo->prepare("UPDATE `etudiant` SET `premiereAnnee`=:anneeSIO,`optionSLAM`=:optionBTS,`semAbandon`=:semAbandon,`alternance`=:alternance,`reussiteBTS`=:reussiteBTS,`sexe`=:sexe,`redoublantPremAnnee`=:redoublantPremAnnee  WHERE `noEtudiant`= :noEtudiant");
+    $res->bindParam("noEtudiant", $noEtudiant, PDO::PARAM_INT);
+    $res->bindParam("anneeSIO", $anneeSIO, PDO::PARAM_BOOL);
+    if ($optionBTS == 'NULL') {
+        $res->bindParam("optionBTS", $optionBTS, PDO::PARAM_NULL);
+    } else {
+        $res->bindParam("optionBTS", $optionBTS, PDO::PARAM_BOOL);
+    }
+    if ($semAbandon == 'NULL') {
+        $res->bindParam("semAbandon", $semAbandon, PDO::PARAM_NULL);
+    } else {
+        $res->bindParam("semAbandon", $semAbandon, PDO::PARAM_INT);
+    }
+    $res->bindParam("alternance", $alternance, PDO::PARAM_BOOL);
+    $res->bindParam("reussiteBTS", $reussiteBTS, PDO::PARAM_INT);
+    $res->bindParam("sexe", $sexe, PDO::PARAM_BOOL);
+    if ($redoublantPremAnnee == 'NULL') {
+        $res->bindParam("redoublantPremAnnee", $redoublantPremAnnee, PDO::PARAM_NULL);
+    } else {
+        $res->bindParam("redoublantPremAnnee", $redoublantPremAnnee, PDO::PARAM_BOOL);
+    }
+
     $res->execute();
 }
 function supprimerEleve($noEtudiant) //function pour supprimer les élève
 {
     $pdo = connexion();
-    $res = $pdo->prepare("DELETE FROM `etudiant` WHERE `noEtudiant`= '$noEtudiant'");
+    $res = $pdo->prepare("DELETE FROM `etudiant` WHERE `noEtudiant`= :noEtudiant");
+    $res->bindParam("noEtudiant", $noEtudiant, PDO::PARAM_INT);
     $res->execute();
 }
 
-function ajoutEleve($noEtudiant, $nom, $prenom, $premiereAnnee, $optionSLAM, $anneeArrivee, $departement, $alternance,$sexe, $idOptions) //function pour ajouter des élève
+function ajoutEleve($noEtudiant, $nom, $prenom, $premiereAnnee, $optionSLAM, $anneeArrivee, $departement, $alternance, $sexe, $idOptions) //function pour ajouter des élève
 {
     $pdo = connexion();
-    $res =  $pdo->prepare("INSERT INTO `etudiant`(`noEtudiant`, `nom`, `prenom`, `premiereAnnee`, `optionSLAM`, `anneeArrivee`, `departement`, `alternance`, `sexe`, `idOption#`) VALUES (:noEtudiant,:nom,:prenom,:premiereAnnee,$optionSLAM,:anneeArrivee,:departement,:alternance,$sexe,:idOptions)");
+    $res =  $pdo->prepare("INSERT INTO `etudiant`(`noEtudiant`, `nom`, `prenom`, `premiereAnnee`, `optionSLAM`, `anneeArrivee`, `departement`, `alternance`, `sexe`, `idOption#`) VALUES (:noEtudiant,:nom,:prenom,:premiereAnnee,:optionSLAM,:anneeArrivee,:departement,:alternance,:sexe,:idOptions)");
     $res->bindParam("noEtudiant", $noEtudiant, PDO::PARAM_INT);
     $res->bindParam("nom", $nom, PDO::PARAM_STR, 20);
     $res->bindParam("prenom", $prenom, PDO::PARAM_STR, 20);
+    $res->bindParam("optionSLAM", $optionSLAM, PDO::PARAM_INT);
     $res->bindParam("premiereAnnee", $premiereAnnee, PDO::PARAM_BOOL);
     $res->bindParam("anneeArrivee", $anneeArrivee, PDO::PARAM_INT, 4);
     $res->bindParam("departement", $departement, PDO::PARAM_INT);
     $res->bindParam("alternance", $alternance, PDO::PARAM_BOOL);
+    $res->bindParam("sexe", $sexe, PDO::PARAM_BOOL);
     $res->bindParam("idOptions", $idOptions);
     $res->execute();
 }
@@ -79,7 +103,7 @@ function lireOption() //function pour lire les option sans contrainte utilisé p
     return $res;
 }
 
-function ajoutOrigine($nomOrigine)//function pour ajouter des origine
+function ajoutOrigine($nomOrigine) //function pour ajouter des origine
 {
     $pdo = connexion();
     $res =  $pdo->prepare("INSERT INTO `origine`(`nomOrigine`) VALUES (:nomOrigine)");
@@ -93,7 +117,7 @@ function lireOrigine() //function pour lire les origine sans contrainte utilisé
     $res->execute();
     return $res;
 }
-function ajoutOption($nomOption, $idOrigine)//function pour ajouter des options
+function ajoutOption($nomOption, $idOrigine) //function pour ajouter des options
 {
     $pdo = connexion();
     $res =  $pdo->prepare("INSERT INTO `options`( `nomOption`, `idOrigine#`) VALUES ('$nomOption','$idOrigine')");
