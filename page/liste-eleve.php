@@ -127,11 +127,9 @@
                 if (!isset($Etudiant['reussiteBTS'])) { // Affiche dynamiquement l'année de l'étudiant
                     $reussiteBTS = "Non passé";
                 } elseif ($Etudiant['reussiteBTS'] == 0) {
-                    $reussiteBTS = "Non Réussit";
-                } elseif ($Etudiant['reussiteBTS'] == 1) {
-                    $reussiteBTS = "Réussit";
-                } else {
-                    $reussiteBTS = "Erreur // Non renseigné";
+                    $reussiteBTS = "Non Réussit/Non passé";
+                } else{
+                    $reussiteBTS = "BTS Réussit l'année ". $Etudiant['reussiteBTS'];
                 }
 
                 if ($Etudiant['alternance'] == 1) { // Affiche dynamiquement l'alternance de l'étudiant
@@ -200,11 +198,7 @@
                                 <option value='1'>fait une alternance</option>
                                 <option value='0'>ne fait pas d'alternance</option>
                             </select>
-                            <select name='reussiteBTS' class="form-select-sm">
-                                <option value="NULL">Non passé BTS</option>
-                                <option value='1'>Réussite du BTS</option>
-                                <option value='0'>Non Réussite du BTS</option>
-                            </select>
+                            <input type="number" name="reussiteBTS" class="input-group-sm">
                             <input type='submit' class="btn btn-outline-primary btn-sm" value='Modifier'>
                         </td>
                 </form>
