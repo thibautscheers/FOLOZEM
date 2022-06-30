@@ -206,6 +206,22 @@
         ")
     ?>
 
+    <div>Afficher graphiques</div>
+    <input type='checkbox' value='' id='graphCheckbox'>
+
+    <script>
+
+        let graphCheckbox = document.getElementById("graphCheckbox")
+        graphCheckbox.addEventListener("change", showgraph => {
+            if(showgraph.target.checked == true) {
+                console.log("checkbox checked")
+            } else {
+                console.log("checkbox unchecked")
+            }
+        })
+
+    </script>
+
 
     <br><hr></br>
 
