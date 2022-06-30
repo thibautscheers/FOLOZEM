@@ -10,7 +10,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
     </head>
 
-    <body>
+    <body style=" background-color: beige;">
         <?php
         require_once("Modele.php");
         //graph1
