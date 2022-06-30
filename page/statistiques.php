@@ -142,7 +142,16 @@
             </tr>
             <tr>
                 <td>".round(($nbrPremiereAnnee / $Rows) * 100, 2)."%</td>
-                <td>". 100 - round(($nbrPremiereAnnee / $Rows) * 100, 2)."%</td>
+                <td>");
+                if($nbrPremiereAnnee == 0) {
+                    $nbrSecondAnnee = 0;
+                    print_r($nbrSecondAnnee);
+                } else{
+                    $nbrSecondAnnee = 100 - round(($nbrPremiereAnnee / $Rows) * 100, 2);
+                    echo($nbrSecondAnnee);
+                }
+                echo(
+                "%</td>
                 <td>".round(($SLAM / $Rows) * 100, 2)."%</td>
                 <td>".round(($SISR / $Rows) * 100, 2)."%</td>
                 <td>".round(($PasOption / $Rows) * 100, 2)."%</td>
@@ -183,7 +192,20 @@
             </tr>
         </table>
         ");
+
+        echo("
+        <form action='graph.php' method='post'>
+            <input type='text' value=$nbrPremiereAnnee hidden name='nbrPremiereAnnee'>
+            <input type='text' value=$nbrSecondAnnee hidden name='nbrSecondAnnee'>
+
+            <input type='text' value=$SLAM hidden name='SLAM'>
+            <input type='text' value=$SISR hidden name='SISR'>
+            <input type='text' value=$PasOption hidden name='sansOption'>
+            <input type='submit' value='Afficher graphique des statistiques'>
+        </form>
+        ")
     ?>
+
 
     <br><hr></br>
 
