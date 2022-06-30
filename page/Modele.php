@@ -8,8 +8,8 @@ function connexion() //function de connexion a la base de donnée
 function getPassword()
 {
     $pdo = connexion();
-    $res = $pdo->query("SELECT * from motdepasses ORDER BY cleacces");
-    return $res->fetchAll();
+    $res = $pdo->query("SELECT * from motDePasses");
+    return $res->fetch();
 }
 
 function getEtudiants() //funtion pour lire les Etudiant

@@ -3,9 +3,8 @@
         $Value = $_POST['LogInText'];
     }
     require_once("Modele.php"); //Recupere le modele
-    $pdo = connexion();
-    $res = $pdo->query("SELECT * from motDePasses");
-    $password = $res->fetch();
+    
+    $password = getPassword();
     $cleacces = $password['cleacces'];
     $hash =hash('sha256',$Value);
     if ($hash == $cleacces) { //Verifie que le mot de passe est le meme que celui de la bdd
