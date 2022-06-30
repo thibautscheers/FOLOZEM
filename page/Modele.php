@@ -61,7 +61,12 @@ function modifEleve($noEtudiant, $anneeSIO, $optionBTS, $semAbandon, $alternance
         $res->bindParam("semAbandon", $semAbandon, PDO::PARAM_INT);
     }
     $res->bindParam("alternance", $alternance, PDO::PARAM_BOOL);
-    $res->bindParam("reussiteBTS", $reussiteBTS, PDO::PARAM_INT);
+    if ($reussiteBTS == 'NULL') {
+        $res->bindParam("reussiteBTS", $reussiteBTS, PDO::PARAM_NULL);
+    } else {
+        $res->bindParam("reussiteBTS", $reussiteBTS, PDO::PARAM_INT);
+    }
+    
     $res->bindParam("sexe", $sexe, PDO::PARAM_BOOL);
     if ($redoublantPremAnnee == 'NULL') {
         $res->bindParam("redoublantPremAnnee", $redoublantPremAnnee, PDO::PARAM_NULL);

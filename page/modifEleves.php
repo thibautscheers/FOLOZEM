@@ -13,14 +13,16 @@ try {
   $redoublantPremAnnee = ($_POST["redoublantPremAnnee"]);
   $sexe = ($_POST["sexe"]);
 
-
+if ($reussiteBTS==""){
+  $reussiteBTS=NULL;
+}
   
 
 
 
   modifEleve($noEtudiant, $anneeSIO, $optionBTS, $semAbandon, $alternance, $reussiteBTS, $sexe, $redoublantPremAnnee);
   $_SESSION["info"] = "Etudiant modifier";
-  echo ($noEtudiant . " " . $anneeSIO . " " . $optionBTS . " " . $semAbandon . " " . $alternance . " " . $reussiteBTS . " " . $sexe . " " . $redoublantPremAnnee);
+  echo ($reussiteBTS );
   echo (modifEleve($noEtudiant, $anneeSIO, $optionBTS, $semAbandon, $alternance, $reussiteBTS, $sexe, $redoublantPremAnnee));
   header("location:liste-eleve.php");
 } catch (Exception $e) {
