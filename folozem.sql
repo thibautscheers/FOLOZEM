@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 16 juin 2022 à 08:50
--- Version du serveur :  10.4.10-MariaDB
--- Version de PHP :  7.4.0
+-- Généré le : ven. 01 juil. 2022 à 14:00
+-- Version du serveur : 8.0.29
+-- Version de PHP : 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `folozem`
+-- Base de données : `folozem`
 --
 
 -- --------------------------------------------------------
@@ -28,21 +27,43 @@ SET time_zone = "+00:00";
 -- Structure de la table `etudiant`
 --
 
-DROP TABLE IF EXISTS `etudiant`;
-CREATE TABLE IF NOT EXISTS `etudiant` (
-  `noEtudiant` int(11) NOT NULL,
+CREATE TABLE `etudiant` (
+  `noEtudiant` int NOT NULL,
   `nom` varchar(20) NOT NULL,
   `prenom` varchar(20) NOT NULL,
   `premiereAnnee` tinyint(1) NOT NULL,
-  `optionSLAM` tinyint(1) NOT NULL,
-  `semAbandon` int(11) DEFAULT NULL,
-  `anneeArrivee` int(11) NOT NULL,
-  `departement` varchar(3) NOT NULL,
+  `optionSLAM` tinyint(1) DEFAULT NULL,
+  `semAbandon` int DEFAULT NULL,
+  `anneeArrivee` int NOT NULL,
+  `departement` varchar(3) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `alternance` tinyint(1) NOT NULL,
-  `idOption` int(11) NOT NULL,
-  PRIMARY KEY (`noEtudiant`),
-  KEY `options` (`idOption`)
+  `reussiteBTS` int DEFAULT NULL,
+  `sexe` tinyint(1) NOT NULL DEFAULT '1',
+  `redoublantPremAnnee` tinyint(1) DEFAULT NULL,
+  `idOption#` int NOT NULL,
+  `idSortie#` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `etudiant`
+--
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `motDePasses`
+--
+
+CREATE TABLE `motDePasses` (
+  `cleacces` varchar(64) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `motDePasses`
+--
+
 
 -- --------------------------------------------------------
 
@@ -50,14 +71,16 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
 -- Structure de la table `options`
 --
 
-DROP TABLE IF EXISTS `options`;
-CREATE TABLE IF NOT EXISTS `options` (
-  `idOptions` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `options` (
+  `idOption` int NOT NULL,
   `nomOption` varchar(30) NOT NULL,
-  `idOrigine` int(11) NOT NULL,
-  PRIMARY KEY (`idOptions`),
-  KEY `origine` (`idOrigine`)
+  `idOrigine#` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `options`
+--
+
 
 -- --------------------------------------------------------
 
@@ -65,22 +88,97 @@ CREATE TABLE IF NOT EXISTS `options` (
 -- Structure de la table `origine`
 --
 
-DROP TABLE IF EXISTS `origine`;
-CREATE TABLE IF NOT EXISTS `origine` (
-  `idOrigine` int(11) NOT NULL AUTO_INCREMENT,
-  `nomOrigine` varchar(30) NOT NULL,
-  PRIMARY KEY (`idOrigine`)
+CREATE TABLE `origine` (
+  `idOrigine` int NOT NULL,
+  `nomOrigine` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Structure de la table `origine`
+-- Déchargement des données de la table `origine`
 --
 
-DROP TABLE IF EXISTS `motDePasses`;
-CREATE TABLE IF NOT EXISTS `motDePasses` (
-  `cleacces` varchar(20) NOT NULL,
-  PRIMARY KEY (`cleacces`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Sortie`
+--
+
+CREATE TABLE `Sortie` (
+  `idSortie` int NOT NULL,
+  `labelSortie` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `Sortie`
+--
+
+INSERT INTO `Sortie` (`idSortie`, `labelSortie`) VALUES
+(6, 'licence ou master'),
+(7, 'licence pro ou certification RNCP'),
+(8, 'réorientation'),
+(9, 'activité professionnelle'),
+(10, 'sans activité');
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `etudiant`
+--
+ALTER TABLE `etudiant`
+  ADD PRIMARY KEY (`noEtudiant`),
+  ADD KEY `options` (`idOption#`),
+  ADD KEY `sortie` (`idSortie#`) USING BTREE;
+
+--
+-- Index pour la table `motDePasses`
+--
+ALTER TABLE `motDePasses`
+  ADD PRIMARY KEY (`cleacces`);
+
+--
+-- Index pour la table `options`
+--
+ALTER TABLE `options`
+  ADD PRIMARY KEY (`idOption`),
+  ADD KEY `origine` (`idOrigine#`);
+
+--
+-- Index pour la table `origine`
+--
+ALTER TABLE `origine`
+  ADD PRIMARY KEY (`idOrigine`);
+
+--
+-- Index pour la table `Sortie`
+--
+ALTER TABLE `Sortie`
+  ADD PRIMARY KEY (`idSortie`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `options`
+--
+ALTER TABLE `options`
+  MODIFY `idOption` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `origine`
+--
+ALTER TABLE `origine`
+  MODIFY `idOrigine` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `Sortie`
+--
+ALTER TABLE `Sortie`
+  MODIFY `idSortie` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Contraintes pour les tables déchargées
@@ -90,13 +188,18 @@ CREATE TABLE IF NOT EXISTS `motDePasses` (
 -- Contraintes pour la table `etudiant`
 --
 ALTER TABLE `etudiant`
-  ADD CONSTRAINT `options` FOREIGN KEY (`idOption`) REFERENCES `options` (`idOptions`);
+  ADD CONSTRAINT `options` FOREIGN KEY (`idOption#`) REFERENCES `options` (`idOption`);
 
 --
 -- Contraintes pour la table `options`
 --
 ALTER TABLE `options`
-  ADD CONSTRAINT `origine` FOREIGN KEY (`idOrigine`) REFERENCES `origine` (`idOrigine`);
+  ADD CONSTRAINT `origine` FOREIGN KEY (`idOrigine#`) REFERENCES `origine` (`idOrigine`);
+
+
+  ALTER TABLE `etudiant`
+  ADD CONSTRAINT `Sortie` FOREIGN KEY (`idSortie#`) REFERENCES `options` (`idSortie`);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
