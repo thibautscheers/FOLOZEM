@@ -36,7 +36,14 @@ function getOrigines($id_Origine) //funtion pour lire les origine
     $res->execute();
     return $res->fetch();
 }
-
+function getSortie($id_Sortie) //function pour lire les sortie avec contrainte utilisé pour une liste déroulante
+{
+    $pdo = connexion();
+    $res = $pdo->prepare("SELECT * FROM `Sortie` WHERE idSortie=:id_Sortie");
+    $res->bindParam(":id_Sortie", $id_Sortie, PDO::PARAM_INT);
+    $res->execute();
+    return $res->fetch();
+}
 function modifaccess($cleacces) // fonction pour modifier le MDP
 {
     $pdo = connexion();
@@ -44,10 +51,10 @@ function modifaccess($cleacces) // fonction pour modifier le MDP
     $res->execute();
 }
 
-function modifEleve($noEtudiant, $anneeSIO, $optionBTS, $semAbandon, $alternance, $reussiteBTS, $sexe, $redoublantPremAnnee) //function pour modifier les information des élève
+function modifEleve($noEtudiant, $anneeSIO, $optionBTS, $semAbandon, $alternance, $reussiteBTS, $sexe, $redoublantPremAnnee,$Sortie) //function pour modifier les information des élève
 {
     $pdo = connexion();
-    $res = $pdo->prepare("UPDATE `etudiant` SET `premiereAnnee`=:anneeSIO,`optionSLAM`=:optionBTS,`semAbandon`=:semAbandon,`alternance`=:alternance,`reussiteBTS`=:reussiteBTS,`sexe`=:sexe,`redoublantPremAnnee`=:redoublantPremAnnee  WHERE `noEtudiant`= :noEtudiant");
+    $res = $pdo->prepare("UPDATE `etudiant` SET `premiereAnnee`=:anneeSIO,`optionSLAM`=:optionBTS,`semAbandon`=:semAbandon,`alternance`=:alternance,`reussiteBTS`=:reussiteBTS,`sexe`=:sexe,`redoublantPremAnnee`=:redoublantPremAnnee,`idSortie#`=:Sortie  WHERE `noEtudiant`= :noEtudiant");
     $res->bindParam("noEtudiant", $noEtudiant, PDO::PARAM_INT);
     $res->bindParam("anneeSIO", $anneeSIO, PDO::PARAM_BOOL);
     if ($optionBTS == 'NULL') {
@@ -66,12 +73,17 @@ function modifEleve($noEtudiant, $anneeSIO, $optionBTS, $semAbandon, $alternance
     } else {
         $res->bindParam("reussiteBTS", $reussiteBTS, PDO::PARAM_INT);
     }
-    
+
     $res->bindParam("sexe", $sexe, PDO::PARAM_BOOL);
     if ($redoublantPremAnnee == 'NULL') {
         $res->bindParam("redoublantPremAnnee", $redoublantPremAnnee, PDO::PARAM_NULL);
     } else {
         $res->bindParam("redoublantPremAnnee", $redoublantPremAnnee, PDO::PARAM_BOOL);
+    }
+    if ($Sortie == 'NULL') {
+        $res->bindParam("Sortie", $Sortie, PDO::PARAM_NULL);
+    } else {
+        $res->bindParam("Sortie", $Sortie, PDO::PARAM_INT);
     }
 
     $res->execute();
@@ -130,31 +142,39 @@ function ajoutOption($nomOption, $idOrigine) //function pour ajouter des options
     return $res;
 }
 
-function getEtudiantAnneeOption($filtreAnnee, $premiereAnnee, $optionSLAM) {
+function getEtudiantAnneeOption($filtreAnnee, $premiereAnnee, $optionSLAM)
+{
     $pdo = connexion();
 
 
     //Pour stats general en fonction d'une annee
-    if(isset($filtreAnnee) and $optionSLAM === NULL and $premiereAnnee === NULL) {
+    if (isset($filtreAnnee) and $optionSLAM === NULL and $premiereAnnee === NULL) {
         $res = $pdo->prepare("SELECT * FROM etudiant WHERE anneeArrivee=$filtreAnnee");
     }
 
     //Pour stats en fonction d'une annee et de l'annee du bts des eleves
-    if(isset($filtreAnnee) and $optionSLAM === NULL and isset($premiereAnnee)) {
+    if (isset($filtreAnnee) and $optionSLAM === NULL and isset($premiereAnnee)) {
         $res = $pdo->prepare("SELECT * FROM etudiant WHERE anneeArrivee=$filtreAnnee and premiereAnnee=$premiereAnnee");
     }
-    if($filtreAnnee === NULL and $optionSLAM === NULL and isset($premiereAnnee)) {
+    if ($filtreAnnee === NULL and $optionSLAM === NULL and isset($premiereAnnee)) {
         $res = $pdo->prepare("SELECT * FROM etudiant WHERE premiereAnnee=$premiereAnnee");
     }
 
     //Pareil mais avec l'option
-    if(isset($filtreAnnee) and isset($optionSLAM) and isset($premiereAnnee)) {
+    if (isset($filtreAnnee) and isset($optionSLAM) and isset($premiereAnnee)) {
         $res = $pdo->prepare("SELECT * FROM etudiant WHERE anneeArrivee=$filtreAnnee and premiereAnnee=$premiereAnnee and optionSLAM=$optionSLAM");
     }
-    if($filtreAnnee === NULL and isset($optionSLAM) and isset($premiereAnnee)) {
+    if ($filtreAnnee === NULL and isset($optionSLAM) and isset($premiereAnnee)) {
         $res = $pdo->prepare("SELECT * FROM etudiant WHERE premiereAnnee=$premiereAnnee and optionSLAM=$optionSLAM");
     }
 
+    $res->execute();
+    return $res;
+}
+function lireSortie() //function pour lire les sortie sans contrainte utilisé pour une liste déroulante
+{
+    $pdo = connexion();
+    $res = $pdo->prepare("SELECT * FROM `Sortie`");
     $res->execute();
     return $res;
 }

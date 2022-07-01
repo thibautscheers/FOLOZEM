@@ -47,6 +47,7 @@
                     <td colspan="1"><b>Réussite BTS</td>
                     <td colspan="1"><b>Origine</td>
                     <td colspan="1"><b>Option d'origine</td>
+                    <td colspan="1"><b>Après BTS</b>
                     <td colspan="1"><b>Modification</b></td>
                     <td></td>
                 </thead>
@@ -128,8 +129,8 @@
                     $reussiteBTS = "Non passé";
                 } elseif ($Etudiant['reussiteBTS'] == 0) {
                     $reussiteBTS = "Non Réussit/Non passé";
-                } else{
-                    $reussiteBTS = "BTS Réussit l'année ". $Etudiant['reussiteBTS'];
+                } else {
+                    $reussiteBTS = "BTS Réussit l'année " . $Etudiant['reussiteBTS'];
                 }
 
                 if ($Etudiant['alternance'] == 1) { // Affiche dynamiquement l'alternance de l'étudiant
@@ -148,6 +149,17 @@
                 $id_Origine = $Options['idOrigine#'];
                 $Origines = getOrigines($id_Origine);
                 $Origine = $Origines['nomOrigine'];
+                
+                
+                $id_Sortie= $Etudiant['idSortie#'];
+                if ($id_Sortie == NULL) {
+                    $Sortie = "Non spécifié";
+                }else{$Sorties = getSortie($id_Sortie);
+                    $Sortie = $Sorties['labelSortie'];
+                }
+                
+                
+            
             ?>
 
                 <form method='POST' action='modifEleves.php' class="form-inline">
@@ -158,15 +170,16 @@
                         <td><?php echo ($prenom) ?></td>
                         <td><?php echo ($sexe) ?></td>
                         <td><?php echo ($premiereAnnee) ?></td>
-                        <td><?php echo($redoublantPremAnnee)?></td>
+                        <td><?php echo ($redoublantPremAnnee) ?></td>
                         <td><?php echo ($optionSLAM) ?></td>
                         <td><?php echo ($semAbandon) ?></td>
                         <td><?php echo ($anneeArrivee) ?></td>
                         <td><?php echo ($departement) ?></td>
                         <td><?php echo ($alternance) ?></td>
-                        <td> <?php echo ($reussiteBTS) ?>
+                        <td><?php echo ($reussiteBTS) ?>
                         <td><?php echo ($Origine) ?></td>
                         <td><?php echo ($Option) ?></td>
+                        <td><?php echo ($Sortie) ?></td>
                         <td> <select name="sexe" class="form-select-sm">
                                 <option value="1">Masculin</option>
                                 <option value="0">Féminin</option>
@@ -199,7 +212,21 @@
                                 <option value='0'>ne fait pas d'alternance</option>
                             </select>
                             <input type="number" name="reussiteBTS" class="input-group-sm">
+                            Après BTS:
+                            <select name="sortie" class="form-select-sm">
+                                <option value="NULL"></option>
+                                <?php
+
+                                $sorties = lireSortie();
+
+                                foreach ($sorties as $sortie) {
+                                    $idOption = $sortie['idSortie'];
+                                    $nomOption  = $sortie['labelSortie'];
+                                    echo ("<option value='$idOption'>$nomOption</option>");
+                                }
+                                ?>
                             <input type='submit' class="btn btn-outline-primary btn-sm" value='Modifier'>
+                            
                         </td>
                 </form>
                 <td>
