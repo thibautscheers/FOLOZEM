@@ -10,6 +10,7 @@
     <link href="style/navbar.css" type="text/css" rel="stylesheet" />
     <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
 </head>
 
 <body style="margin-top: 60px; background-color: beige;">
@@ -192,31 +193,95 @@
             </tr>
         </table>
         ");
-
-        echo("
-        <form action='graph.php' method='post'>
-            <input type='text' value=$nbrPremiereAnnee hidden name='nbrPremiereAnnee'>
-            <input type='text' value=$nbrSecondAnnee hidden name='nbrSecondAnnee'>
-
-            <input type='text' value=$SLAM hidden name='SLAM'>
-            <input type='text' value=$SISR hidden name='SISR'>
-            <input type='text' value=$PasOption hidden name='sansOption'>
-            <input type='submit' value='Afficher graphique des statistiques'>
-        </form>
-        ")
     ?>
 
     <div>Afficher graphiques</div>
     <input type='checkbox' value='' id='graphCheckbox'>
+    <div id='graphsPlacement' hidden='true'>
+        <canvas id='graphAnnee' style='display: inline;'> </canvas>
+        <canvas id='graphOptions' style='display: inline;'> </canvas>
+    </div>
 
     <script>
+        //graph de la repartition des sio1/sio2
+        let ctx1 = document.getElementById('graphAnnee').getContext('2d')
+        let nbrPremiereAnnee = <?php echo ($nbrPremiereAnnee) ?>;
+        let nbrSecondAnnee = <?php echo ($nbrSecondAnnee) ?>;
+        let labels1 = ["Première années", "Seconde années"]
+        let data1 = {
+            labels: labels1,
+            datasets: [{
+                data: [nbrPremiereAnnee, nbrSecondAnnee],
+                backgroundColor: [
+                    "#FF6384",
+                    "#4BC0C0",
+                    "#FFCE56",
+                    "#E7E9ED",
+                    "#36A2EB"
+                ],
+                hoverOffset: 4,
+                borderColor: ['#2338'],
+                circumference: [180],
+                rotation: [270],
+
+            }]
+        }
+        let options1 = {
+            responsive: false,
+        }
+        let config1 = {
+            type: 'pie',
+            data: data1,
+            options: options1
+        }
+
+        let graph1 = new Chart(ctx1, config1)
+
+
+
+        //graph de la repartition des Options
+        let ctx2 = document.getElementById('graphOptions').getContext('2d')
+        let labels2 = ["SLAM", "SISR", "Sans option"]
+        let slam = <?php echo($SLAM) ?>;
+        let sisr = <?php echo($SISR) ?>;
+        let sansOption = <?php echo($PasOption) ?>;
+        let data2 = {
+            labels: labels2,
+            datasets: [{
+                data: [slam, sisr, sansOption],
+                backgroundColor: [
+                    "#FF6384",
+                    "#4BC0C0",
+                    "#FFCE56",
+                    "#E7E9ED",
+                    "#36A2EB"
+                ],
+                hoverOffset: 4,
+                borderColor: ['#2338'],
+                circumference: [180],
+                rotation: [270],
+
+            }]
+        }
+        let options2 = {
+            responsive: false,
+        }
+        let config2 = {
+            type: 'pie',
+            data: data2,
+            options: options2
+        }
+
+        let graph2 = new Chart(ctx2, config2)
+
 
         let graphCheckbox = document.getElementById("graphCheckbox")
+        let graphsPlacement = document.getElementById("graphsPlacement")
         graphCheckbox.addEventListener("change", showgraph => {
             if(showgraph.target.checked == true) {
-                console.log("checkbox checked")
+                graphsPlacement.hidden = false
             } else {
-                console.log("checkbox unchecked")
+                graphsPlacement.hidden = true
             }
         })
 
