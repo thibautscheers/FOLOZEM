@@ -148,8 +148,8 @@
                     $nbrSecondAnnee = 0;
                     print_r($nbrSecondAnnee);
                 } else{
-                    $nbrSecondAnnee = 100 - round(($nbrPremiereAnnee / $Rows) * 100, 2);
-                    echo($nbrSecondAnnee);
+                    $nbrSecondAnnee = $Rows - $nbrPremiereAnnee;
+                    echo(100 - round(($nbrPremiereAnnee / $Rows) * 100, 2));
                 }
                 echo(
                 "%</td>
