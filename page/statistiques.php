@@ -67,6 +67,13 @@
         $nbrRedoublant1Annee = 0;
         $nbrRedoublant2Annee = 0;
         $nbrNonRedoublant = 0;
+        $idSorties = [];
+        $licenceOuMaster = 0;
+        $licenceOuCertification = 0;
+        $reorientation = 0;
+        $activiteProfessionelle = 0;
+        $sansActivite = 0;
+        $sortieNonPrecise = 0;
         foreach($Etudiants as $Etudiant) {
             $Rows = $Rows + 1;
             if($Etudiant['premiereAnnee'] == 1) {
@@ -119,6 +126,8 @@
                 $nbrNonRedoublant = $nbrNonRedoublant + 1;
             }
 
+            array_push($idSorties, $Etudiant['idSortie#']);
+
         }
         if($Rows == 0) {
             $Rows = 1;
@@ -139,6 +148,7 @@
                 <td>Taux de garçons</td>
                 <td>Taux de filles</td>
                 <td>Redoublants</td>
+                <td>Sortie du BTS</td>
                 </thead>
             </tr>
             <tr>
@@ -188,6 +198,40 @@
                 print_r("1ère année : ". round(($nbrRedoublant1Annee / $Rows) * 100, 2). "%");
                 print_r("<br>2ême année : ". round(($nbrRedoublant2Annee / $Rows) * 100, 2). "%");
                 print_r("<br>Pas redoublé: ". round(($nbrNonRedoublant / $Rows) * 100, 2). "%");
+        echo(
+                "</td>
+                <td>");
+                if(count($idSorties) == 0) {
+                    print_r("<br>Sortie Non Précisée : 100%");
+                } else {
+                    for($i = 0; $i<$Rows; $i++) {
+                    
+                        if($idSorties[$i] == 6) {
+                            $licenceOuMaster = $licenceOuMaster + 1;
+                        }
+                        if($idSorties[$i] == 7) {
+                            $licenceOuCertification = $licenceOuCertification + 1;
+                        }
+                        if($idSorties[$i] == 8) {
+                            $reorientation = $reorientation + 1;
+                        }
+                        if($idSorties[$i] == 9) {
+                            $activiteProfessionelle = $activiteProfessionelle + 1;
+                        }
+                        if($idSorties[$i] == 10) {
+                            $sansActivite = $sansActivite + 1;
+                        }
+                        if($idSorties[$i] == NULL or $idSorties[$i] == "") {
+                            $sortieNonPrecise = $sortieNonPrecise + 1;
+                        }
+                    }
+                    print_r("Licence ou Master : ". round(($licenceOuMaster / $Rows) * 100, 2). "%");
+                    print_r("<br>Licence ou Certification : ". round(($licenceOuCertification / $Rows) * 100, 2). "%");
+                    print_r("<br>Réorientation : ". round(($reorientation / $Rows) * 100, 2). "%");
+                    print_r("<br>Activité Professionelle : ". round(($activiteProfessionelle / $Rows) * 100, 2). "%");
+                    print_r("<br>Sans Activité : ". round(($sansActivite / $Rows) * 100, 2). "%");
+                    print_r("<br>Sortie Non Précisée : ". round(($sortieNonPrecise / $Rows) * 100, 2). "%");
+                }
         echo(
                 "</td>
             </tr>
@@ -318,6 +362,13 @@
         $nbrRedoublant1Annee = 0;
         $nbrRedoublant2Annee = 0;
         $nbrNonRedoublant = 0;
+        $idSorties = [];
+        $licenceOuMaster = 0;
+        $licenceOuCertification = 0;
+        $reorientation = 0;
+        $activiteProfessionelle = 0;
+        $sansActivite = 0;
+        $sortieNonPrecise = 0;
         foreach($Etudiants as $Etudiant) {
             $Rows = $Rows + 1;
             if($Etudiant['premiereAnnee'] == 1) {
@@ -370,6 +421,8 @@
                 $nbrNonRedoublant = $nbrNonRedoublant + 1;
             }
 
+            array_push($idSorties, $Etudiant['idSortie#']);
+
         }
         if($Rows == 0) {
             $Rows = 1;
@@ -388,6 +441,7 @@
                 <td>Taux de garçons</td>
                 <td>Taux de filles</td>
                 <td>Redoublants</td>
+                <td>Sortie du BTS</td>
                 </thead>
             </tr>
             <tr>
@@ -426,7 +480,41 @@
                 print_r("1ère année : ". round(($nbrRedoublant1Annee / $Rows) * 100, 2). "%");
                 print_r("<br>2ême année : ". round(($nbrRedoublant2Annee / $Rows) * 100, 2). "%");
                 print_r("<br>Pas redoublé: ". round(($nbrNonRedoublant / $Rows) * 100, 2). "%");
-        echo(
+                echo(
+                    "</td>
+                    <td>");
+                    if(count($idSorties) == 0) {
+                        print_r("<br>Sortie Non Précisée : 100%");
+                    } else {
+                        for($i = 0; $i<$Rows; $i++) {
+                        
+                            if($idSorties[$i] == 6) {
+                                $licenceOuMaster = $licenceOuMaster + 1;
+                            }
+                            if($idSorties[$i] == 7) {
+                                $licenceOuCertification = $licenceOuCertification + 1;
+                            }
+                            if($idSorties[$i] == 8) {
+                                $reorientation = $reorientation + 1;
+                            }
+                            if($idSorties[$i] == 9) {
+                                $activiteProfessionelle = $activiteProfessionelle + 1;
+                            }
+                            if($idSorties[$i] == 10) {
+                                $sansActivite = $sansActivite + 1;
+                            }
+                            if($idSorties[$i] == NULL or $idSorties[$i] == "") {
+                                $sortieNonPrecise = $sortieNonPrecise + 1;
+                            }
+                        }
+                        print_r("Licence ou Master : ". round(($licenceOuMaster / $Rows) * 100, 2). "%");
+                        print_r("<br>Licence ou Certification : ". round(($licenceOuCertification / $Rows) * 100, 2). "%");
+                        print_r("<br>Réorientation : ". round(($reorientation / $Rows) * 100, 2). "%");
+                        print_r("<br>Activité Professionelle : ". round(($activiteProfessionelle / $Rows) * 100, 2). "%");
+                        print_r("<br>Sans Activité : ". round(($sansActivite / $Rows) * 100, 2). "%");
+                        print_r("<br>Sortie Non Précisée : ". round(($sortieNonPrecise / $Rows) * 100, 2). "%");
+                    }
+            echo(
                 "</td>
             </tr>
         </table>
@@ -461,6 +549,13 @@
         $nbrRedoublant1Annee = 0;
         $nbrRedoublant2Annee = 0;
         $nbrNonRedoublant = 0;
+        $idSorties = [];
+        $licenceOuMaster = 0;
+        $licenceOuCertification = 0;
+        $reorientation = 0;
+        $activiteProfessionelle = 0;
+        $sansActivite = 0;
+        $sortieNonPrecise = 0;
         foreach($Etudiants as $Etudiant) {
             $Rows = $Rows + 1;
             if($Etudiant['premiereAnnee'] == 1) {
@@ -513,6 +608,8 @@
                 $nbrNonRedoublant = $nbrNonRedoublant + 1;
             }
 
+            array_push($idSorties, $Etudiant['idSortie#']);
+
         }
         if($Rows == 0) {
             $Rows = 1;
@@ -528,6 +625,7 @@
                 <td>Taux de garçons</td>
                 <td>Taux de filles</td>
                 <td>Redoublants</td>
+                <td>Sortie du BTS</td>
                 </thead>
             </tr>
             <tr>
@@ -561,8 +659,42 @@
                 print_r("1ère année : ". round(($nbrRedoublant1Annee / $Rows) * 100, 2). "%");
                 print_r("<br>2ême année : ". round(($nbrRedoublant2Annee / $Rows) * 100, 2). "%");
                 print_r("<br>Pas redoublé: ". round(($nbrNonRedoublant / $Rows) * 100, 2). "%");
-        echo(
-                "</td>
+                echo(
+                    "</td>
+                    <td>");
+                    if(count($idSorties) == 0) {
+                        print_r("<br>Sortie Non Précisée : 100%");
+                    } else {
+                        for($i = 0; $i<$Rows; $i++) {
+                        
+                            if($idSorties[$i] == 6) {
+                                $licenceOuMaster = $licenceOuMaster + 1;
+                            }
+                            if($idSorties[$i] == 7) {
+                                $licenceOuCertification = $licenceOuCertification + 1;
+                            }
+                            if($idSorties[$i] == 8) {
+                                $reorientation = $reorientation + 1;
+                            }
+                            if($idSorties[$i] == 9) {
+                                $activiteProfessionelle = $activiteProfessionelle + 1;
+                            }
+                            if($idSorties[$i] == 10) {
+                                $sansActivite = $sansActivite + 1;
+                            }
+                            if($idSorties[$i] == NULL or $idSorties[$i] == "") {
+                                $sortieNonPrecise = $sortieNonPrecise + 1;
+                            }
+                        }
+                        print_r("Licence ou Master : ". round(($licenceOuMaster / $Rows) * 100, 2). "%");
+                        print_r("<br>Licence ou Certification : ". round(($licenceOuCertification / $Rows) * 100, 2). "%");
+                        print_r("<br>Réorientation : ". round(($reorientation / $Rows) * 100, 2). "%");
+                        print_r("<br>Activité Professionelle : ". round(($activiteProfessionelle / $Rows) * 100, 2). "%");
+                        print_r("<br>Sans Activité : ". round(($sansActivite / $Rows) * 100, 2). "%");
+                        print_r("<br>Sortie Non Précisée : ". round(($sortieNonPrecise / $Rows) * 100, 2). "%");
+                    }
+            echo(
+                    "</td>
             </tr>
         </table>
         ");
@@ -596,6 +728,13 @@
         $nbrRedoublant1Annee = 0;
         $nbrRedoublant2Annee = 0;
         $nbrNonRedoublant = 0;
+        $idSorties = [];
+        $licenceOuMaster = 0;
+        $licenceOuCertification = 0;
+        $reorientation = 0;
+        $activiteProfessionelle = 0;
+        $sansActivite = 0;
+        $sortieNonPrecise = 0;
         foreach($Etudiants as $Etudiant) {
             $Rows = $Rows + 1;
             if($Etudiant['premiereAnnee'] == 1) {
@@ -648,6 +787,8 @@
                 $nbrNonRedoublant = $nbrNonRedoublant + 1;
             }
 
+            array_push($idSorties, $Etudiant['idSortie#']);
+
         }
         if($Rows == 0) {
             $Rows = 1;
@@ -663,6 +804,7 @@
                 <td>Taux de garçons</td>
                 <td>Taux de filles</td>
                 <td>Redoublants</td>
+                <td>Sortie du BTS</td>
                 </thead>
             </tr>
             <tr>
@@ -698,8 +840,42 @@
                 print_r("1ère année : ". round(($nbrRedoublant1Annee / $Rows) * 100, 2). "%");
                 print_r("<br>2ême année : ". round(($nbrRedoublant2Annee / $Rows) * 100, 2). "%");
                 print_r("<br>Pas redoublé: ". round(($nbrNonRedoublant / $Rows) * 100, 2). "%");
-        echo(
-                "</td>
+                echo(
+                    "</td>
+                    <td>");
+                    if(count($idSorties) == 0) {
+                        print_r("<br>Sortie Non Précisée : 100%");
+                    } else {
+                        for($i = 0; $i<$Rows; $i++) {
+                        
+                            if($idSorties[$i] == 6) {
+                                $licenceOuMaster = $licenceOuMaster + 1;
+                            }
+                            if($idSorties[$i] == 7) {
+                                $licenceOuCertification = $licenceOuCertification + 1;
+                            }
+                            if($idSorties[$i] == 8) {
+                                $reorientation = $reorientation + 1;
+                            }
+                            if($idSorties[$i] == 9) {
+                                $activiteProfessionelle = $activiteProfessionelle + 1;
+                            }
+                            if($idSorties[$i] == 10) {
+                                $sansActivite = $sansActivite + 1;
+                            }
+                            if($idSorties[$i] == NULL or $idSorties[$i] == "") {
+                                $sortieNonPrecise = $sortieNonPrecise + 1;
+                            }
+                        }
+                        print_r("Licence ou Master : ". round(($licenceOuMaster / $Rows) * 100, 2). "%");
+                        print_r("<br>Licence ou Certification : ". round(($licenceOuCertification / $Rows) * 100, 2). "%");
+                        print_r("<br>Réorientation : ". round(($reorientation / $Rows) * 100, 2). "%");
+                        print_r("<br>Activité Professionelle : ". round(($activiteProfessionelle / $Rows) * 100, 2). "%");
+                        print_r("<br>Sans Activité : ". round(($sansActivite / $Rows) * 100, 2). "%");
+                        print_r("<br>Sortie Non Précisée : ". round(($sortieNonPrecise / $Rows) * 100, 2). "%");
+                    }
+            echo(
+                    "</td>
             </tr>
         </table>
         ");
@@ -735,6 +911,13 @@
         $nbrRedoublant1Annee = 0;
         $nbrRedoublant2Annee = 0;
         $nbrNonRedoublant = 0;
+        $idSorties = [];
+        $licenceOuMaster = 0;
+        $licenceOuCertification = 0;
+        $reorientation = 0;
+        $activiteProfessionelle = 0;
+        $sansActivite = 0;
+        $sortieNonPrecise = 0;
         foreach($Etudiants as $Etudiant) {
             $Rows = $Rows + 1;
             if($Etudiant['premiereAnnee'] == 1) {
@@ -787,6 +970,8 @@
                 $nbrNonRedoublant = $nbrNonRedoublant + 1;
             }
 
+            array_push($idSorties, $Etudiant['idSortie#']);
+
         }
         if($Rows == 0) {
             $Rows = 1;
@@ -805,6 +990,7 @@
                 <td>Taux de garçons</td>
                 <td>Taux de filles</td>
                 <td>Redoublants</td>
+                <td>Sortie du BTS</td>
                 </thead>
             </tr>
             <tr>
@@ -843,8 +1029,42 @@
                 print_r("1ère année : ". round(($nbrRedoublant1Annee / $Rows) * 100, 2). "%");
                 print_r("<br>2ême année : ". round(($nbrRedoublant2Annee / $Rows) * 100, 2). "%");
                 print_r("<br>Pas redoublé: ". round(($nbrNonRedoublant / $Rows) * 100, 2). "%");
-        echo(
-                "</td>
+                echo(
+                    "</td>
+                    <td>");
+                    if(count($idSorties) == 0) {
+                        print_r("<br>Sortie Non Précisée : 100%");
+                    } else {
+                        for($i = 0; $i<$Rows; $i++) {
+                        
+                            if($idSorties[$i] == 6) {
+                                $licenceOuMaster = $licenceOuMaster + 1;
+                            }
+                            if($idSorties[$i] == 7) {
+                                $licenceOuCertification = $licenceOuCertification + 1;
+                            }
+                            if($idSorties[$i] == 8) {
+                                $reorientation = $reorientation + 1;
+                            }
+                            if($idSorties[$i] == 9) {
+                                $activiteProfessionelle = $activiteProfessionelle + 1;
+                            }
+                            if($idSorties[$i] == 10) {
+                                $sansActivite = $sansActivite + 1;
+                            }
+                            if($idSorties[$i] == NULL or $idSorties[$i] == "") {
+                                $sortieNonPrecise = $sortieNonPrecise + 1;
+                            }
+                        }
+                        print_r("Licence ou Master : ". round(($licenceOuMaster / $Rows) * 100, 2). "%");
+                        print_r("<br>Licence ou Certification : ". round(($licenceOuCertification / $Rows) * 100, 2). "%");
+                        print_r("<br>Réorientation : ". round(($reorientation / $Rows) * 100, 2). "%");
+                        print_r("<br>Activité Professionelle : ". round(($activiteProfessionelle / $Rows) * 100, 2). "%");
+                        print_r("<br>Sans Activité : ". round(($sansActivite / $Rows) * 100, 2). "%");
+                        print_r("<br>Sortie Non Précisée : ". round(($sortieNonPrecise / $Rows) * 100, 2). "%");
+                    }
+            echo(
+                    "</td>
             </tr>
         </table>
         ");
@@ -878,6 +1098,13 @@
         $nbrRedoublant1Annee = 0;
         $nbrRedoublant2Annee = 0;
         $nbrNonRedoublant = 0;
+        $idSorties = [];
+        $licenceOuMaster = 0;
+        $licenceOuCertification = 0;
+        $reorientation = 0;
+        $activiteProfessionelle = 0;
+        $sansActivite = 0;
+        $sortieNonPrecise = 0;
         foreach($Etudiants as $Etudiant) {
             $Rows = $Rows + 1;
             if($Etudiant['premiereAnnee'] == 1) {
@@ -930,6 +1157,8 @@
                 $nbrNonRedoublant = $nbrNonRedoublant + 1;
             }
 
+            array_push($idSorties, $Etudiant['idSortie#']);
+
         }
         if($Rows == 0) {
             $Rows = 1;
@@ -945,6 +1174,7 @@
                 <td>Taux de garçons</td>
                 <td>Taux de filles</td>
                 <td>Redoublants</td>
+                <td>Sortie du BTS</td>
                 </thead>
             </tr>
             <tr>
@@ -980,8 +1210,42 @@
                 print_r("1ère année : ". round(($nbrRedoublant1Annee / $Rows) * 100, 2). "%");
                 print_r("<br>2ême année : ". round(($nbrRedoublant2Annee / $Rows) * 100, 2). "%");
                 print_r("<br>Pas redoublé: ". round(($nbrNonRedoublant / $Rows) * 100, 2). "%");
-        echo(
-                "</td>
+                echo(
+                    "</td>
+                    <td>");
+                    if(count($idSorties) == 0) {
+                        print_r("<br>Sortie Non Précisée : 100%");
+                    } else {
+                        for($i = 0; $i<$Rows; $i++) {
+                        
+                            if($idSorties[$i] == 6) {
+                                $licenceOuMaster = $licenceOuMaster + 1;
+                            }
+                            if($idSorties[$i] == 7) {
+                                $licenceOuCertification = $licenceOuCertification + 1;
+                            }
+                            if($idSorties[$i] == 8) {
+                                $reorientation = $reorientation + 1;
+                            }
+                            if($idSorties[$i] == 9) {
+                                $activiteProfessionelle = $activiteProfessionelle + 1;
+                            }
+                            if($idSorties[$i] == 10) {
+                                $sansActivite = $sansActivite + 1;
+                            }
+                            if($idSorties[$i] == NULL or $idSorties[$i] == "") {
+                                $sortieNonPrecise = $sortieNonPrecise + 1;
+                            }
+                        }
+                        print_r("Licence ou Master : ". round(($licenceOuMaster / $Rows) * 100, 2). "%");
+                        print_r("<br>Licence ou Certification : ". round(($licenceOuCertification / $Rows) * 100, 2). "%");
+                        print_r("<br>Réorientation : ". round(($reorientation / $Rows) * 100, 2). "%");
+                        print_r("<br>Activité Professionelle : ". round(($activiteProfessionelle / $Rows) * 100, 2). "%");
+                        print_r("<br>Sans Activité : ". round(($sansActivite / $Rows) * 100, 2). "%");
+                        print_r("<br>Sortie Non Précisée : ". round(($sortieNonPrecise / $Rows) * 100, 2). "%");
+                    }
+            echo(
+                    "</td>
             </tr>
         </table>
         ");
@@ -1015,6 +1279,13 @@
         $nbrRedoublant1Annee = 0;
         $nbrRedoublant2Annee = 0;
         $nbrNonRedoublant = 0;
+        $idSorties = [];
+        $licenceOuMaster = 0;
+        $licenceOuCertification = 0;
+        $reorientation = 0;
+        $activiteProfessionelle = 0;
+        $sansActivite = 0;
+        $sortieNonPrecise = 0;
         foreach($Etudiants as $Etudiant) {
             $Rows = $Rows + 1;
             if($Etudiant['premiereAnnee'] == 1) {
@@ -1067,6 +1338,8 @@
                 $nbrNonRedoublant = $nbrNonRedoublant + 1;
             }
 
+            array_push($idSorties, $Etudiant['idSortie#']);
+
         }
         if($Rows == 0) {
             $Rows = 1;
@@ -1082,6 +1355,7 @@
                 <td>Taux de garçons</td>
                 <td>Taux de filles</td>
                 <td>Redoublants</td>
+                <td>Sortie du BTS</td>
                 </thead>
             </tr>
             <tr>
@@ -1117,8 +1391,42 @@
                 print_r("1ère année : ". round(($nbrRedoublant1Annee / $Rows) * 100, 2). "%");
                 print_r("<br>2ême année : ". round(($nbrRedoublant2Annee / $Rows) * 100, 2). "%");
                 print_r("<br>Pas redoublé: ". round(($nbrNonRedoublant / $Rows) * 100, 2). "%");
-        echo(
-                "</td>
+                echo(
+                    "</td>
+                    <td>");
+                    if(count($idSorties) == 0) {
+                        print_r("<br>Sortie Non Précisée : 100%");
+                    } else {
+                        for($i = 0; $i<$Rows; $i++) {
+                        
+                            if($idSorties[$i] == 6) {
+                                $licenceOuMaster = $licenceOuMaster + 1;
+                            }
+                            if($idSorties[$i] == 7) {
+                                $licenceOuCertification = $licenceOuCertification + 1;
+                            }
+                            if($idSorties[$i] == 8) {
+                                $reorientation = $reorientation + 1;
+                            }
+                            if($idSorties[$i] == 9) {
+                                $activiteProfessionelle = $activiteProfessionelle + 1;
+                            }
+                            if($idSorties[$i] == 10) {
+                                $sansActivite = $sansActivite + 1;
+                            }
+                            if($idSorties[$i] == NULL or $idSorties[$i] == "") {
+                                $sortieNonPrecise = $sortieNonPrecise + 1;
+                            }
+                        }
+                        print_r("Licence ou Master : ". round(($licenceOuMaster / $Rows) * 100, 2). "%");
+                        print_r("<br>Licence ou Certification : ". round(($licenceOuCertification / $Rows) * 100, 2). "%");
+                        print_r("<br>Réorientation : ". round(($reorientation / $Rows) * 100, 2). "%");
+                        print_r("<br>Activité Professionelle : ". round(($activiteProfessionelle / $Rows) * 100, 2). "%");
+                        print_r("<br>Sans Activité : ". round(($sansActivite / $Rows) * 100, 2). "%");
+                        print_r("<br>Sortie Non Précisée : ". round(($sortieNonPrecise / $Rows) * 100, 2). "%");
+                    }
+            echo(
+                    "</td>
             </tr>
         </table>
         ");
