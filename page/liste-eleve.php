@@ -211,6 +211,7 @@
                                 <option value='1'>fait une alternance</option>
                                 <option value='0'>ne fait pas d'alternance</option>
                             </select>
+                            reussite du BTS en :
                             <input type="number" name="reussiteBTS" class="input-group-sm">
                             Après BTS:
                             <select name="sortie" class="form-select-sm">
