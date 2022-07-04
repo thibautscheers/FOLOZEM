@@ -39,7 +39,7 @@
         <input type='submit' value="Appliquez filtre">
     </form>
 
-    <h3>Statistiques Générales</h3>
+    <h3 style="background-color: #FFA500;">Statistiques Générales</h3>
 
     <?php
     
@@ -334,7 +334,7 @@
 
     <br><hr></br>
 
-    <h3>Statistiques SIO1</h3>
+    <h3 style="background-color: #FFA500;">Statistiques SIO1</h3>
 
     <?php
 
@@ -883,7 +883,7 @@
 
     <br><hr></br>
 
-    <h3>Statistiques SIO2</h3>
+    <h3 style="background-color: #FFA500;">Statistiques SIO2</h3>
 
     <?php
 
