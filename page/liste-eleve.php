@@ -128,7 +128,7 @@
                 if (!isset($Etudiant['reussiteBTS'])) { // Affiche dynamiquement l'année de l'étudiant
                     $reussiteBTS = "Non passé";
                 } elseif ($Etudiant['reussiteBTS'] == 0) {
-                    $reussiteBTS = "Non Réussit/Non passé";
+                    $reussiteBTS = "Non Réussit";
                 } else {
                     $reussiteBTS = "BTS Réussit l'année " . $Etudiant['reussiteBTS'];
                 }
@@ -210,9 +210,9 @@
                             <select name='alternance' class="form-select-sm">
                                 <option value='1'>fait une alternance</option>
                                 <option value='0'>ne fait pas d'alternance</option>
-                            </select>
+                            </select><br>
                             reussite du BTS en :
-                            <input type="number" name="reussiteBTS" class="input-group-sm">
+                            <input type="number" name="reussiteBTS" class="input-group-sm"><br>
                             Après BTS:
                             <select name="sortie" class="form-select-sm">
                                 <option value="NULL"></option>
