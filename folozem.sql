@@ -198,7 +198,7 @@ ALTER TABLE `options`
 
 
   ALTER TABLE `etudiant`
-  ADD CONSTRAINT `Sortie` FOREIGN KEY (`idSortie#`) REFERENCES `options` (`idSortie`);
+  ADD CONSTRAINT `Sortie` FOREIGN KEY (`idSortie#`) REFERENCES `Sorite` (`idSortie`);
 
 COMMIT;
 
