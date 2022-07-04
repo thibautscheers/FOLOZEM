@@ -42,12 +42,12 @@
         <h3 class="text-decoration-underline">Importation des fichier CSV</h3>
         <p> Pour importer un fichier CSV, il faut d'abord le prendre de parcoursup puis l'importer sur le site à partir de la page Importation, puis le site fait le reste pour vous.</p>
     </div>
-    <div id="créateur">
+    <!-- <div id="créateur">
     <h3 class="text-decoration-underline">Créateur du site</h3>
         <p >Site créer pendant stage de 1ère année de SIO de la promotion 2021-2023 par Allan ESCOLANO & Thibaut SCHEERS.
         </p>
 
-    </div>
+    </div> -->
     <form  method="POST" action="modifacces.php">
         <div id="access">
             <h3 class="text-decoration-underline">
@@ -57,11 +57,14 @@
         </div>
     </form>
 
-    <div id="RGPD">
-        <h3 class="text-decoration-underline">RGPD</h3>
-        <p>Pour réspecté la loi sur la protection des données il faudrait garder les données minimun pendant 3 ans maximun pandant 5 ans.</p>
-        <p>Si vous rencontrez un problème, veuillez nous contacter sur notre adresses électroniques : <a href='mailto: folozem@proton.me'>folozem@proton.me<a></p>
-    </div>
+    <footer>
+    <h6>Créateur du site:</h6>
+        <p class="text-sm" >Site créé pendant stage de 1ʳᵉ année de SIO de la promotion 2021-2023 par Allan ESCOLANO & Thibaut SCHEERS. 
+        </p>&nbsp;
+        <h6>RGPD:</h6>
+        <p class="fz-sm-6">Pour respecter la loi sur la protection des données, il faudrait garder les données minimum pendant 3 ans, maximum pendant 5 ans. Si vous rencontrez un problème, veuillez nous contacter sur notre adresse électronique :
+             <a href='mailto: folozem@proton.me'>folozem@proton.me<a></p>
+    </footer>
 
 
 
