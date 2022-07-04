@@ -54,29 +54,31 @@
 
     <div class="col-auto">
         <form action="ajoutEleve.php" class="form-inline" method="POST">
-            Id Etudiant : <input type="number" class="input-group-sm" name="noEtudiant">
-            Nom : <input type="text" class="input-group-sm" name="nom">
-            Prenom : <input type="text" class="input-group-sm" name="prenom">
+            Id Etudiant : <input type="number" class="input-group-sm" name="noEtudiant"><br>
+            Nom : <input type="text" class="input-group-sm" name="nom"><br>
+            Prenom : <input type="text" class="input-group-sm" name="prenom"><br>
+            Sexe :
             <select name="sexe" class="form-select-sm">
                 <option value="1">Masculin</option>
                 <option value="0">Féminin</option>
-            </select>
-
+            </select><br>
+            Classe : 
             <select name='anneeSIO' class="form-select-sm">
                 <option value='1'>SIO 1</option>
                 <option value='0'>SIO 2</option>
-            </select>
+            </select><br>Option du BTS:
             <select name='optionBTS' class="form-select-sm">
                 <option value="NULL"></option>
                 <option value='1'>SLAM</option>
                 <option value='0'>SISR</option>
-            </select>
-            Année d'arrivé : <input type="number" class="input-group-sm" name="anneeArrivee">
-            Département : <input type="number" class="input-group-sm" name="departement">
+            </select><br>
+            Année d'arrivé : <input type="number" class="input-group-sm" name="anneeArrivee"><br>
+            Département : <input type="number" class="input-group-sm" name="departement"><br>
+            alternance:
             <select name='alternance' class="form-select-sm">
                 <option value='1'>fait une alternance</option>
                 <option value='0'>ne fait pas d'alternance</option>
-            </select>
+            </select><br>
             Option D'origine :
             <select name="idOption" class="form-select-sm">
                 <?php
@@ -89,7 +91,7 @@
                     echo ("<option value='$idOption'>$nomOption</option>");
                 }
                 ?>
-            </select>
+            </select><br>
             <input type="submit" class="btn btn-outline-primary btn-sm" value="Ajouter">
         </form>
     </div>
