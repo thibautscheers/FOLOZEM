@@ -26,7 +26,7 @@
         </nav>
     </div>
     <?php 
-    require_once("modele.php");
+    require_once("Modele.php");
     session_start();
 
     if (isset($_SESSION["error"]) && ($_SESSION["error"] != ""))
