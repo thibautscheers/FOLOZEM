@@ -25,8 +25,7 @@
             </ul>
         </nav>
     </div>
-    
-    <form action="" method="get" style='position:fixed; bottom:1%; right:1%; z-index:10;'>
+    <form action="" method="get" style='position:fixed;color: #03a9f4;border: 2px;  border-color: #03a9f4;  border-style: solid; bottom:1%; right:1%; z-index:10;opacity: 0.7;background-color: red;'>
         Filtre : 
         <input name="filtreAnnee" type='number' placeholder='<?php
          if(isset($_GET['filtreAnnee']) and $_GET['filtreAnnee'] != "") {
