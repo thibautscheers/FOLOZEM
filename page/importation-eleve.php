@@ -14,7 +14,7 @@
 
 </head>
 
-<body style="margin-top: 60px; background-color: beige;">
+<body class="body">
     <div>
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <ul class="navbar-nav mr-auto">
@@ -38,7 +38,7 @@
         echo ("<br/><div style=\"background-color: #4f4; padding: 6px;\">" . ($_SESSION["info"]) . "</div>");
     $_SESSION["info"] = ""; ?>
     </div>
-    <h3 style="background-color: #FFA500;">Importation des élève </h3>
+    <h3 class="h3">Importation des élève </h3>
     <div class="col-auto">
         <form action="importEleves.php" method="post" class="form-inline" enctype="multipart/form-data">
             <input type="file" class="btn btn-outline-secondary btn-sm" name="file" id="file" accept=".csv">

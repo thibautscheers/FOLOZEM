@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
 </head>
 
-<body style="margin-top: 60px; background-color: beige;">
+<body class="body">
     <div>
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <ul class="navbar-nav mr-auto">
@@ -25,7 +25,7 @@
             </ul>
         </nav>
     </div>
-    <form action="" method="get" style='position:fixed;color: #03a9f4;border: 2px;  border-color: #03a9f4;  border-style: solid; bottom:1%; right:1%; z-index:10;opacity: 0.7;background-color: red;'>
+    <form action="" id="formGetPromotion" method="get">
         Filtre : 
         <input name="filtreAnnee" type='number' placeholder='<?php
          if(isset($_GET['filtreAnnee']) and $_GET['filtreAnnee'] != "") {
@@ -38,7 +38,7 @@
         <input type='submit' value="Appliquez filtre">
     </form>
 
-    <h3 style="background-color: #FFA500;">Statistiques Générales</h3>
+    <h3 class="h3">Statistiques Générales</h3>
 
     <?php
     
@@ -333,7 +333,7 @@
 
     <br><hr></br>
 
-    <h3 style="background-color: #FFA500;">Statistiques SIO1</h3>
+    <h3 class="h3">Statistiques SIO1</h3>
 
     <?php
 
@@ -882,7 +882,7 @@
 
     <br><hr></br>
 
-    <h3 style="background-color: #FFA500;">Statistiques SIO2</h3>
+    <h3 class="h3">Statistiques SIO2</h3>
 
     <?php
 
