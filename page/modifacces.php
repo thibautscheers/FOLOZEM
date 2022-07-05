@@ -1,3 +1,5 @@
+<!-- Cette page est dédié à la modification de la clè d'accés créées par Thibaut Scheers -->
+
 <?php
 // 
 try {

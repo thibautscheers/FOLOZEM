@@ -1,3 +1,4 @@
+<!-- Cette page est dédié à la connecxion créées par Allan Escolano -->
 <!DOCTYPE html>
 <html lang="en">
 <head>

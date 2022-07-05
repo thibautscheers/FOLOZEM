@@ -1,3 +1,5 @@
+<!-- Cette page est dédié aux statistiques créées par Allan Escolano -->
+
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,3 +1,4 @@
+<!-- Cette page est dédié au info principal du site créées par Thibaut Scheers -->
 <!DOCTYPE html>
 <html lang="en">
 

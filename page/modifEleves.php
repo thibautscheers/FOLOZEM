@@ -1,5 +1,7 @@
+<!-- Cette page est dédié à la modificarion des élèves créées par Thibaut Scheers -->
+
 <?php
-// 
+ 
 try {
   require_once("Modele.php");
   session_start();

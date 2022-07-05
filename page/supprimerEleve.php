@@ -1,3 +1,5 @@
+<!-- Cette page est dédié à la suppression des élèves créées par Thibaut Scheers -->
+
 <?php
 // 
 try {

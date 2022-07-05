@@ -1,3 +1,5 @@
+<!-- Cette page est dédié à l'ajout des élèves, d'origine et d'option créées par Thibaut Scheers & Allan Escolano -->
+
 <!DOCTYPE html>
 <html lang="en">
 
