@@ -52,7 +52,7 @@
         </form>
     </div>
     <br> </br>
-    <h3>Ajout élèves</h3>
+    <h3>Ajout étudiants</h3>
 
     <div class="col-auto">
         <form action="ajoutEleve.php" class="form-inline" method="POST">
