@@ -243,82 +243,53 @@
     <div>Afficher graphiques</div>
     <input type='checkbox' value='' id='graphCheckbox'>
     <div id='graphsPlacement' hidden='true'>
-        <canvas id='graphAnnee' style='display: inline;'> </canvas>
-        <canvas id='graphOptions' style='display: inline;'> </canvas>
+        <table>
+        <td><canvas id='graphAnnee' > </canvas></td><td><canvas id='graphOptions' > </canvas></td>
+        </table>
     </div>
 
     <script>
         //graph de la repartition des sio1/sio2
         let ctx1 = document.getElementById('graphAnnee').getContext('2d')
-        let nbrPremiereAnnee = <?php echo ($nbrPremiereAnnee) ?>;
-        let nbrSecondAnnee = <?php echo ($nbrSecondAnnee) ?>;
+        let datas = [<?php echo ($nbrPremiereAnnee) ?>, <?php echo ($nbrSecondAnnee) ?>];
         let labels1 = ["Première années", "Seconde années"]
-        let data1 = {
-            labels: labels1,
-            datasets: [{
-                data: [nbrPremiereAnnee, nbrSecondAnnee],
-                backgroundColor: [
-                    "#FF6384",
-                    "#4BC0C0",
-                    "#FFCE56",
-                    "#E7E9ED",
-                    "#36A2EB"
-                ],
-                hoverOffset: 4,
-                borderColor: ['#2338'],
-                circumference: [180],
-                rotation: [270],
-
-            }]
-        }
-        let options1 = {
-            responsive: false,
-        }
-        let config1 = {
-            type: 'pie',
-            data: data1,
-            options: options1
-        }
-
-        let graph1 = new Chart(ctx1, config1)
-
-
-
+        camembert(ctx1, labels1, datas)
         //graph de la repartition des Options
         let ctx2 = document.getElementById('graphOptions').getContext('2d')
         let labels2 = ["SLAM", "SISR", "Sans option"]
-        let slam = <?php echo($SLAM) ?>;
-        let sisr = <?php echo($SISR) ?>;
-        let sansOption = <?php echo($PasOption) ?>;
-        let data2 = {
-            labels: labels2,
-            datasets: [{
-                data: [slam, sisr, sansOption],
-                backgroundColor: [
-                    "#FF6384",
-                    "#4BC0C0",
-                    "#FFCE56",
-                    "#E7E9ED",
-                    "#36A2EB"
-                ],
-                hoverOffset: 4,
-                borderColor: ['#2338'],
-                circumference: [180],
-                rotation: [270],
+        let datas2 = [<?php echo($SLAM) ?>,<?php echo($SISR) ?>,<?php echo($PasOption) ?>]
+        camembert(ctx2, labels2, datas2)
+       //fonction pour créé le graphique
+        function camembert(contexte, etiquettes, donnees) {
+    let data1 = {
+        labels: etiquettes,
+        datasets: [{
+            data: donnees,
+            backgroundColor: [
+                "#FF6384",
+                "#4BC0C0",
+                "#FFCE56",
+                "#E7E9ED",
+                "#36A2EB"
+            ],
+            hoverOffset: 4,
+            borderColor: ['#2338'],
+            circumference: [180],
+            rotation: [270],
 
-            }]
-        }
-        let options2 = {
-            responsive: false,
-        }
-        let config2 = {
-            type: 'pie',
-            data: data2,
-            options: options2
-        }
+        }]
+    }
+    let options1 = {
+        responsive: false,
+    }
+    let config1 = {
+        type: 'pie',
+        data: data1,
+        options: options1
+    }
 
-        let graph2 = new Chart(ctx2, config2)
-
+    return graph1 = new Chart(contexte, config1)
+}
 
         let graphCheckbox = document.getElementById("graphCheckbox")
         let graphsPlacement = document.getElementById("graphsPlacement")
