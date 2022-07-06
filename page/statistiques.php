@@ -243,9 +243,8 @@
     <div>Afficher graphiques</div>
     <input type='checkbox' value='' id='graphCheckbox'>
     <div id='graphsPlacement' hidden='true'>
-        <table>
-        <td><canvas id='graphAnnee' > </canvas></td><td><canvas id='graphOptions' > </canvas></td>
-        </table>
+        <canvas id='graphAnnee' > </canvas>
+        <canvas id='graphOptions'> </canvas>
     </div>
 
     <script>
@@ -253,13 +252,14 @@
         let ctx1 = document.getElementById('graphAnnee').getContext('2d')
         let datas = [<?php echo ($nbrPremiereAnnee) ?>, <?php echo ($nbrSecondAnnee) ?>];
         let labels1 = ["Première années", "Seconde années"]
-        camembert(ctx1, labels1, datas)
+        
         //graph de la repartition des Options
         let ctx2 = document.getElementById('graphOptions').getContext('2d')
+        let datas2 = [<?php echo($SLAM) ?>,<?php echo($SISR) ?>,<?php echo($PasOption) ?>;]
         let labels2 = ["SLAM", "SISR", "Sans option"]
-        let datas2 = [<?php echo($SLAM) ?>,<?php echo($SISR) ?>,<?php echo($PasOption) ?>]
         camembert(ctx2, labels2, datas2)
-       //fonction pour créé le graphique
+        
+
         function camembert(contexte, etiquettes, donnees) {
     let data1 = {
         labels: etiquettes,
@@ -279,7 +279,7 @@
 
         }]
     }
-    let options1 = {
+    let options1 ={
         responsive: false,
     }
     let config1 = {
@@ -288,18 +288,18 @@
         options: options1
     }
 
-    return graph1 = new Chart(contexte, config1)
+    let graph1 = new Chart(contexte, config1)
+   document.getElementById("graphAnnee").innerHTML=graph1
 }
-
-        let graphCheckbox = document.getElementById("graphCheckbox")
+let graphCheckbox = document.getElementById("graphCheckbox")
         let graphsPlacement = document.getElementById("graphsPlacement")
-        graphCheckbox.addEventListener("change", showgraph => {
+         graphCheckbox.addEventListener("change", showgraph => {
             if(showgraph.target.checked == true) {
                 graphsPlacement.hidden = false
             } else {
                 graphsPlacement.hidden = true
             }
-        })
+        })   
 
     </script>
 
