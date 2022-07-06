@@ -169,6 +169,11 @@ function getEtudiantAnneeOption($filtreAnnee, $premiereAnnee, $optionSLAM)
         $res = $pdo->prepare("SELECT * FROM etudiant WHERE premiereAnnee=$premiereAnnee and optionSLAM=$optionSLAM");
     }
 
+    //prendre tout etudiant
+    if($filtreAnnee === NULL and $optionSLAM == NULL and $premiereAnnee == NULL) {
+        $res = $pdo->prepare("SELECT * FROM etudiant");
+    }
+
     $res->execute();
     return $res;
 }
