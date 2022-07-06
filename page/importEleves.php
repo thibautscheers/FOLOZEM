@@ -163,7 +163,7 @@
         $Annee = $Annees[$i];
         $Departement = $Departements[$i];
         $alternance = 0;
-        $idOption = 4; //L'option 4 est celle non définie
+        $idOption = 8; //L'option 4 est celle non définie
         $res =  $pdo->prepare("INSERT INTO  etudiant (`noEtudiant`, `nom`, `prenom`, `premiereAnnee`, `optionSLAM`,  `anneeArrivee`, `departement`, `alternance`,`idOption#`) VALUES (:noEtudiant,:nom,:prenom,:premiereAnnee,:optionSLAM,:anneeArrivee,:departement,:alternance,:idOptions)");
         $res->bindParam("noEtudiant", $IdEtudiant, PDO::PARAM_INT);
         $res->bindParam("nom", $Nom, PDO::PARAM_STR, 20);
