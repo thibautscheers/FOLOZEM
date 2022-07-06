@@ -1,3 +1,4 @@
+<!-- Cette page est dédié à la connecxion créées par Allan Escolano -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,18 +8,12 @@
     <title>Folozem</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style/style.css">
+    <!-- <link rel="stylesheet" href="style/navbar.css"> -->
     <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
-<body style="margin-top: 60px; background-color: beige;">
-<style>
-    body {
-      margin: 10px;
-      background-position: center;
-      background-attachment: fixed;
-      background-size: cover;
-    }
-  </style>
+<body class="body">
+
     <LogInFrame class="LogInFrame ">
         <p class="fs-5 fw-bold  "> Entrez la clé d'accés </p>
         <br>

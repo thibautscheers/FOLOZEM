@@ -1,3 +1,5 @@
+<!-- Cette page est dédié à l'ajout d'élève créées par Thibaut Scheers -->
+
 <?php
 // 
 try {

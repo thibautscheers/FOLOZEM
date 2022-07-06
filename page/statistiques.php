@@ -1,3 +1,5 @@
+<!-- Cette page est dédié aux statistiques créées par Allan Escolano -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
 </head>
 
-<body style="margin-top: 60px; background-color: beige;">
+<body class="body">
     <div>
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <ul class="navbar-nav mr-auto">
@@ -25,8 +27,7 @@
             </ul>
         </nav>
     </div>
-    
-    <form action="" method="get" style='position:fixed; bottom:1%; right:1%; z-index:10;'>
+    <form action="" id="formGetPromotion" method="get">
         Filtre : 
         <input name="filtreAnnee" type='number' placeholder='<?php
          if(isset($_GET['filtreAnnee']) and $_GET['filtreAnnee'] != "") {
@@ -39,7 +40,7 @@
         <input type='submit' value="Appliquez filtre">
     </form>
 
-    <h3 style="background-color: #FFA500;">Statistiques Générales</h3>
+    <h3 class="h3">Statistiques Générales</h3>
 
     <?php
     
@@ -303,99 +304,70 @@
     <div>Afficher graphiques</div>
     <input type='checkbox' value='' id='graphCheckbox'>
     <div id='graphsPlacement' hidden='true'>
-        <canvas id='graphAnnee' style='display: inline;'> </canvas>
-        <canvas id='graphOptions' style='display: inline;'> </canvas>
+        <canvas id='graphAnnee' > </canvas>
+        <canvas id='graphOptions'> </canvas>
     </div>
 
     <script>
         //graph de la repartition des sio1/sio2
         let ctx1 = document.getElementById('graphAnnee').getContext('2d')
-        let nbrPremiereAnnee = <?php echo ($nbrPremiereAnnee) ?>;
-        let nbrSecondAnnee = <?php echo ($nbrSecondAnnee) ?>;
+        let datas = [<?php echo ($nbrPremiereAnnee) ?>, <?php echo ($nbrSecondAnnee) ?>];
         let labels1 = ["Première années", "Seconde années"]
-        let data1 = {
-            labels: labels1,
-            datasets: [{
-                data: [nbrPremiereAnnee, nbrSecondAnnee],
-                backgroundColor: [
-                    "#FF6384",
-                    "#4BC0C0",
-                    "#FFCE56",
-                    "#E7E9ED",
-                    "#36A2EB"
-                ],
-                hoverOffset: 4,
-                borderColor: ['#2338'],
-                circumference: [180],
-                rotation: [270],
-
-            }]
-        }
-        let options1 = {
-            responsive: false,
-        }
-        let config1 = {
-            type: 'pie',
-            data: data1,
-            options: options1
-        }
-
-        let graph1 = new Chart(ctx1, config1)
-
-
-
+        
         //graph de la repartition des Options
         let ctx2 = document.getElementById('graphOptions').getContext('2d')
+        let datas2 = [<?php echo($SLAM) ?>,<?php echo($SISR) ?>,<?php echo($PasOption) ?>;]
         let labels2 = ["SLAM", "SISR", "Sans option"]
-        let slam = <?php echo($SLAM) ?>;
-        let sisr = <?php echo($SISR) ?>;
-        let sansOption = <?php echo($PasOption) ?>;
-        let data2 = {
-            labels: labels2,
-            datasets: [{
-                data: [slam, sisr, sansOption],
-                backgroundColor: [
-                    "#FF6384",
-                    "#4BC0C0",
-                    "#FFCE56",
-                    "#E7E9ED",
-                    "#36A2EB"
-                ],
-                hoverOffset: 4,
-                borderColor: ['#2338'],
-                circumference: [180],
-                rotation: [270],
+        camembert(ctx2, labels2, datas2)
+        
 
-            }]
-        }
-        let options2 = {
-            responsive: false,
-        }
-        let config2 = {
-            type: 'pie',
-            data: data2,
-            options: options2
-        }
+        function camembert(contexte, etiquettes, donnees) {
+    let data1 = {
+        labels: etiquettes,
+        datasets: [{
+            data: donnees,
+            backgroundColor: [
+                "#FF6384",
+                "#4BC0C0",
+                "#FFCE56",
+                "#E7E9ED",
+                "#36A2EB"
+            ],
+            hoverOffset: 4,
+            borderColor: ['#2338'],
+            circumference: [180],
+            rotation: [270],
 
-        let graph2 = new Chart(ctx2, config2)
+        }]
+    }
+    let options1 ={
+        responsive: false,
+    }
+    let config1 = {
+        type: 'pie',
+        data: data1,
+        options: options1
+    }
 
-
-        let graphCheckbox = document.getElementById("graphCheckbox")
+    let graph1 = new Chart(contexte, config1)
+   document.getElementById("graphAnnee").innerHTML=graph1
+}
+let graphCheckbox = document.getElementById("graphCheckbox")
         let graphsPlacement = document.getElementById("graphsPlacement")
-        graphCheckbox.addEventListener("change", showgraph => {
+         graphCheckbox.addEventListener("change", showgraph => {
             if(showgraph.target.checked == true) {
                 graphsPlacement.hidden = false
             } else {
                 graphsPlacement.hidden = true
             }
-        })
+        })   
 
     </script>
 
 
     <br><hr></br>
 
-    <h3 style="background-color: #FFA500;">Statistiques SIO1</h3>
+    <h3 class="h3">Statistiques SIO1</h3>
 
     <?php
         if(isset($_GET['filtreAnnee']) and $_GET['filtreAnnee'] != "") {
@@ -466,7 +438,7 @@
 
     <br><hr></br>
 
-    <h3 style="background-color: #FFA500;">Statistiques SIO2</h3>
+    <h3 class="h3">Statistiques SIO2</h3>
 
     <?php
         if(isset($_GET['filtreAnnee']) and $_GET['filtreAnnee'] != "") {

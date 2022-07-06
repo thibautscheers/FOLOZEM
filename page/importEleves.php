@@ -1,10 +1,4 @@
-<head>
-    <style>
-        table, td, th {
-        border: 1px solid black;
-        }
-    </style>
-</head>
+<!-- Cette page est dédié à l'importation des élèves par un fichier CSV créées par Allan Escolano -->
 
 <?php
         //définition des tables néccessaires pour la suite

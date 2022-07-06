@@ -1,3 +1,4 @@
+<!-- Cette page est dédié à l'ajout d'orignie créées par Thibaut Scheers -->
 <?php
 // 
 try {

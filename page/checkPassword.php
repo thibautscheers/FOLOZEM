@@ -1,3 +1,4 @@
+<!-- Cette page est dédié à la vérification de la clè d'accés créées par Allan Escolano -->
 <?php
     if(isset($_POST['LogInText'])) { //Recupere le mot de passe entrer dans l'input password
         $Value = $_POST['LogInText'];

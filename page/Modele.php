@@ -1,3 +1,4 @@
+<!-- Cette page est dédié aux requête SQL créées par Thibaut Scheers & Allan Escolano -->
 <?php
 
 function connexion() //function de connexion a la base de donnée

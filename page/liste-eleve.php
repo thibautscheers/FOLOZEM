@@ -1,3 +1,4 @@
+<!-- Cette page est dédié à l'affichage des élèves créées par Allan Escolano & Thibaut Scheers -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +15,7 @@
 
 </head>
 
-<body style="margin-top: 60px; background-color: beige;">
+<body class="body">
 
     <div>
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
@@ -28,7 +29,7 @@
         </nav>
     </div>
 
-    <h3 style="background-color: #FFA500;">Liste des élève </h3>
+    <h3 class="h3">Liste des élève </h3>
     <div class="table-responsive -sm">
         <table class="table table-bordered table-sm">
             <tr>

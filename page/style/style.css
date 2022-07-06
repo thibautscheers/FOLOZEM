@@ -1,10 +1,13 @@
-body {
+/* Page pour le style créée et géré par Thibaut SCheers*/
+
+.body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     width: 100%;
     overflow: hidden;
+    background-color: beige;
     
 }
 
