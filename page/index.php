@@ -8,13 +8,15 @@
     <title>Folozem</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style/style.css">
-    <!-- <link rel="stylesheet" href="style/navbar.css"> -->
     <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="body">
+    <div id="image"><h1>Folozem</h1>
+    <p>Site de statistiques des étudiants de BTS SIO du lycée :</p>
+    <img src="style/logo_SIO-couleur.png"></div><br>
 
-    <LogInFrame class="LogInFrame ">
+    <LogInFrame class="LogInFrame " >
         <p class="fs-5 fw-bold  "> Entrez la clé d'accés </p>
         <br>
         <form method="post" action="checkPassword.php">
@@ -29,7 +31,9 @@
                 session_destroy(); // Permet de clear le cookie si on refresh la page
             ?>
         </form>
+        <img id="ico" src="favicon.ico">
     </LogInFrame>
+    
 </body>
 
 </html>

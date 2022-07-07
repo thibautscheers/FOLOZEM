@@ -1,6 +1,7 @@
 /* Page pour le style créée et géré par Thibaut SCheers*/
 
 .body {
+    font-family: cursive;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,10 +18,26 @@
     padding: 50px;
     border-radius: 20px;
     width: 300px;
-
+    
+    /* margin-right: 500px; */
+   
 }
 
 .LogInText {
     width: 200px;
     height: 20px;
+}
+img{
+    max-width: 40%;
+    height: auto;
+    
+}
+#image{
+    text-align: center;
+    font-family: cursive;
+
+}
+#ico{
+    max-width: 30%;
+    height: auto;
 }
