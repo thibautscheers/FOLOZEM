@@ -40,7 +40,7 @@
                     <td colspan="1"><b>Sexe</td>
                     <td colspan="1"><b>Année BTS</td>
                     <td colspan="1"><b>Redoublement</b></td>
-                    <td colspan="1"><b>Option du BTS</td>
+                    <td colspan="1"><b>Spécialité du BTS</td>
                     <td colspan="1"><b>Semestre d'abandon</td>
                     <td colspan="1"><b>Année d'arriver</td>
                     <td colspan="1"><b>Département</td>
@@ -72,13 +72,13 @@
                 $noEtudiant = $Etudiant['noEtudiant'];
                 $nom = $Etudiant['nom'];
                 $prenom = $Etudiant['prenom'];
-
+                $sexes = $Etudiant['sexe'];
                 if ($Etudiant['sexe'] == 1) { // Affiche dynamiquement l'année de l'étudiant
                     $sexe = 'Homme';
                 } else {
                     $sexe = 'Femme';
                 }
-
+                $anneeSIO = $Etudiant['premiereAnnee'];
                 if ($Etudiant['premiereAnnee'] == 1) { // Affiche dynamiquement l'année de l'étudiant
                     $premiereAnnee = 'SIO 1';
                 } elseif ($Etudiant['premiereAnnee'] == 0) {
@@ -90,7 +90,7 @@
 
 
                 if (!isset($Etudiant['optionSLAM'])) { // Affiche dynamiquement l'année de l'étudiant
-                    $optionSLAM = "Pas d'option";
+                    $optionSLAM = "Pas de spécialité";
                 } elseif ($Etudiant['optionSLAM'] == 0) {
                     $optionSLAM = "SISR";
                 } elseif ($Etudiant['optionSLAM'] == 1) {
@@ -150,17 +150,18 @@
                 $id_Origine = $Options['idOrigine#'];
                 $Origines = getOrigines($id_Origine);
                 $Origine = $Origines['nomOrigine'];
-                
-                
-                $id_Sortie= $Etudiant['idSortie#'];
+
+
+                $id_Sortie = $Etudiant['idSortie#'];
                 if ($id_Sortie == NULL) {
                     $Sortie = "Non spécifié";
-                }else{$Sorties = getSortie($id_Sortie);
+                } else {
+                    $Sorties = getSortie($id_Sortie);
                     $Sortie = $Sorties['labelSortie'];
                 }
-                
-                
-            
+
+
+
             ?>
 
                 <form method='POST' action='modifEleves.php' class="form-inline">
@@ -169,52 +170,123 @@
                         <td><input type="hidden" name="noEtudiant" value="<?php echo ($noEtudiant) ?>"><?php echo ($noEtudiant) ?></td>
                         <td><?php echo ($nom) ?></td>
                         <td><?php echo ($prenom) ?></td>
-                        <td><?php echo ($sexe) ?></td>
-                        <td><?php echo ($premiereAnnee) ?></td>
-                        <td><?php echo ($redoublantPremAnnee) ?></td>
-                        <td><?php echo ($optionSLAM) ?></td>
-                        <td><?php echo ($semAbandon) ?></td>
-                        <td><?php echo ($anneeArrivee) ?></td>
-                        <td><?php echo ($departement) ?></td>
-                        <td><?php echo ($alternance) ?></td>
-                        <td><?php echo ($reussiteBTS) ?>
-                        <td><?php echo ($Origine) ?></td>
-                        <td><?php echo ($Option) ?></td>
-                        <td><?php echo ($Sortie) ?></td>
-                        <td> <select name="sexe" class="form-select-sm">
-                                <option value="1">Masculin</option>
-                                <option value="0">Féminin</option>
-                            </select>
+                        <td><?php echo ($sexe) ?><br>
+                            <select name="sexe" class="form-select-sm">
+                                <?php
+                                if ($sexes == 1) { ?>
+                                    <option selected value="1">M</option>
+                                    <option value="0">F</option><?php } else { ?>
+                                    <option value="1">M</option>
+                                    <option selected value="0">F</option>
+                            </select><?php } ?>
+                        </td>
+                        <td><?php echo ($premiereAnnee) ?> <br>
                             <select name='anneeSIO' class="form-select-sm">
-                                <option value='1'>SIO 1</option>
-                                <option value='0'>SIO 2</option>
+                                <?php
+                                if ($anneeSIO == 1) { ?>
+                                    <option selected value='1'>SIO 1</option>
+                                    <option value='0'>SIO 2</option><?php } else { ?>
+                                    <option value='1'>SIO 1</option>
+                                    <option selected value='0'>SIO 2</option><?php } ?>
                             </select>
+                        </td>
+                        <td><?php echo ($redoublantPremAnnee) ?><br>
                             <select name='redoublantPremAnnee' class="form-select-sm">
-                                <option value="NULL">Non redoublé</option>
-                                <option value='1'>Redoublant SIO 1</option>
-                                <option value='0'>Redoublant SIO 2</option>
+                                <?php $redoublant = $Etudiant['redoublantPremAnnee'];
+                                if ($redoublant == 1) { ?>
+                                    <option value="NULL">Non redoublé</option>
+                                    <option selected value='1'>Redoublant SIO 1</option>
+                                    <option value='0'>Redoublant SIO 2</option>
+                                <?php } elseif ($redoublant === 0) { ?>
+                                    <option value="NULL">Non redoublé</option>
+                                    <option value='1'>Redoublant SIO 1</option>
+                                    <option selected value='0'>Redoublant SIO 2</option>
+                                <?php  } else { ?>
+                                    <option value="NULL">Non redoublé</option>
+                                    <option value='1'>Redoublant SIO 1</option>
+                                    <option value='0'>Redoublant SIO 2</option>
                             </select>
+                        <?php  } ?>
+                        </td>
+                        <td><?php echo ($optionSLAM) ?><br>
+                            <?php
+                            $spe = $Etudiant['optionSLAM']; ?>
+
                             <select name='optionBTS' class="form-select-sm">
-                                <option value="NULL"></option>
-                                <option value='1'>SLAM</option>
-                                <option value='0'>SISR</option>
+                                <?php
+                                if ($spe == 1) { ?>
+                                    <option value="NULL">Pas de spécialité</option>
+                                    <option selected value='1'>SLAM</option>
+                                    <option value='0'>SISR</option>
+                                <?php } elseif ($spe === 0) { ?>
+                                    <option value="NULL">Pas de spécialité</option>
+                                    <option value='1'>SLAM</option>
+                                    <option selected value='0'>SISR</option>
+                                <?php  } else { ?>
+                                    <option value="NULL">Pas de spécialité</option>
+                                    <option value='1'>SLAM</option>
+                                    <option value='0'>SISR</option><?php } ?>
                             </select>
-                            Semestre d'abandon :
+                        </td>
+                        <td><?php echo ($semAbandon) ?><br>
+                            <?php $abandon = $Etudiant['semAbandon']; ?>
                             <select name="SemAbandon" class="form-select-sm">
-                                <option value="NULL"></option>
-                                <option value='1'>1er semestre</option>
-                                <option value='2'>2nd semestre</option>
-                                <option value="3">3eme semestre</option>
-                                <option value="4">4eme semestre</option>
+                                <?php
+                                if ($abandon == 1) { ?>
+                                    <option value="NULL"></option>
+                                    <option selected value='1'>1er semestre</option>
+                                    <option value='2'>2nd semestre</option>
+                                    <option value="3">3eme semestre</option>
+                                    <option value="4">4eme semestre</option>
+                                <?php } elseif ($abandon == 2) { ?>
+                                    <option value="NULL"></option>
+                                    <option value='1'>1er semestre</option>
+                                    <option selected value='2'>2nd semestre</option>
+                                    <option value="3">3eme semestre</option>
+                                    <option value="4">4eme semestre</option>
+                                <?php } elseif ($abandon == 3) { ?>
+                                    <option value="NULL"></option>
+                                    <option value='1'>1er semestre</option>
+                                    <option value='2'>2nd semestre</option>
+                                    <option selected value="3">3eme semestre</option>
+                                    <option value="4">4eme semestre</option>
+                                <?php } elseif ($abandon == 4) { ?>
+                                    <option value="NULL"></option>
+                                    <option value='1'>1er semestre</option>
+                                    <option value='2'>2nd semestre</option>
+                                    <option value="3">3eme semestre</option>
+                                    <option selected value="4">4eme semestre</option>
+                                <?php } else { ?>
+                                    <option value="NULL"></option>
+                                    <option value='1'>1er semestre</option>
+                                    <option value='2'>2nd semestre</option>
+                                    <option value="3">3eme semestre</option>
+                                    <option value="4">4eme semestre</option>
+
+                                <?php } ?>
                             </select>
 
+                        </td>
+                        <td><?php echo ($anneeArrivee) ?></td>
+                        <td><?php echo ($departement) ?></td>
+                        <td><?php echo ($alternance) ?><br>
+                            <?php $alter = $Etudiant['alternance'] ?>
                             <select name='alternance' class="form-select-sm">
-                                <option value='1'>fait une alternance</option>
-                                <option value='0'>ne fait pas d'alternance</option>
-                            </select><br>
-                            reussite du BTS en :
-                            <input type="number" name="reussiteBTS" class="input-group-sm"><br>
-                            Après BTS:
+                                <?php
+                                if ($alter == 1) { ?>
+                                    <option selected value='1'>oui</option>
+                                    <option value='0'>non</option>
+                                <?php } else { ?>
+                                    <option value='1'>oui</option>
+                                    <option selected value='0'>non</option> <?php } ?>
+                            </select>
+                        </td>
+                        <td><?php echo ($reussiteBTS) ?><br>
+                            <input type="number" name="reussiteBTS" class="input-group-sm">
+                        </td>
+                        <td><?php echo ($Origine) ?></td>
+                        <td><?php echo ($Option) ?></td>
+                        <td><?php echo ($Sortie) ?><br>
                             <select name="sortie" class="form-select-sm">
                                 <option value="NULL"></option>
                                 <?php
@@ -227,8 +299,9 @@
                                     echo ("<option value='$idOption'>$nomOption</option>");
                                 }
                                 ?>
+                        </td>
+                        <td>
                             <input type='submit' class="btn btn-outline-primary btn-sm" value='Modifier'>
-                            
                         </td>
                 </form>
                 <td>
@@ -237,8 +310,6 @@
                         <input type="submit" class="btn btn-outline-danger btn-sm" value="Supprimer">
                     </form>
                     </tr>
-
-
                 <?php
 
             }
