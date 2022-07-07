@@ -19,7 +19,7 @@
     <div>
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"><a class="nav-link"  href="liste-eleve.php">Liste des Elèves</a></li>
+                <li class="nav-item active"><a class="nav-link"  href="liste-eleve.php">Liste des Etudiants</a></li>
                 <li class="nav-item active"><a class="nav-link" href="importation-eleve.php">Importation des Elèves</a></li>
                 <li class="nav-item active"><a class="navbar-brand" href="#">Statistiques</a></li>
                 <li class="nav-item active"><a class="nav-link" href="information.php">Information du site</a></li>
