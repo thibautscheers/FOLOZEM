@@ -60,3 +60,8 @@ footer {
 .h3{
   background-color: #FFA500;
 }
+label{
+  display:block; 
+  width:100px; 
+  line-height: 35px;
+}

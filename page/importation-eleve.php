@@ -40,7 +40,7 @@
         echo ("<br/><div style=\"background-color: #4f4; padding: 6px;\">" . ($_SESSION["info"]) . "</div>");
     $_SESSION["info"] = ""; ?>
     </div>
-    <h3 class="h3">Importation des élève </h3>
+    <h3 class="h3">Importation des élèves </h3>
     <div class="col-auto">
         <form action="importEleves.php" method="post" class="form-inline" enctype="multipart/form-data">
             <input type="file" class="btn btn-outline-secondary btn-sm" name="file" id="file" accept=".csv">
@@ -56,33 +56,34 @@
 
     <div class="col-auto">
         <form action="ajoutEleve.php" class="form-inline" method="POST">
-            Id Etudiant : <input type="number" class="input-group-sm" name="noEtudiant"><br>
-            Nom : <input type="text" class="input-group-sm" name="nom"><br>
-            Prenom : <input type="text" class="input-group-sm" name="prenom"><br>
-            Sexe :
-            <select name="sexe" class="form-select-sm">
+            <label for="etud"> Id Etudiant:</label> <input id="etud" type="number" class="input-group-sm" name="noEtudiant"><br>
+            <label for="nom"> Nom:</label> <input id="nom" type="text" class="input-group-sm" name="nom"><br>
+            <label for="prenom"> Prenom:</label><input id="prenom" type="text" class="input-group-sm" name="prenom"><br>
+            <label for="sexes">Sexe : </label>
+            <select id="sexes" name="sexe" class="form-select-sm">
                 <option value="1">Masculin</option>
                 <option value="0">Féminin</option>
             </select><br>
-            Classe : 
-            <select name='anneeSIO' class="form-select-sm">
+            <label for="classe"> Classe : </label>
+            <select id="classe" name='anneeSIO' class="form-select-sm">
                 <option value='1'>SIO 1</option>
                 <option value='0'>SIO 2</option>
-            </select><br>Option du BTS:
-            <select name='optionBTS' class="form-select-sm">
+            </select><br>
+            <label for="spé">Spécialité du BTS:</label>
+            <select id="spe" name='optionBTS' class="form-select-sm">
                 <option value="NULL"></option>
                 <option value='1'>SLAM</option>
                 <option value='0'>SISR</option>
             </select><br>
-            Année d'arrivé : <input type="number" class="input-group-sm" name="anneeArrivee"><br>
-            Département : <input type="number" class="input-group-sm" name="departement"><br>
-            alternance:
-            <select name='alternance' class="form-select-sm">
+            <label for="annee">Année d'arrivé :</label> <input id="annee" type="number" class="input-group-sm" name="anneeArrivee"><br>
+            <label for="dep"> Département:</label> <input id="dep" type="number" class="input-group-sm" name="departement"><br>
+            <label for="alter">alternance:</label>
+            <select id="alter" name='alternance' class="form-select-sm">
                 <option value='1'>fait une alternance</option>
                 <option value='0'>ne fait pas d'alternance</option>
             </select><br>
-            Option D'origine :
-            <select name="idOption" class="form-select-sm">
+            <label for="op">Option D'origine :</label>
+            <select id="op" name="idOption" class="form-select-sm">
                 <?php
 
                 $optionsB = lireOption();
