@@ -18,7 +18,7 @@
     <div>
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"><a class="nav-link"  href="liste-eleve.php">Liste des Etudiants</a></li>
+                <li class="nav-item active"><a class="nav-link" href="liste-eleve.php">Liste des Etudiants</a></li>
                 <li class="nav-item active"><a class="nav-link" href="importation-eleve.php">Importation des Elèves</a></li>
                 <li class="nav-item active"><a class="nav-link" href="statistiques.php">Statistiques</a></li>
                 <li class="nav-item active"><a class="navbar-brand" href="#">Information du site</a></li>
@@ -26,7 +26,7 @@
             </ul>
         </nav>
     </div>
-    <?php 
+    <?php
     require_once("Modele.php");
     session_start();
 
@@ -38,7 +38,7 @@
         echo ("<br/><div style=\"background-color: #4f4; padding: 6px;\">" . ($_SESSION["info"]) . "</div>");
     $_SESSION["info"] = "";
     ?>
-    <h1 class="text-decoration-underline text-center  h3" > Information </h1>
+    <h1 class="text-decoration-underline text-center  h3"> Information </h1>
     <div id="expoitCSV">
         <h3 class="text-decoration-underline">Importation des fichier CSV</h3>
         <p> Pour importer un fichier CSV, il faut d'abord le prendre de parcoursup puis l'importer sur le site à partir de la page Importation, puis le site fait le reste pour vous.</p>
@@ -49,22 +49,22 @@
         </p>
 
     </div> -->
-    <form  method="POST" action="modifacces.php">
+    <form method="POST" action="modifacces.php">
         <div id="access">
             <h3 class="text-decoration-underline">
-                Modifier la clè d'accès
+                Modifié la clé d'accès
             </h3> <input type="password" class="input-group-sm" name="cleacces">
-                <input type="submit" class="btn btn-outline-primary btn-sm" value="Modifier">
+            <input type="submit" class="btn btn-outline-primary btn-sm" value="Modifier">
         </div>
     </form>
 
     <footer>
-    <h6>Créateur du site:</h6>
-        <p class="text-sm" >Site créé pendant stage de 1ʳᵉ année de SIO de la promotion 2021-2023 par Allan ESCOLANO & Thibaut SCHEERS. 
+        <h6>Créateur du site:</h6>
+        <p class="text-sm">Site créé pendant stage de 1ʳᵉ année de SIO de la promotion 2021-2023 par Allan ESCOLANO & Thibaut SCHEERS.
         </p>&nbsp;
         <h6>RGPD:</h6>
-        <p class="fz-sm-6">Pour respecter la loi sur la protection des données, il faudrait garder les données minimum pendant 3 ans, maximum pendant 5 ans. Si vous rencontrez un problème, veuillez nous contacter sur notre adresse électronique :
-             <a href='mailto: folozem@proton.me'>folozem@proton.me<a></p>
+        <p class="fz-sm-6">Les données sont conservées 1 an après la sortie du BTS. Si vous rencontrez un problème, veuillez M.ROUMANET ou M.CARDONA
+        </p>
     </footer>
 
 
