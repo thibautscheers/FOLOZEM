@@ -3,7 +3,7 @@
 
 function connexion() //function de connexion a la base de donnée
 {
-    return new PDO("mysql:host=mysql-folozem.alwaysdata.net;port=3306;dbname=folozem_folozem;charset=UTF8", "folozem", "");
+    return new PDO("mysql:host=mysql-folozem.alwaysdata.net;port=3306;dbname=folozem_folozem;charset=UTF8", "folozem", "Folozem123!");
 }
 
 function getPassword()//fonction pour lire le mot de passe
